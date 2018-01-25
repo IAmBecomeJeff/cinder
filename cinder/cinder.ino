@@ -42,7 +42,6 @@ void setup() {
   }
  
   // Init rings
-  uint8_t ringArray[144][4];
   for (uint8_t i=0;i<144;i++){
 	ringArray[i][0]=i;
 	ringArray[i][1]=287-i;
