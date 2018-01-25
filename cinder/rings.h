@@ -16,9 +16,9 @@ void ringCRGB(uint8_t pos, uint8_t r, uint8_t g, uint8_t b){
 }
 
 // Use ColorFromPalette
-void ringPalette(CRGBPalette16 pal, uint8_t pos, uint8_t bri = this_bright, TBlendType blend = current_blending){
+void ringPalette(uint8_t pos, CRGBPalette16 pal, uint8_t index, uint8_t bri = this_bright, TBlendType blend = current_blending){
 	for (j=0;j<4;j++){
-		leds[ringArray[pos][j]] = ColorFromPalette(pal, pos, bri, blend )
+		leds[ringArray[pos][j]] = ColorFromPalette(pal, index, bri, blend )
 	}
 }
 
