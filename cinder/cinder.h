@@ -10,13 +10,13 @@ void setup() {
   // Set up LEDS
 	LEDS.setBrightness(max_bright);
 
-  // -- Single strip of 150 LEDS set for development testing ------------------------------- //
+  // -- Single strip of 576 LEDS set for development testing ------------------------------- //
   
-  LEDS.addLeds<LED_TYPE, LED_PIN_ONE, COLOR_ORDER>(leds, NUM_LEDS_PER_STRIP); 
+  LEDS.addLeds<LED_TYPE, DATA_PIN, CLOCK_PIN, COLOR_ORDER>(leds, NUM_LEDS); 
 
   // --------------------------------------------------------------------------------------- // 
 
-  set_max_power_in_volts_and_milliamps(5, 1000);
+  set_max_power_in_volts_and_milliamps(5, 2000); // TODO: increase power?
   
   // Set up variables
   random16_set_seed(4832);
@@ -33,12 +33,21 @@ void setup() {
   current_blending = LINEARBLEND;
 
   // Set up circ_noise variables
-  for (long i = 0; i < NUM_LEDS_PER_STRIP; i++) {  
-    uint8_t angle = (i * 256) / NUM_LEDS_PER_STRIP;  
+  for (long i = 0; i < NUM_LEDS; i++) {  
+    uint8_t angle = (i * 256) / NUM_LEDS;  
     xd[i] = cos8( angle );                
     yd[i] = sin8( angle );               
   }
  
+  // Init rings
+  int ringArray[144][4];
+  for (i=0;i<144;i++){
+	ringArray[i][0]=i;
+	ringArray[i][1]=287-i;
+	ringArray[i][2]=288+i;
+	ringArray[i][3]=575-i;
+  }
+	
   // Init first mode
   strobe_mode(led_mode, 1);
 }
@@ -81,7 +90,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
   // If this_ is a *new* mode, clear out LED array.
   if(mc) {
-    fill_solid(leds, NUM_LEDS_PER_STRIP, CRGB( 0, 0, 0));
+    fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0));
     Serial.print("Mode: "); 
     Serial.println(led_mode);
   }
@@ -90,12 +99,12 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 0 - all of
     case  0: 
-      if(mc) { fill_solid(leds, NUM_LEDS_PER_STRIP, CRGB( 0, 0, 0 )); } 
+      if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0 )); } 
       break;
 
     // 1 - all on
     case  1: 
-      if(mc) { fill_solid(leds, NUM_LEDS_PER_STRIP, CRGB( 255, 255, 255 )); } 
+      if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 255, 255, 255 )); } 
       break;
 
     // 2 - two-sin
@@ -355,7 +364,7 @@ void readkeyboard() {
         this_arg = Serial.parseInt();
         this_arg = constrain(this_arg, 0, 255);
         Serial.println(this_arg);
-        fill_solid(leds, NUM_LEDS_PER_STRIP, CHSV(this_arg, 255, 255));
+        fill_solid(leds, NUM_LEDS, CHSV(this_arg, 255, 255));
         break;
 
       // Command: b {brightness} - set entire strip to {brightness} (0-255)
