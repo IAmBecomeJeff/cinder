@@ -25,8 +25,8 @@ void circnoise_pal_1() {
 
     uint8_t index = noise * 3;                        // map led color based on noise data
     uint8_t bri   = noise;
-	
-	ringPalette(i, current_palette, index, bri, LINEARBLEND);
+    
+    ringPalette(i, current_palette, index, bri, LINEARBLEND);
   }
 }
 
