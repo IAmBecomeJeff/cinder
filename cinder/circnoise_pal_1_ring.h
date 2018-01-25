@@ -1,5 +1,5 @@
-#ifndef CIRCNOISE_PAL_1_H
-#define CIRCNOISE_PAL_1_H
+#ifndef CIRCNOISE_PAL_1_RING_H
+#define CIRCNOISE_PAL_1_RING_H
 
 /* This is adapted from a routine created by Stefan Petrick */
 
