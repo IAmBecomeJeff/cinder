@@ -1,6 +1,6 @@
 #include "includes.h"
 
-// Taken from Caleb's version of seirlight
+// Modified from Caleb's modified version of seirlight
 
 void setup() {
   // Set up serial connection
