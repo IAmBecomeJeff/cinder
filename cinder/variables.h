@@ -78,3 +78,4 @@ uint8_t this_speed      = 4;      // Standard speed change
 uint8_t wave_brightness = 255;    // Brightness of the waves/bars
 uint8_t xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
+uint8_t ringArray[144][4];        // Array for rings
