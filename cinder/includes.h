@@ -4,6 +4,7 @@
 // Support functions
 #include "addglitter.h"
 #include "make_palettes.h"
+#include "rings.h"
 
 // Display routines
 #include "circnoise_pal_1.h"
