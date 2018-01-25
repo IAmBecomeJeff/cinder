@@ -27,9 +27,8 @@ void circnoise_pal_1() {
     uint8_t bri   = noise;
 	
 	ringPalette(i, current_palette, index, bri, LINEARBLEND);
-    // leds[i] = ColorFromPalette(current_palette, index, bri, LINEARBLEND);   // With that value, look up the 8 bit colour palette value and assign it to the current LED.
   }
-} // example_1()
+}
 
 
 #endif
