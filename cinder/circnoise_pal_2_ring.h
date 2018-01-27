@@ -9,7 +9,7 @@
 
 
 // just moving along one axis = "lavalamp effect"
-void circnoise_pal_2() {
+void circnoise_pal_2_ring() {
 
   int scale = 1000;                               // the "zoom factor" for the noise
 

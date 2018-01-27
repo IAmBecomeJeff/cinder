@@ -3,13 +3,13 @@
 
 /* This is adapted from a routine created by Stefan Petrick */
 
-/*  Usage - circnoise_pal_1();
+/*  Usage - circnoise_pal_1_ring();
  *  
  */
 
 
 // moves a noise up and down while slowly shifting to the side
-void circnoise_pal_1() {
+void circnoise_pal_1_ring() {
 
   int scale = 1000;                               // the "zoom factor" for the noise
 
@@ -28,7 +28,7 @@ void circnoise_pal_1() {
     
     ringPalette(i, current_palette, index, bri, LINEARBLEND);
   }
-}
+}//circnoise_pal_1_ring()
 
 
 #endif

@@ -1,5 +1,4 @@
 #include "includes.h"
-
 // Modified from Caleb's modified version of seirlight
 
 void setup() {
