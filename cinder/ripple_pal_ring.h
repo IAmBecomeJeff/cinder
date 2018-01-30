@@ -2,14 +2,16 @@
 #define RIPPLE_PAL_RING_H
 
 /* ripple_pal
-
- */
+*/
 
 
 int center = 0;                                               // Center of the current ripple.
 int step = -1;                                                // -1 is the initializing step.
 
-int thisdelay = 60;                                          // Standard delay value.  MOVE TO the mode call
+uint8_t colour;                   // Ripple colour
+uint8_t myfade          = 255;    // Starting ripple brightness
+#define maxsteps 16               // Ripple case statement won't allow a variable
+//int thisdelay = 60;                                          // Standard delay value.  MOVE TO the mode call
 
 void ripple() {
 
