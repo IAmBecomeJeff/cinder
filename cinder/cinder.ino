@@ -335,9 +335,9 @@ void strobe_mode(uint8_t newMode, bool mc){
       			loading_bar_pal();
       			break;
     
-    // 40 - ripple effect
+    // 40 - ripple effect, with lava palette
     case 40:
-		  	if(mc) { this_delay = 60; this_fade = 255;}
+		  	if(mc) { this_delay = 60; this_fade = 255; target_palette = LavaColors_p; palette_change = 0; }
 		  	ripple_pal_ring();
 		  	break;
   }
@@ -432,7 +432,7 @@ void readkeyboard() {
         Serial.println(this_hue);
         break;
 
-      // Command: i {hue} - set similar pallete with selected hue {hue} (0-255)
+      // Command: i {hue} - set similar palette with selected hue {hue} (0-255)
       case 105:
         palette_change = 0;
         this_arg = Serial.parseInt();
