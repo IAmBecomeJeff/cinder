@@ -10,9 +10,8 @@ int step = -1;                                                 // -1 is the init
 uint8_t colour;                   		 	       // Ripple colour
 uint8_t myfade          = 255;    			       // Starting ripple brightness
 #define maxsteps 16               			       // Ripple case statement won't allow a variable
-//int thisdelay = 60;                                          // Standard delay value.  MOVE TO the mode call
 
-void ripple() {
+void ripple_pal_ring() {
 
   fadeToBlackBy(leds, NUM_LEDS, this_fade);                             // 8 bit, 1 = slow, 255 = fast
   
