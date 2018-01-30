@@ -5,12 +5,11 @@
 */
 
 
-int center = 0;                                               // Center of the current ripple.
-int step = -1;                                                // -1 is the initializing step.
-
-uint8_t colour;                   // Ripple colour
-uint8_t myfade          = 255;    // Starting ripple brightness
-#define maxsteps 16               // Ripple case statement won't allow a variable
+int center = 0;                                                // Center of the current ripple.
+int step = -1;                                                 // -1 is the initializing step.
+uint8_t colour;                   		 	       // Ripple colour
+uint8_t myfade          = 255;    			       // Starting ripple brightness
+#define maxsteps 16               			       // Ripple case statement won't allow a variable
 //int thisdelay = 60;                                          // Standard delay value.  MOVE TO the mode call
 
 void ripple() {
@@ -36,7 +35,7 @@ void ripple() {
 
     default:                                                          // Middle of the ripples.
       ringPaletteAdd((center + step + 144) % 144, currentPalette, colour, myfade/step*2, current_blending);
-	  ringPaletteAdd((center - step + 144) % 144, currentPalette, colour, myfade/step*2, current_blending);
+      ringPaletteAdd((center - step + 144) % 144, currentPalette, colour, myfade/step*2, current_blending);
       step ++;                                                         // Next step.
       break;  
   } // switch step
