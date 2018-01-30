@@ -331,9 +331,15 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 39 - loading bar, then return to default mode
     case 39:
-      if(mc) { this_delay = 50; this_hue = 100; this_bright = 180;}
-      loading_bar_pal();
-      break;
+      			if(mc) { this_delay = 50; this_hue = 100; this_bright = 180;}
+      			loading_bar_pal();
+      			break;
+    
+    // 40 - ripple effect
+    case 40:
+		  	if(mc) { this_delay = 60; this_fade = 255;}
+		  	ripple_pal_ring();
+		  	break;
   }
 }
 
