@@ -53,6 +53,7 @@ uint8_t max_bright  = 255;		// Overall brightness, it can be changed on the fly.
 uint8_t max_mode    = 100;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 uint8_t led_mode;				// Starting mode is typically 0
+uint8_t old_mode;
 
 // LED Routine/Shared Variables
 uint8_t all_freq        = 32;     // Frequency (width of bars) (sine-routines)

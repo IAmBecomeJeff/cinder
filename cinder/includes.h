@@ -34,4 +34,3 @@
 #include "three_sin_pal_ring.h"
 #include "two_sin.h"
 #include "two_sin_ring.h"
-#include "loading_bar_pal.h"

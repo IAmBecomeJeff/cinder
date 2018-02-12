@@ -41,7 +41,7 @@ void matrix_pal_ring() {                                           // One line m
   }  else {
     for (int i = 0; i < NUM_LEDS-1 ; i++ ) {
 		for (int j=0;j<4;j++){
-			leds[ringArray[i][j]] = leds[ringArray[i+1][j];
+			leds[ringArray[i][j]] = leds[ringArray[i+1][j]];
 		}
   }
   }

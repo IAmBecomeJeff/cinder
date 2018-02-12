@@ -10,11 +10,11 @@
 
 // two_sin_pal_ring variables-------------------------------------------------------------------------
 
-uint8_t thathue = 140;                                        // You can change the starting hue for other wave.
-uint8_t thatrot = 0;                                          // You can change how quickly the hue rotates for the other wave. Currently 0.
-int8_t thatspeed = 4;                                         // You can change the speed, and use negative values.
-int thatphase = 0;                                            // Phase change value gets calculated.
-uint8_t thatcutoff = 192;                                     // You can change the cutoff value to display that wave. Lower value = longer wave.
+//uint8_t thathue = 140;                                        // You can change the starting hue for other wave.
+//uint8_t thatrot = 0;                                          // You can change how quickly the hue rotates for the other wave. Currently 0.
+//int8_t thatspeed = 4;                                         // You can change the speed, and use negative values.
+//int thatphase = 0;                                            // Phase change value gets calculated.
+//uint8_t thatcutoff = 192;                                     // You can change the cutoff value to display that wave. Lower value = longer wave.
 
 
 void two_sin_ring() {                                                              // This is the heart of this_ program. Sure is short.

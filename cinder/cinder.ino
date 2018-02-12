@@ -139,7 +139,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 7 - juggle mode
     case  7: 
-      if(mc) { this_delay = 10; numdots = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } 
+      if(mc) { this_delay = 10; numdots = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
       juggle_pal(); 
       break;
 
@@ -283,7 +283,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 31 - juggle mode with ocean palette
     case 31:
- 			if(mc) { this_delay = 10; numdots = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; }
+ 			if(mc) { this_delay = 10; numdots = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
 			juggle_pal(); 
 			break;
 
@@ -329,17 +329,6 @@ void strobe_mode(uint8_t newMode, bool mc){
 			noise8_pal(); 
 			break;
 
-    // 39 - loading bar, then return to default mode
-    case 39:
-      			if(mc) { this_delay = 50; this_hue = 100; this_bright = 180;}
-      			loading_bar_pal();
-      			break;
-    
-    // 40 - ripple effect, with lava palette
-    case 40:
-		  	if(mc) { this_delay = 60; this_fade = 255; target_palette = LavaColors_p; palette_change = 0; }
-		  	ripple_pal_ring();
-		  	break;
   }
 }
 
@@ -432,7 +421,7 @@ void readkeyboard() {
         Serial.println(this_hue);
         break;
 
-      // Command: i {hue} - set similar palette with selected hue {hue} (0-255)
+      // Command: i {hue} - set similar pallete with selected hue {hue} (0-255)
       case 105:
         palette_change = 0;
         this_arg = Serial.parseInt();

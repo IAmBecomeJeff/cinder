@@ -13,13 +13,13 @@
  *  this_diff
  */
 
-uint8_t numdots;
+uint8_t numdots_ring;
 
 void juggle_pal_ring() {                                            // Several colored dots, weaving in and out of sync with each other
   this_index = 0;                                           // Reset the hue values.
   fadeToBlackBy(leds, NUM_LEDS, this_fade);
-  for( int i = 0; i < numdots; i++) {
-    ringPaletteAdd(beatsin16(this_beat+i+numdots,0,144), current_palette, this_index, this_bright, current_blending);
+  for( int i = 0; i < numdots_ring; i++) {
+    ringPaletteAdd(beatsin16(this_beat+i+numdots_ring,0,144), current_palette, this_index, this_bright, current_blending);
 	// Munge the values and pick a colour from the palette
     this_index += this_diff;
   }
