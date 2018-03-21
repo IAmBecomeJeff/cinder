@@ -43,7 +43,7 @@ void setup() {
   // Set up rotary encoder
   pinMode(pinA,INPUT);
   pinMode(pinB,INPUT);
-  pinMode(pinSW,INPUT);
+  pinMode(pinSW,INPUT_PULLUP); // or pinMode(pinSW,INPUT); if I use the 10k resistor
   pinALast = digitalRead(pinA);
   
   // Init rings
