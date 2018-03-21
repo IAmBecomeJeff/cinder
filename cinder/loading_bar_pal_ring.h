@@ -27,7 +27,7 @@ void loading_bar_pal_ring() {
 
   loading_index++;
 
-  if ( loading_index == (NUM_LEDS/2 + 20) ) { 
+  if ( loading_index == (STRIP_LENGTH/2 + 20) ) { 
    led_mode = old_mode;
    if ( led_mode == 39 ) { led_mode = 0; }
   }

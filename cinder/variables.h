@@ -29,6 +29,7 @@
 
 // 576 Length LED strip and mode start number
 #define NUM_LEDS 576
+#define STRIP_LENGTH 144
 #define STARTMODE 0
 
 // ---------- RUNTIME VARS ---------- //

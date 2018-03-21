@@ -22,7 +22,7 @@ void confetti_pal_ring() {                                                      
 //  }
 
   fadeToBlackBy(leds, NUM_LEDS, this_fade);                                                                      
-  int pos = random8(NUM_LEDS);                                                                                      // Pick an LED at random.
+  int pos = random8(STRIP_LENGTH);                                                                                      // Pick an LED at random.
   ringPalette(pos, current_palette, this_index + random8(this_diff)/4, this_bright, current_blending);
      // Munge the values and pick a colour from the palette
   this_index = this_index + this_inc;                                                                                  // base palette counter increments here.
