@@ -39,7 +39,13 @@ void setup() {
     xd[i] = cos8( angle );                
     yd[i] = sin8( angle );               
   }
- 
+  
+  // Set up rotary encoder
+  pinMode(pinA,INPUT);
+  pinMode(pinB,INPUT);
+  pinMode(pinSW,INPUT);
+  pinALast = digitalRead(pinA);
+  
   // Init rings
   for (uint8_t i=0;i<144;i++){
 	ringArray[i][0]=i;
@@ -56,6 +62,9 @@ void loop() {
   // Get keyboard input
   readkeyboard();
  
+  // Check rotary dial
+  checkDial();
+  
   // Palette transitions - always running
   EVERY_N_MILLISECONDS(50) {
     uint8_t maxChanges = 24; 
@@ -432,7 +441,7 @@ void readkeyboard() {
 
       // Command: m {mode} - select mode {mode} (0-255)
       case 109:
-	old_mode = led_mode;
+		old_mode = led_mode;
         led_mode = Serial.parseInt();
         led_mode = constrain(led_mode, 0, max_mode);
         Serial.println(led_mode);
@@ -475,3 +484,22 @@ void readkeyboard() {
     }
   }
 }
+
+void checkDial() {
+	if (!(digitalRead(PinSW))){
+		led_mode=0;
+		strobe_mode(0,1);
+	}
+	aVal = digitalRead(pinA);		// Read pinA
+	if (aVal != pinALast){			// If pinA has changed, update things
+		if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
+			led_mode ++;			// Move to next pattern
+		}
+		else {						// Means pin B changed first, we're moving CCW
+			led_mode--;				// Move to previous pattern
+		}
+		pinALast = aVal;		
+		strobe_mode(led_mode, 1);
+	}
+}
+	

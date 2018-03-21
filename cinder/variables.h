@@ -12,7 +12,7 @@
 #define qsuba(x, b) ((x>b)?x-b:0)					// Unsigned subtraction macro. if result <0, then => 0.
 
 // Serial vars
-#define SERIAL_BAUDRATE 57600						// TODO check on this?  seirlight options 115200
+#define SERIAL_BAUDRATE 115200 //57600						// TODO check on this?  seirlight options 115200
 #define SERIAL_TIMEOUT 750							// TODO seirlight has it set at 5
 
 // Arduino pin setup
@@ -80,3 +80,10 @@ uint8_t wave_brightness = 255;    // Brightness of the waves/bars
 uint8_t xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
 int ringArray[144][4];        // Array for rings
+
+// KY-040 Rotary Module variables
+int pinA = 20;
+int pinB = 22;
+int pinSW = 18;
+int pinALast;
+int aVal;
