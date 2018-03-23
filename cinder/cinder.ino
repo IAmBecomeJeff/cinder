@@ -716,20 +716,30 @@ void readkeyboard() {
 }
 
 void checkDial() {
-	if (!(digitalRead(PinSW))){
+	if (!(digitalRead(pinSW))){
 		led_mode=0;
 		strobe_mode(0,1);
 	}
 	aVal = digitalRead(pinA);		// Read pinA
 	if (aVal != pinALast){			// If pinA has changed, update things
-		if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
-			led_mode ++;			// Move to next pattern
-		}
-		else {						// Means pin B changed first, we're moving CCW
-			led_mode--;				// Move to previous pattern
-		}
+    rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
+    if (rotateCount){            // Need to let it change twice
+  		if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
+  			led_mode ++;			// Move to next pattern
+  		}
+  		else {						// Means pin B changed first, we're moving CCW
+  			led_mode--;				// Move to previous pattern
+  		}
+      if (led_mode < 0){
+        led_mode = max_mode;
+      }
+      if (led_mode > max_mode){
+        led_mode = 0;
+      }
+      //led_mode = constrain(led_mode, 0, max_mode);
+      strobe_mode(led_mode, 1);
+    }
 		pinALast = aVal;		
-		strobe_mode(led_mode, 1);
 	}
 }
 	

@@ -51,7 +51,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 255;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 100;		// maximum number of modes
+uint8_t max_mode    = 75;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 uint8_t led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -83,8 +83,9 @@ uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
 int ringArray[144][4];        // Array for rings
 
 // KY-040 Rotary Module variables
-int pinA = 20;
+int pinA = 21;
 int pinB = 22;
-int pinSW = 18;
+int pinSW = 23;
 int pinALast;
 int aVal;
+int rotateCount = 0;
