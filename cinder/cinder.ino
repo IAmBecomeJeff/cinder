@@ -566,7 +566,13 @@ void strobe_mode(uint8_t newMode, bool mc){
       if(mc) { this_delay = 10; target_palette = LavaColors_p; palette_change = 0; }
       noise8_pal_ring(); 
       break;
-
+	
+	// 76 - gravity
+	case 76:
+	if(mc) {this_delay = 10; x0 = 143;, accel = -9.8; v0 = 0; pause = 100;}
+	gravity();
+	break;
+	
     // if more modes added, must update max_modes in variables
   }
 }
