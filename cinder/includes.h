@@ -18,6 +18,7 @@
 #include "confetti_pal.h"
 #include "confetti_pal_ring.h"
 #include "gradient_palettes.h"
+#include "gravity.h"
 #include "juggle_pal.h"
 #include "juggle_pal_ring.h"
 #include "matrix_pal.h"
