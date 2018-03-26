@@ -25,7 +25,7 @@ void two_sin_ring() {                                                           
   this_hue = this_hue + this_rot;                                                // Hue rotation is fun for this_wave.
   thathue = thathue + thatrot;                                                // It's also fun for thatwave.
   
-  for (int k=0; k<143; k++) {
+  for (int k=0; k<STRIP_LENGTH-1; k++) {
     int this_bright = qsuba(cubicwave8((k*all_freq)+this_phase), this_cutoff);     // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
     int thatbright = qsuba(cubicwave8((k*all_freq)+128+thatphase), thatcutoff); // This wave is 180 degrees out of phase (with the value of 128).
 
@@ -36,3 +36,5 @@ void two_sin_ring() {                                                           
 } // two_sin_ring()
 
 #endif
+
+
