@@ -86,7 +86,8 @@ void loop() {
   // Optionally add glitter
   if(glitter) addglitter(10); 
 
-  FastLED.show(); 
+  show_at_max_brightness_for_power();
+  //FastLED.show(); 
 }
 
 /*
