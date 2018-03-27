@@ -488,6 +488,18 @@ void strobe_mode(uint8_t newMode, bool mc){
 		fire_pal();
 		break;
 		
+    // 64 - juggle mode with ocean palette_ring 
+    case 64:
+      if(mc) { this_delay = 10; numdots_ring = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
+      juggle_pal_ring(); 
+      break;
+    
+	// 65 - juggle mode ring
+	case 65: 
+      if(mc) { this_delay = 10; numdots_ring = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+      juggle_pal_ring(); 
+      break;	  
+	  
     // if more modes added, must update max_modes in variables
   }
 }
@@ -581,7 +593,7 @@ void readkeyboard() {
         Serial.println(this_hue);
         break;
 
-      // Command: i {hue} - set similar pallete with selected hue {hue} (0-255)
+      // Command: i {hue} - set similar palette with selected hue {hue} (0-255)
       case 105:
         palette_change = 0;
         this_arg = Serial.parseInt();
