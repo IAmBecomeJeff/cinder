@@ -85,6 +85,8 @@ uint8_t x_prev;					  // Variables for gravity
 uint8_t x0;						  // Variables for gravity
 uint8_t accel;					  // Variables for gravity
 uint8_t v0;					 	  // Variables for gravity
+uint8_t pause;
+uint8_t numdots_ring;   // dots for juggle_pal_ring
 
 // KY-040 Rotary Module variables
 int pinA = 21;

@@ -13,7 +13,7 @@
  *  this_diff
  */
 
-uint8_t numdots_ring;
+//uint8_t numdots_ring;
 
 void juggle_pal_ring() {                                            // Several colored dots, weaving in and out of sync with each other
   this_index = 0;                                           // Reset the hue values.
