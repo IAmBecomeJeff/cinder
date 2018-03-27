@@ -476,6 +476,11 @@ void strobe_mode(uint8_t newMode, bool mc){
     	gravity();
     	break;
 	
+	// 62 - fire
+	case 62:
+		if(mc) {this_delay = 10; cooling = 55; sparking = 120; }
+		fire();
+		break;
     // if more modes added, must update max_modes in variables
   }
 }

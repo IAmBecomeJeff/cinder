@@ -17,6 +17,7 @@
 #include "circnoise_pal_4_ring.h"
 #include "confetti_pal.h"
 #include "confetti_pal_ring.h"
+#include "fire.h"
 #include "gradient_palettes.h"
 #include "gravity.h"
 #include "juggle_pal.h"
