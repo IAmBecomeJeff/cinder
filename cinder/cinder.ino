@@ -500,6 +500,11 @@ void strobe_mode(uint8_t newMode, bool mc){
       juggle_pal_ring(); 
       break;	  
 	  
+	// 66 - pride rainbows
+	case 66:
+		if(mc) { this_delay = 10; }	// maybe update delay?
+		pride();
+		break;
     // if more modes added, must update max_modes in variables
   }
 }

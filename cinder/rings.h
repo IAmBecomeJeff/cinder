@@ -42,4 +42,12 @@ void ringPaletteAdd(uint8_t pos, CRGBPalette16 pal, uint8_t index, uint8_t bri =
     leds[ringArray[pos][j]] += ColorFromPalette(pal, index, bri, blending);
   }
 }
+
+// Use nblend
+void ringnblend(uint16_t pix, CRGB new_color, fract8 blend_amount){
+	for (byte j=0;j<4;j++){
+		nblend(leds[ringArray[pix][j]], new_color, blend_amount);
+	}
+}
+
 #endif
