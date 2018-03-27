@@ -506,6 +506,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 		if(mc) { this_delay = 10; }	// maybe update delay?
 		pride();
 		break;
+		
+	// 67 - rainbow march with wide waves
+    case 67:
+ 		if(mc) { this_delay = 10; this_dir = 1; this_rot = 1; this_diff = 1; }
+		rainbow_march_ring(); 
+		break;
+
+    // 68 - rainbow march with narrow waves
+    case 68:
+ 		if(mc) { this_delay = 10; this_dir = 1; this_rot = 2; this_diff = 10; }
+		rainbow_march_ring(); 
+		break;
+			
     // if more modes added, must update max_modes in variables
   }
 }

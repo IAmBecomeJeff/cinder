@@ -32,6 +32,7 @@
 #include "one_sin_pal_ring.h"
 #include "pride.h"
 #include "rainbow_march.h"
+#include "rainbow_march_ring.h"
 #include "serendipitous_pal.h"
 #include "serendipitous_pal_ring.h"
 #include "three_sin_pal.h"
