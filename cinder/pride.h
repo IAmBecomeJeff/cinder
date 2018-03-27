@@ -40,7 +40,7 @@ void pride()
     uint16_t pixelnumber = i;
     pixelnumber = (STRIP_LENGTH-1) - pixelnumber;
     
-	ringngblend(pixelnumber, newcolor, 64);
+	ring_nblend(pixelnumber, newcolor, 64);
     //nblend( leds[pixelnumber], newcolor, 64);
   }
 }
