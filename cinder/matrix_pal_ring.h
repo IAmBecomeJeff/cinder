@@ -24,22 +24,22 @@ void matrix_pal_ring() {                                           // One line m
     if (this_dir == 0)
 	  ringPalette(0, current_palette, this_index, this_bright, current_blending);
     else
-	  ringPalette(143, current_palette, this_index, this_bright, current_blending);
+	  ringPalette(STRIP_LENGTH-1, current_palette, this_index, this_bright, current_blending);
   } else {
     if (this_dir == 0)
 	  ringCHSV(0, bg_clr, this_sat, bg_bri);
     else
-	  ringCHSV(143, bg_clr, this_sat, bg_bri);
+	  ringCHSV(STRIP_LENGTH-1, bg_clr, this_sat, bg_bri);
   }
 
   if (this_dir == 0) {
-    for (int i = 143; i >0 ; i-- ) {
+    for (int i = STRIP_LENGTH-1; i >0 ; i-- ) {
 		for (int j=0; j<4; j++){
 			leds[ringArray[i][j]] = leds[ringArray[i-1][j]];
 		}
   }
   }  else {
-    for (int i = 0; i < NUM_LEDS-1 ; i++ ) {
+    for (int i = 0; i < STRIP_LENGTH-1 ; i++ ) {
 		for (int j=0;j<4;j++){
 			leds[ringArray[i][j]] = leds[ringArray[i+1][j]];
 		}
