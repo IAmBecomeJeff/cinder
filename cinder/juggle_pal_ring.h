@@ -19,7 +19,7 @@ void juggle_pal_ring() {                                            // Several c
   this_index = 0;                                           // Reset the hue values.
   fadeToBlackBy(leds, NUM_LEDS, this_fade);
   for( int i = 0; i < numdots_ring; i++) {
-    ringPaletteAdd(beatsin16(this_beat+i+numdots_ring,0,144), current_palette, this_index, this_bright, current_blending);
+    ringPaletteAdd(beatsin16(this_beat+i+numdots_ring,0,STRIP_LENGTH), current_palette, this_index, this_bright, current_blending);
 	// Munge the values and pick a colour from the palette
     this_index += this_diff;
   }
