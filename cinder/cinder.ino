@@ -518,7 +518,14 @@ void strobe_mode(uint8_t newMode, bool mc){
  		if(mc) { this_delay = 10; this_dir = 1; this_rot = 2; this_diff = 10; }
 		rainbow_march_ring(); 
 		break;
-			
+	
+	// 69 - disco strobe
+	case 69:
+		if(mc) { this_delay = 1; }
+		discostrobe();
+		delayToSyncFrameRate(frames_per_second);
+		break;
+		
     // if more modes added, must update max_modes in variables
   }
 }
