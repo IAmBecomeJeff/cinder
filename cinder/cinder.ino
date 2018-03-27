@@ -481,6 +481,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 		if(mc) {this_delay = 10; cooling = 55; sparking = 120; }
 		fire();
 		break;
+	
+	// 63 - fire with palette
+	case 63:
+		if(mc) {this_delay = 10; cooling = 55; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
+		fire_pal();
+		break;
+		
     // if more modes added, must update max_modes in variables
   }
 }
