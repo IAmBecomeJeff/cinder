@@ -12,8 +12,8 @@
 #define qsuba(x, b) ((x>b)?x-b:0)					// Unsigned subtraction macro. if result <0, then => 0.
 
 // Serial vars
-#define SERIAL_BAUDRATE 115200 //57600						// TODO check on this?  seirlight options 115200
-#define SERIAL_TIMEOUT 750							// TODO seirlight has it set at 5
+#define SERIAL_BAUDRATE 57600 //57600						// TODO check on this?  seirlight options 115200
+#define SERIAL_TIMEOUT 500							// TODO seirlight has it set at 5
 
 // Arduino pin setup
 
@@ -50,7 +50,7 @@ uint8_t current_pattern_index     = 0;                              // Index of 
 uint8_t default_mode              = 34;                             // Default mode to go to
 
 // LED Overall Variables
-uint8_t max_bright  = 255;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
+uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
 uint8_t max_mode    = 61;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 uint8_t led_mode;				// Starting mode is typically 0
