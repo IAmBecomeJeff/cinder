@@ -1,17 +1,86 @@
 #ifndef DISCOSTROBE_H
 #define DISCOSTROBE_H
 
-void loop()
+// drawRainbowDashes - draw rainbow-colored 'dashes' of light along the led strip:
+//   starting from 'startpos', up to and including 'lastpos'
+//   with a given 'period' and 'width'
+//   starting from a given hue, which changes for each successive dash by a 'huedelta'
+//   at a given saturation and value.
+//
+//   period = 5, width = 2 would be  _ _ _ X X _ _ _ Y Y _ _ _ Z Z _ _ _ A A _ _ _ 
+//                                   \-------/       \-/
+//                                   period 5      width 2
+//
+static void drawRainbowDashes( 
+  uint8_t startpos, uint16_t lastpos, uint8_t period, uint8_t width, 
+  uint8_t huestart, uint8_t huedelta, uint8_t saturation, uint8_t value)
 {
-  // draw the light pattern into the 'leds' array
-  discostrobe();
-  
-  // send the 'leds' array out to the actual LED strip
-  FastLED.show();
-
-  // delay just enough to keep a steady frame rate, e.g 100 FPS
-  delayToSyncFrameRate( FRAMES_PER_SECOND);
+  uint8_t hue = huestart;
+  for( uint16_t i = startpos; i <= lastpos; i += period) {
+    CRGB color = CHSV( hue, saturation, value);
+    
+    // draw one dash
+    uint16_t pos = i;
+    for( uint8_t w = 0; w < width; w++) {
+      ringCRGB(pos,color.r, color.g, color.b);
+    //leds[ pos ] = color;
+      pos++;
+      if( pos >= STRIP_LENGTH) {
+        break;
+      }
+    }
+    
+    hue += huedelta;
+  }
 }
+
+
+// discoWorker updates the positions of the dashes, and calls the draw function
+//
+void discoWorker( 
+    uint8_t dashperiod, uint8_t dashwidth, int  dashmotionspeed,
+    uint8_t stroberepeats,
+    uint8_t huedelta)
+ {
+  static uint8_t sRepeatCounter = 0;
+  static int sStartPosition = 0;
+  static uint8_t sStartHue = 0;
+
+  // Always keep the hue shifting a little
+  sStartHue += 1;
+
+  // Increment the strobe repeat counter, and
+  // move the dash starting position when needed.
+  sRepeatCounter = sRepeatCounter + 1;
+  if( sRepeatCounter>= stroberepeats) {
+    sRepeatCounter = 0;
+    
+    sStartPosition = sStartPosition + dashmotionspeed;
+    
+    // These adjustments take care of making sure that the
+    // starting hue is adjusted to keep the apparent color of 
+    // each dash the same, even when the state position wraps around.
+    if( sStartPosition >= dashperiod ) {
+      while( sStartPosition >= dashperiod) { sStartPosition -= dashperiod; }
+      sStartHue  -= huedelta;
+    } else if( sStartPosition < 0) {
+      while( sStartPosition < 0) { sStartPosition += dashperiod; }
+      sStartHue  += huedelta;
+    }
+  }
+
+  // draw dashes with full brightness (value), and somewhat
+  // desaturated (whitened) so that the LEDs actually throw more light.
+  const uint8_t kSaturation = 208;
+  const uint8_t kValue = 255;
+
+  // call the function that actually just draws the dashes now
+  drawRainbowDashes( sStartPosition, STRIP_LENGTH-1, 
+                     dashperiod, dashwidth, 
+                     sStartHue, huedelta, 
+                     kSaturation, kValue);
+}
+
 
 
 void discostrobe()
@@ -94,88 +163,6 @@ void discostrobe()
   }  
 }
 
-
-// discoWorker updates the positions of the dashes, and calls the draw function
-//
-void discoWorker( 
-    uint8_t dashperiod, uint8_t dashwidth, int8_t  dashmotionspeed,
-    uint8_t stroberepeats,
-    uint8_t huedelta)
- {
-  static uint8_t sRepeatCounter = 0;
-  static int8_t sStartPosition = 0;
-  static uint8_t sStartHue = 0;
-
-  // Always keep the hue shifting a little
-  sStartHue += 1;
-
-  // Increment the strobe repeat counter, and
-  // move the dash starting position when needed.
-  sRepeatCounter = sRepeatCounter + 1;
-  if( sRepeatCounter>= stroberepeats) {
-    sRepeatCounter = 0;
-    
-    sStartPosition = sStartPosition + dashmotionspeed;
-    
-    // These adjustments take care of making sure that the
-    // starting hue is adjusted to keep the apparent color of 
-    // each dash the same, even when the state position wraps around.
-    if( sStartPosition >= dashperiod ) {
-      while( sStartPosition >= dashperiod) { sStartPosition -= dashperiod; }
-      sStartHue  -= huedelta;
-    } else if( sStartPosition < 0) {
-      while( sStartPosition < 0) { sStartPosition += dashperiod; }
-      sStartHue  += huedelta;
-    }
-  }
-
-  // draw dashes with full brightness (value), and somewhat
-  // desaturated (whitened) so that the LEDs actually throw more light.
-  const uint8_t kSaturation = 208;
-  const uint8_t kValue = 255;
-
-  // call the function that actually just draws the dashes now
-  drawRainbowDashes( sStartPosition, STRIP_LENGTH-1, 
-                     dashperiod, dashwidth, 
-                     sStartHue, huedelta, 
-                     kSaturation, kValue);
-}
-
-
-// drawRainbowDashes - draw rainbow-colored 'dashes' of light along the led strip:
-//   starting from 'startpos', up to and including 'lastpos'
-//   with a given 'period' and 'width'
-//   starting from a given hue, which changes for each successive dash by a 'huedelta'
-//   at a given saturation and value.
-//
-//   period = 5, width = 2 would be  _ _ _ X X _ _ _ Y Y _ _ _ Z Z _ _ _ A A _ _ _ 
-//                                   \-------/       \-/
-//                                   period 5      width 2
-//
-static void drawRainbowDashes( 
-  uint8_t startpos, uint16_t lastpos, uint8_t period, uint8_t width, 
-  uint8_t huestart, uint8_t huedelta, uint8_t saturation, uint8_t value)
-{
-  uint8_t hue = huestart;
-  for( uint16_t i = startpos; i <= lastpos; i += period) {
-    CRGB color = CHSV( hue, saturation, value);
-    
-    // draw one dash
-    uint16_t pos = i;
-    for( uint8_t w = 0; w < width; w++) {
-      ringCHSV(pos,color.hue, color.sat, color.val);
-	  //leds[ pos ] = color;
-      pos++;
-      if( pos >= STRIP_LENGTH) {
-        break;
-      }
-    }
-    
-    hue += huedelta;
-  }
-}
-
-
 // delayToSyncFrameRate - delay how many milliseconds are needed
 //   to maintain a stable frame rate.
 static void delayToSyncFrameRate( uint8_t framesPerSecond)
@@ -183,9 +170,10 @@ static void delayToSyncFrameRate( uint8_t framesPerSecond)
   static uint32_t msprev = 0;
   uint32_t mscur = millis();
   uint16_t msdelta = mscur - msprev;
-  uint16_t mstargetdelta = 1000 / framesPerSecond;
+  uint16_t mstargetdelta = this_delay;
   if( msdelta < mstargetdelta) {
     delay( mstargetdelta - msdelta);
   }
   msprev = mscur;
 }
+#endif

@@ -17,7 +17,7 @@ void setup() {
 
   // --------------------------------------------------------------------------------------- // 
 
-  set_max_power_in_volts_and_milliamps(5, 1000); // TODO: increase power?
+  set_max_power_in_volts_and_milliamps(5, 2000); // TODO: increase power?
   
   // Set up variables
   random16_set_seed(4832);
@@ -141,9 +141,9 @@ void strobe_mode(uint8_t newMode, bool mc){
       two_sin(); 
       break;
 
-    // 6 - one-sin with rainbow palette //increased from 20 to 15
+    // 6 - one-sin with rainbow palette //increased from 20 to 8, smooths out there
     case  6: 
-      if(mc) { this_delay = 15; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
@@ -165,15 +165,15 @@ void strobe_mode(uint8_t newMode, bool mc){
       two_sin(); 
       break;
 
-    // 10 - one-sin with rainbow palette // increased delay from 15 to 20 to try and remove jerkiness
+    // 10 - one-sin with rainbow palette // decreased delay to 5, looks smoothest
     case 10: 
-      if(mc) { this_delay = 15; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 55; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
-    // 11 - three-sin with palette // good three sine
+    // 11 - three-sin with palette // good three sine // delay 20 works well
     case 11: 
-      if(mc) { this_delay = 50; mul1 = 5; mul2 = 8; mul3 = 7; }
+      if(mc) { this_delay = 20; mul1 = 5; mul2 = 8; mul3 = 7; }
 			three_sin_pal(); 
 			break;
    
@@ -185,7 +185,7 @@ void strobe_mode(uint8_t newMode, bool mc){
   
     // 13 - one-sine with lava palette // increase delay from 20 to 18 to remove jerkiness
     case 13:
-      if(mc) { this_delay = 18; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+      if(mc) { this_delay = 8; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
  
@@ -237,9 +237,9 @@ void strobe_mode(uint8_t newMode, bool mc){
 			rainbow_march(); 
 			break;
 
-    // 22 - one-sine with ocean palette // increase delay from 20 to 17 to fix jerkiness
+    // 22 - one-sine with ocean palette // increase delay from 20 to 8 to fix jerkiness
     case 22:
- 			if(mc) { this_delay = 17; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+ 			if(mc) { this_delay = 8; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
 
@@ -263,7 +263,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 26 - one-sin with party palette // increase this_speed from 4 to 6, very jerky
     case 26:
- 			if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+ 			if(mc) { this_delay = 6; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
 
@@ -333,9 +333,9 @@ void strobe_mode(uint8_t newMode, bool mc){
       two_sin_ring(); 
       break;
 
-    // 38 - one-sin with rainbow palette ring // increasing delay to 10 to avoid jerkiness
+    // 38 - one-sin with rainbow palette ring // increasing delay to 5 to avoid jerkiness
     case 38: 
-      if(mc) { this_delay = 10; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal_ring(); 
       break;
 
@@ -353,7 +353,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 41 - one-sin with rainbow palette_ring // increasing delay to 10
     case 41: 
-      if(mc) { this_delay = 10; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal_ring(); 
       break;
    
@@ -401,7 +401,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 49 - one-sine with ocean palette_ring // increasing speed
     case 49:
-      if(mc) { this_delay = 12; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+      if(mc) { this_delay = 9; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
 
@@ -431,7 +431,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 54 - one-sin with rainbow palette_ring
     case 54:
-      if(mc) { this_delay = 7; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+      if(mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
 
@@ -447,9 +447,9 @@ void strobe_mode(uint8_t newMode, bool mc){
       circnoise_pal_3_ring(); 
       break;
 
-    // 57 - one-sin with palette_ring
+    // 57 - one-sin with palette_ring // reduce from 25 to 20
     case 57:
-      if(mc) { this_delay = 25; SetupSimilar4Palette(); all_freq = 4; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 8; wave_brightness = 255; }
+      if(mc) { this_delay = 20; SetupSimilar4Palette(); all_freq = 4; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 8; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
 
@@ -473,7 +473,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 	
   	// 61 - gravity
   	case 61:
-    	if(mc) {this_delay = 10; x0 = 143; accel = -9.8; v0 = 0; pause = 100;}
+    	if(mc) {this_delay = 10; x0 = 143; accel = -10; v0 = 0; pause = 100;}
     	gravity();
     	break;
 	
@@ -523,7 +523,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 	case 69:
 		if(mc) { this_delay = 1; }
 		discostrobe();
-		delayToSyncFrameRate(frames_per_second);
+		delayToSyncFrameRate(this_delay);
 		break;
 		
     // if more modes added, must update max_modes in variables

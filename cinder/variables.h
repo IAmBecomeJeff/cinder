@@ -83,7 +83,7 @@ uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
 int ringArray[144][4];      	  // Array for rings
 uint8_t x_prev;					  // Variables for gravity
 uint8_t x0;						  // Variables for gravity
-uint8_t accel;					  // Variables for gravity
+int accel;					  // Variables for gravity
 uint8_t v0;					 	  // Variables for gravity
 uint8_t pause;						// Variable for gravity
 uint8_t numdots_ring;   			// dots for juggle_pal_ring
@@ -91,7 +91,6 @@ uint8_t cooling = 55;				// Cooling variable for fire
 uint8_t sparking = 120;				// Heating variable for fire
 //#define FRAMES_PER_SECOND   100
 //#define ZOOMING_BEATS_PER_MINUTE 122
-uint8_t frames_per_second = 100;	// frames for disco
 uint8_t zooming_beats_per_minute = 122; // zooming for disco
 
 // KY-040 Rotary Module variables
