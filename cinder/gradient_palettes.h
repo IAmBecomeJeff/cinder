@@ -1622,5 +1622,14 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
 const uint8_t g_gradient_palette_count =
   sizeof( g_gradient_palettes) / sizeof( TProgmemRGBGradientPalettePtr );
 
-
+// Find index of current (target) palette
+void updatePaletteIndex(CRGBPalette16 pal){
+	for (int i = 0; i < g_gradient_palette_count; i++){
+		if (pal == g_gradient_palettes[i]){
+			palette_index = i;
+			break;
+		}
+	}
+}
+  
 #endif

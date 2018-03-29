@@ -706,28 +706,58 @@ void readkeyboard() {
 
 void checkDial() {
 	if (!(digitalRead(pinSW))){
-		led_mode=0;
-		strobe_mode(0,1);
+		rotary_function += 1;
+		if (rotary_function > 2){
+			rotary_function = 0;
+		}
 	}
 	aVal = digitalRead(pinA);		// Read pinA
 	if (aVal != pinALast){			// If pinA has changed, update things
-    rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
-    if (rotateCount){            // Need to let it change twice
-  		if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
-  			led_mode ++;			// Move to next pattern
-  		}
-  		else {						// Means pin B changed first, we're moving CCW
-  			led_mode--;				// Move to previous pattern
-  		}
-      if (led_mode < 0){
-        led_mode = max_mode;
-      }
-      if (led_mode > max_mode){
-        led_mode = 0;
-      }
-      //led_mode = constrain(led_mode, 0, max_mode);
-      strobe_mode(led_mode, 1);
-    }
+		rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
+		if (rotateCount){    // Need to let it change twice
+			switch(rotary_function){
+				case 0:
+					if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
+						led_mode ++;			// Move to next pattern
+					} else {						// Means pin B changed first, we're moving CCW
+						led_mode--;				// Move to previous pattern
+					}
+				    if (led_mode < 0){
+						led_mode = max_mode;
+				    }
+				    if (led_mode > max_mode){
+						led_mode = 0;
+				    }
+				    strobe_mode(led_mode, 1);
+				    break;
+					
+				case 1:
+					updatePaletteIndex(target_palette);
+					if (digitalRead(pinB) != aVal){
+						palette_index++;
+					} else {
+						palette_index--;
+					}
+					if (palette_index > g_gradient_palette_count-1){
+						palette_index = 0;
+					}
+					if (palette_index < 0){
+						palette_index = g_gradient_palette_count-1
+					}
+					target_palette = g_gradient_palettes[palette_index];
+					break;
+					
+				case 2:
+					if (digitalRead(pinB) != aVal){
+						this_delay ++;
+					} else {
+						this_delay --;
+					}
+					constrain(this_delay, 0, 255);
+					break;
+					
+			}
+		}
 		pinALast = aVal;		
 	}
 }
