@@ -1,9 +1,9 @@
-#ifndef FIRE_RINGS_H
-#define FIRE_RINGS_H
+#ifndef FIRE_MIRROR_RINGS_H
+#define FIRE_MIRRORRINGS_H
 
 // Call with a call to fire1(), fire2(), fire3(), fire4()
 
-void fire1()
+void fire1_mirror()
 {
   static byte heat[STRIP_LENGTH];
     for( int i = 0; i < STRIP_LENGTH; i++) {
@@ -16,16 +16,19 @@ void fire1()
       int y = random8(7);
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
-    for( int j = 0; j < STRIP_LENGTH; j++) {
-     if (!this_dir){
-      leds[ringArray[STRIP_LENGTH-1-j][0]] = HeatColor( heat[j]);
-     } else {
-		leds[ringArray[j][0]] = HeatColor( heat[j]);
-     }
-    }
-}
+	for ( int j = 0; j < STRIP_LENGTH/2; j++) {
+		CRGB hcolor = HeatColor(heat[j]);	
+		if(this_dir){
+			leds[ringArray[j][0]] = hcolor;
+			leds[ringArray[STRIP_LENGTH-1-j][0]] = hcolor;
+		} else {
+			leds[ringArray[(STRIP_LENGTH/2) - 1- j][0]] = hcolor;
+			leds[ringArray[(STRIP_LENGH/2) + j]][0] = hcolor;
+		}
+	}
+}	
 
-void fire2()
+void fire2_mirror()
 {
   static byte heat[STRIP_LENGTH];
     for( int i = 0; i < STRIP_LENGTH; i++) {
@@ -38,16 +41,19 @@ void fire2()
       int y = random8(7);
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
-    for( int j = 0; j < STRIP_LENGTH; j++) {
-     if (!this_dir){
-      leds[ringArray[STRIP_LENGTH-1-j][1]] = HeatColor( heat[j]);
-     } else {
-		leds[ringArray[j][1]] = HeatColor( heat[j]);
-     }
-    }
-}
+	for ( int j = 0; j < STRIP_LENGTH/2; j++) {
+		CRGB hcolor = HeatColor(heat[j]);	
+		if(this_dir){
+			leds[ringArray[j][1]] = hcolor;
+			leds[ringArray[STRIP_LENGTH-1-j][1]] = hcolor;
+		} else {
+			leds[ringArray[(STRIP_LENGTH/2) - 1- j][1]] = hcolor;
+			leds[ringArray[(STRIP_LENGH/2) + j]][1] = hcolor;
+		}
+	}
+}	
 
-void fire3()
+void fire3_mirror()
 {
   static byte heat[STRIP_LENGTH];
     for( int i = 0; i < STRIP_LENGTH; i++) {
@@ -60,16 +66,19 @@ void fire3()
       int y = random8(7);
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
-    for( int j = 0; j < STRIP_LENGTH; j++) {
-     if (!this_dir){
-      leds[ringArray[STRIP_LENGTH-1-j][2]] = HeatColor( heat[j]);
-     } else {
-		   leds[ringArray[j][2]] = HeatColor( heat[j]);
-     }
-    }
-}
+	for ( int j = 0; j < STRIP_LENGTH/2; j++) {
+		CRGB hcolor = HeatColor(heat[j]);	
+		if(this_dir){
+			leds[ringArray[j][2]] = hcolor;
+			leds[ringArray[STRIP_LENGTH-1-j][2]] = hcolor;
+		} else {
+			leds[ringArray[(STRIP_LENGTH/2) - 1- j][2]] = hcolor;
+			leds[ringArray[(STRIP_LENGH/2) + j]][2] = hcolor;
+		}
+	}
+}	
 
-void fire4()
+void fire4_mirror()
 {
   static byte heat[STRIP_LENGTH];
     for( int i = 0; i < STRIP_LENGTH; i++) {
@@ -82,12 +91,15 @@ void fire4()
       int y = random8(7);
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
-    for( int j = 0; j < STRIP_LENGTH; j++) {
-     if (!this_dir){
-      leds[ringArray[STRIP_LENGTH-1-j][3]] = HeatColor( heat[j]);
-     } else {
-		 leds[ringArray[j][3]] = HeatColor( heat[j]);
-     }
-    }
-}
+	for ( int j = 0; j < STRIP_LENGTH/2; j++) {
+		CRGB hcolor = HeatColor(heat[j]);	
+		if(this_dir){
+			leds[ringArray[j][3]] = hcolor;
+			leds[ringArray[STRIP_LENGTH-1-j][3]] = hcolor;
+		} else {
+			leds[ringArray[(STRIP_LENGTH/2) - 1- j][3]] = hcolor;
+			leds[ringArray[(STRIP_LENGH/2) + j]][3] = hcolor;
+		}
+	}
+}	
 #endif

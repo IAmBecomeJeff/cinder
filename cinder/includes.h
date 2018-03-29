@@ -21,6 +21,7 @@
 #include "fire.h"
 #include "fire_pal.h"
 #include "fire_mirror.h"
+#include "fire_mirror_rings.h"
 #include "fire_rings.h"
 #include "gradient_palettes.h"
 #include "gravity.h"

@@ -529,12 +529,21 @@ void strobe_mode(uint8_t newMode, bool mc){
 		delayToSyncFrameRate(this_delay);
 		break;
 
-  // 70 - fire mirror
-  case 70:
-    if(mc) { this_delay = 10; cooling = 60; sparking = 90; }
-    fire_mirror();
-    break;
-    
+	// 70 - fire mirror
+	case 70:
+		if(mc) { this_delay = 10; cooling = 60; sparking = 90; }
+		fire_mirror();
+		break;
+
+	// 71 - fire mirror with rings
+	case 71:
+		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
+		fire1_mirror();
+		fire2_mirror();
+		fire3_mirror();
+		fire4_mirror();
+		break;
+		
     // if more modes added, must update max_modes in variables
   }
 }
