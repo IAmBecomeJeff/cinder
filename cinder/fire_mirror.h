@@ -1,32 +1,7 @@
 #ifndef FIRE_MIRROR_H
 #define FIRE_MIRROR_H
 
-
-
-CRGB leds_temp[STRIP_LENGTH/2];  // half the total number of pixels
-
-
-
-bool this_dir = false;  //false = center outward, true = from ends inward
-
-
-//---------------------------------------------------------------
-void loop()
-{
-  // Add entropy to random number generator; we use a lot of it.
-  // random16_add_entropy( random());
-
-  Fire2012_halfStrip(); // draw fire data to leds_temp
-
-  mirror2ndHalf();  // copy and mirror data from leds_temp to leds
-
-  FastLED.show(); // display leds
-  FastLED.delay(1000 / FRAMES_PER_SECOND);
-}
-
-
-
-void Fire2012_halfStrip() {
+void fire_mirror() {
   // Fuction only operates on half the number of pixels (NUM_LEDS/2)
   
   // Array of temperature readings at each simulation cell
@@ -49,31 +24,20 @@ void Fire2012_halfStrip() {
   }
 
   // Step 4.  Map from heat cells to LED colors
-  for( int j = 0; j < STRIP_LENGTH/2; j++) {
-    ringCRGB(j, HeatColor(heat[j]).r, HeatColor(heat[j]).g, HeatColor(heat[j]).b);
-	//CRGB color = HeatColor( heat[j]);
-    leds_temp[j] = color;
-  }
-
-}//end_Fire2012_halfStrip
-
-
-//---------------------------------------------------------------
-void mirror2ndHalf() {
-  //copy and mirror pixel data from leds_temp to leds array.
-
-  if (!this_dir) {  //false is center outward
-    for (uint8_t i=0; i<STRIP_LENGTH/2; i++) {
-      leds[(STRIP_LENGTH/2)-1-i] = leds_temp[i];
-      leds[(STRIP_LENGTH/2)+i] = leds_temp[i];
+  if (this_dir){
+    for( int j = 0; j < STRIP_LENGTH/2; j++) {
+       CRGB hcolor = HeatColor(heat[j]);
+       ringCRGB(j, hcolor.r, hcolor.g, hcolor.b);
+       ringCRGB(STRIP_LENGTH-1-j, hcolor.r, hcolor.g, hcolor.b);
     }
-
-  } else {  //true is from ends inward
-    for (uint8_t i=0; i<STRIP_LENGTH/2; i++) {
-      leds[i] = leds_temp[i];
-      leds[(STRIP_LENGTH-1)-i] = leds_temp[i];
+  } else {
+    for (int j = 0; j < STRIP_LENGTH/2; j++) {
+      CRGB hcolor = HeatColor(heat[j]);
+      ringCRGB((STRIP_LENGTH/2) - 1 - j, hcolor.r, hcolor.g, hcolor.b);
+      ringCRGB((STRIP_LENGTH/2) + j, hcolor.r, hcolor.g, hcolor.b);
     }
   }
   
-}//end_mirror2ndHalf
+}//end_fire_mirror
+
 #endif

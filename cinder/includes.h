@@ -20,6 +20,8 @@
 #include "discostrobe.h"
 #include "fire.h"
 #include "fire_pal.h"
+#include "fire_mirror.h"
+#include "fire_rings.h"
 #include "gradient_palettes.h"
 #include "gravity.h"
 #include "juggle_pal.h"

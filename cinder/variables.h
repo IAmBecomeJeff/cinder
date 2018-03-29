@@ -51,7 +51,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 69;		// maximum number of modes
+uint8_t max_mode    = 70;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 uint8_t led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -88,7 +88,15 @@ uint8_t v0;					 	  // Variables for gravity
 uint8_t pause;						// Variable for gravity
 uint8_t numdots_ring;   			// dots for juggle_pal_ring
 uint8_t cooling = 55;				// Cooling variable for fire
+uint8_t cooling1;
+uint8_t cooling2;
+uint8_t cooling3;
+uint8_t cooling4;
 uint8_t sparking = 120;				// Heating variable for fire
+uint8_t sparking1;
+uint8_t sparking2;
+uint8_t sparking3;
+uint8_t sparking4;
 //#define FRAMES_PER_SECOND   100
 //#define ZOOMING_BEATS_PER_MINUTE 122
 uint8_t zooming_beats_per_minute = 122; // zooming for disco

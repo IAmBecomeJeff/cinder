@@ -17,7 +17,7 @@ void setup() {
 
   // --------------------------------------------------------------------------------------- // 
 
-  set_max_power_in_volts_and_milliamps(5, 2000); // TODO: increase power?
+  set_max_power_in_volts_and_milliamps(5, 1750); // TODO: increase power?
   
   // Set up variables
   random16_set_seed(4832);
@@ -167,7 +167,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 10 - one-sin with rainbow palette // decreased delay to 5, looks smoothest
     case 10: 
-      if(mc) { this_delay = 55; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
@@ -471,21 +471,24 @@ void strobe_mode(uint8_t newMode, bool mc){
       noise8_pal_ring(); 
       break;
 	
-  	// 61 - gravity
+  	// 61 - fire rings
   	case 61:
-    	if(mc) {this_delay = 10; x0 = 143; accel = -10; v0 = 0; pause = 100;}
-    	gravity();
+    	if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
+    	fire1();
+      fire2();
+      fire3();
+      fire4();
     	break;
 	
 	// 62 - fire
-	case 62:
-		if(mc) {this_delay = 10; cooling = 55; sparking = 120; }
-		fire();
+  	case 62:
+  		if(mc) {this_delay = 10; cooling = 100; sparking = 120; }
+  		fire();
 		break;
 	
 	// 63 - fire with palette
 	case 63:
-		if(mc) {this_delay = 10; cooling = 55; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
+		if(mc) {this_delay = 10; cooling = 80; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
 		fire_pal();
 		break;
 		
@@ -525,7 +528,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 		discostrobe();
 		delayToSyncFrameRate(this_delay);
 		break;
-		
+
+  // 70 - fire mirror
+  case 70:
+    if(mc) { this_delay = 10; cooling = 60; sparking = 90; }
+    fire_mirror();
+    break;
+    
     // if more modes added, must update max_modes in variables
   }
 }
