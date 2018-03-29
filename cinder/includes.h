@@ -34,6 +34,7 @@
 #include "noise8_pal_ring.h"
 #include "one_sin_pal.h"
 #include "one_sin_pal_ring.h"
+#include "palette_motion.h"
 #include "pride.h"
 #include "rainbow_march.h"
 #include "rainbow_march_ring.h"

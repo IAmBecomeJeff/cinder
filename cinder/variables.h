@@ -97,9 +97,11 @@ uint8_t sparking1;
 uint8_t sparking2;
 uint8_t sparking3;
 uint8_t sparking4;
-//#define FRAMES_PER_SECOND   100
-//#define ZOOMING_BEATS_PER_MINUTE 122
 uint8_t zooming_beats_per_minute = 122; // zooming for disco
+uint8_t color_index = 0;
+uint8_t color_speed = 1;
+uint8_t color_inc = 3;
+
 
 // KY-040 Rotary Module variables
 int pinA = 21;

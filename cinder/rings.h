@@ -55,7 +55,6 @@ void ring_nblend(uint16_t pix, CRGB new_color, fract8 blend_amount){
     uint8_t colorIndex = startIndex;
     for( uint16_t i = 0; i < STRIP_LENGTH; i++) {
         ringPalette(i, pal, colorIndex, bri, blending);
-		//leds_array[i] = ColorFromPalette( pal, colorIndex, brightness, blendType);
         colorIndex += incIndex;
     }
  }

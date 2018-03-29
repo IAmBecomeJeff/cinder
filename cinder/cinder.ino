@@ -544,6 +544,18 @@ void strobe_mode(uint8_t newMode, bool mc){
 		fire4_mirror();
 		break;
 		
+	// 72 - palette motion with option 1
+	case 72:
+		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
+		fillFromPalette();
+		break
+	
+	// 73 - palette motion with option 2
+	case 73:
+		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
+		palette_motion();
+		break
+		
     // if more modes added, must update max_modes in variables
   }
 }
