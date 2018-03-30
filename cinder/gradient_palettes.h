@@ -1615,7 +1615,12 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   hallows_gp,
   sea_treasure_gp,
   Secondary_01a_gp,
-  Split_03_gp  };
+  Split_03_gp,
+  RainbowColors_p,
+  PartyColors_p,
+  LavaColors_p,
+  ForestColors_p,
+  OceanColors_p };
 
 
 // Count of how many cpt-city gradients are defined:

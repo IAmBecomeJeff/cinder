@@ -68,5 +68,10 @@ void ring_nblend(uint16_t pix, CRGB new_color, fract8 blend_amount){
 		 hsv_hue += deltahue;
 	 }
  }
- 
+
+void ring_fill_static_palette(CRGBPalette16 pal=current_palette, uint8_t bri = this_bright, TBlendType blending=current_blending){
+	for (uint8_t i = 0; i< STRIP_LENGTH; i++){
+		ringPalette(i, pal, i*255/STRIP_LENGTH, bri, blending);
+	}
+} 
 #endif

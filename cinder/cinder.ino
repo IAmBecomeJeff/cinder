@@ -537,23 +537,38 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	// 71 - fire mirror with rings
 	case 71:
-		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
+		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 1;}
+		fire1_mirror();
+		fire2_mirror();
+		fire3_mirror();
+		fire4_mirror();
+		break;
+	
+	// 72 - fire mirror with rings, from middle
+	case 72:
+		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 0 ; }
 		fire1_mirror();
 		fire2_mirror();
 		fire3_mirror();
 		fire4_mirror();
 		break;
 		
-	// 72 - palette motion with option 1
-	case 72:
+	// 73 - palette motion with option 1
+	case 73:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}
 		palette_motion();
 		break;
 	
-	// 73 - palette motion with option 2
-	case 73:
+	// 74 - palette motion with option 2
+	case 74:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
 		palette_motion();
+		break;
+		
+	// 75 - palette viewer
+	case 75:
+		if(mc) {target_palette = sea_treasure_gp;}
+		ring_fill_static_palette();
 		break;
 		
     // if more modes added, must update max_modes in variables
