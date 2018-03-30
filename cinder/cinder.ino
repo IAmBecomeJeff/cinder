@@ -546,15 +546,15 @@ void strobe_mode(uint8_t newMode, bool mc){
 		
 	// 72 - palette motion with option 1
 	case 72:
-		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
-		fillFromPalette();
-		break
+		if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}
+		palette_motion();
+		break;
 	
 	// 73 - palette motion with option 2
 	case 73:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
 		palette_motion();
-		break
+		break;
 		
     // if more modes added, must update max_modes in variables
   }
@@ -710,12 +710,15 @@ void checkDial() {
 		if (rotary_function > 2){
 			rotary_function = 0;
 		}
+   Serial.print("Button Function: ");
+   Serial.println(rotary_function);
 	}
 	aVal = digitalRead(pinA);		// Read pinA
 	if (aVal != pinALast){			// If pinA has changed, update things
 		rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
 		if (rotateCount){    // Need to let it change twice
-			switch(rotary_function){
+			switch (rotary_function) {
+        
 				case 0:
 					if (digitalRead(pinB) != aVal){		// Means pin A changed first, we're rotating CW
 						led_mode ++;			// Move to next pattern
@@ -729,7 +732,7 @@ void checkDial() {
 						led_mode = 0;
 				    }
 				    strobe_mode(led_mode, 1);
-				    break;
+				  break;
 					
 				case 1:
 					updatePaletteIndex(target_palette);
@@ -742,9 +745,13 @@ void checkDial() {
 						palette_index = 0;
 					}
 					if (palette_index < 0){
-						palette_index = g_gradient_palette_count-1
+						palette_index = g_gradient_palette_count-1;
 					}
 					target_palette = g_gradient_palettes[palette_index];
+//          Serial.print("Palette: ");
+//          Serial.println(target_palette);
+          Serial.print("Palette number: ");
+          Serial.println(palette_index);
 					break;
 					
 				case 2:

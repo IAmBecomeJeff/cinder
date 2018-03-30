@@ -64,7 +64,7 @@ bool    glitter         = 0;      // Glitter flag
 uint8_t palette_change;           // 1 = similar palette, 2 = random4 palette, 3 = random16 palette
 uint8_t start_index     = 0;      // Foreground hue to start with (sine-routines)
 uint8_t this_beat;                // Beat tracker (juggle routine)
-uint8_t this_bright     = 0;      // Standard brightness
+uint8_t this_bright     = 50;      // Standard brightness
 uint8_t this_cutoff     = 192;    // Cutoff value; lower = longer wave
 int     this_delay      = 0;      // Standard delay
 uint8_t this_diff       = 1;      // Standard palette index jump

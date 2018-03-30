@@ -14,7 +14,7 @@ uint8_t x_grav;
 uint8_t atBottom = 0;
 uint8_t timer = 0;
 //uint8_t pause = 100;
-uint8_t palette_index;
+uint8_t paletteindex;
 uint8_t count = 0;
 
 void gravity() {                                                              // This is the heart of this_ program. Sure is short.
@@ -37,7 +37,7 @@ void gravity() {                                                              //
   
   ringCRGB(x_prev,0,0,0); // maybe use fadeToBlackBy?
   //ringCRGB(x,255,0,0);
-  ringPalette(x_grav, current_palette, palette_index, this_bright, current_blending);
+  ringPalette(x_grav, current_palette, paletteindex, this_bright, current_blending);
 
 } // gravity()
 

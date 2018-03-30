@@ -23,7 +23,7 @@ void fire1_mirror()
 			leds[ringArray[STRIP_LENGTH-1-j][0]] = hcolor;
 		} else {
 			leds[ringArray[(STRIP_LENGTH/2) - 1- j][0]] = hcolor;
-			leds[ringArray[(STRIP_LENGH/2) + j]][0] = hcolor;
+			leds[ringArray[(STRIP_LENGTH/2) + j][0]] = hcolor;
 		}
 	}
 }	
@@ -48,7 +48,7 @@ void fire2_mirror()
 			leds[ringArray[STRIP_LENGTH-1-j][1]] = hcolor;
 		} else {
 			leds[ringArray[(STRIP_LENGTH/2) - 1- j][1]] = hcolor;
-			leds[ringArray[(STRIP_LENGH/2) + j]][1] = hcolor;
+			leds[ringArray[(STRIP_LENGTH/2) + j][1]] = hcolor;
 		}
 	}
 }	
@@ -73,7 +73,7 @@ void fire3_mirror()
 			leds[ringArray[STRIP_LENGTH-1-j][2]] = hcolor;
 		} else {
 			leds[ringArray[(STRIP_LENGTH/2) - 1- j][2]] = hcolor;
-			leds[ringArray[(STRIP_LENGH/2) + j]][2] = hcolor;
+			leds[ringArray[(STRIP_LENGTH/2) + j][2]] = hcolor;
 		}
 	}
 }	
@@ -98,7 +98,7 @@ void fire4_mirror()
 			leds[ringArray[STRIP_LENGTH-1-j][3]] = hcolor;
 		} else {
 			leds[ringArray[(STRIP_LENGTH/2) - 1- j][3]] = hcolor;
-			leds[ringArray[(STRIP_LENGH/2) + j]][3] = hcolor;
+			leds[ringArray[(STRIP_LENGTH/2) + j][3]] = hcolor;
 		}
 	}
 }	

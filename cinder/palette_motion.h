@@ -5,13 +5,13 @@
 // uint8_t color_speed  -  how quickly we move the palette
 // uint8_t color_inc  -  how quickly we go from the beginning to end of palette
 
-void fillFromPalette(){
-	color_index += color_speed;
-	for( int i = 0; i < STRIP_LENGTH; i++){
-		ringPalette(i, current_palette, color_index + sin8(8*i), this_bright, current_blending);
-		color_index += color_inc;
-	}
-}
+//void fillFromPalette(){
+//	color_index += color_speed;
+//	for( int i = 0; i < STRIP_LENGTH; i++){
+//		ringPalette(i, current_palette, color_index + sin8(8*i), this_bright, current_blending);
+//		color_index += color_inc;
+//	}
+//}
 
 void palette_motion(){
 	color_index += color_speed;
