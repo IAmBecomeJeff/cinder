@@ -3,7 +3,7 @@
 
 // Support functions
 #include "addglitter.h"
-#include "checkDial.h"
+//#include "checkDial.h"
 #include "make_palettes.h"
 #include "rings.h"
 
