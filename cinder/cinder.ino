@@ -474,10 +474,7 @@ void strobe_mode(uint8_t newMode, bool mc){
   	// 61 - fire rings
   	case 61:
     	if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
-    	fire1();
-      fire2();
-      fire3();
-      fire4();
+    	fire_rings();
     	break;
 	
 	// 62 - fire
@@ -538,35 +535,44 @@ void strobe_mode(uint8_t newMode, bool mc){
 	// 71 - fire mirror with rings
 	case 71:
 		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 1;}
-		fire1_mirror();
-		fire2_mirror();
-		fire3_mirror();
-		fire4_mirror();
+		fire_mirror_rings();
 		break;
 	
 	// 72 - fire mirror with rings, from middle
 	case 72:
 		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 0 ; }
-		fire1_mirror();
-		fire2_mirror();
-		fire3_mirror();
-		fire4_mirror();
+		fire_mirror_rings();
 		break;
-		
-	// 73 - palette motion with option 1
+	
+	// 73 - fire mirror with palette
 	case 73:
+		if(mc) {this_delay = 10; cooling = 75; sparking = 120; target_palette = LavaColors_p; this_dir = 0;}
+		fire_mirror_pal();
+		
+	// 74 - fire palette with rings
+	case 74:
+		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = LavaColors_p;}
+		fire_pal_rings();
+	
+	// 75 - fire mirror palette with rings
+	case 75:
+		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = LavaColors_p;}
+		fire_mirror_pal_rings();
+	
+	// 76 - palette motion with option 1
+	case 76:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}
 		palette_motion();
 		break;
 	
-	// 74 - palette motion with option 2
-	case 74:
+	// 77 - palette motion with option 2
+	case 77:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
 		palette_motion();
 		break;
 		
-	// 75 - palette viewer
-	case 75:
+	// 78 - palette viewer
+	case 78:
 		if(mc) {target_palette = sea_treasure_gp;}
 		ring_fill_static_palette();
 		break;

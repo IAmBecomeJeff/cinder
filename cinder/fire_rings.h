@@ -90,4 +90,12 @@ void fire4()
      }
     }
 }
+
+void fire_rings_all(){
+	fire1();
+	fire2();
+	fire3();
+	fire4();
+}
+
 #endif

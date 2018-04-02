@@ -3,7 +3,7 @@
 
 // Call with a call to fire1(), fire2(), fire3(), fire4()
 
-void fire1_mirror()
+void fire1_mirror_rings_pal()
 {
   static byte heat[STRIP_LENGTH];
     for( int i = 0; i < STRIP_LENGTH; i++) {
@@ -17,13 +17,14 @@ void fire1_mirror()
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
 	for ( int j = 0; j < STRIP_LENGTH/2; j++) {
-		CRGB hcolor = HeatColor(heat[j]);	
+		byte colorindex = scale8( heat[j], 240);
+		CRGB color = ColorFromPalette( current_palette, colorindex);
 		if(this_dir){
-			leds[ringArray[j][0]] = hcolor;
-			leds[ringArray[STRIP_LENGTH-1-j][0]] = hcolor;
+			leds[ringArray[j][0]] = color;
+			leds[ringArray[STRIP_LENGTH-1-j][0]] = color;
 		} else {
-			leds[ringArray[(STRIP_LENGTH/2) - 1- j][0]] = hcolor;
-			leds[ringArray[(STRIP_LENGTH/2) + j][0]] = hcolor;
+			leds[ringArray[(STRIP_LENGTH/2) - 1- j][0]] = color;
+			leds[ringArray[(STRIP_LENGTH/2) + j][0]] = color;
 		}
 	}
 }	
