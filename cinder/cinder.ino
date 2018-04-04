@@ -30,7 +30,7 @@ void setup() {
 
   // Set up palettes
   current_palette  = CRGBPalette16(CRGB::Black);
-  target_palette   = rainbowcolors_p;
+  target_palette   = RainbowColors_p;
   current_blending = LINEARBLEND;
 
   // Set up circ_noise variables
@@ -125,13 +125,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 3 - one-sin with rainbow palette
     case  3: 
-      if(mc) { this_delay = 20; target_palette = rainbowcolors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
     // 4 - noise8 with party palette
     case  4: 
-      if(mc) { this_delay = 10; target_palette = partycolors_p; palette_change = 2; } 
+      if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
       noise8_pal(); 
       break;
 
@@ -143,19 +143,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 6 - one-sin with rainbow palette //increased from 20 to 8, smooths out there
     case  6: 
-      if(mc) { this_delay = 8; target_palette = rainbowcolors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
     // 7 - juggle mode
     case  7: 
-      if(mc) { this_delay = 10; numdots = 2; target_palette = partycolors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+      if(mc) { this_delay = 10; numdots = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
       juggle_pal(); 
       break;
 
     // 8 - matrix with palette // increased delay from 40 to 15
     case  8: 
-      if(mc) { this_delay = 15; target_palette = lavacolors_p; this_index = 128; this_dir = 1; this_rot = 0; this_bright = 255; bg_clr = 200; bg_bri = 6; } 
+      if(mc) { this_delay = 15; target_palette = LavaColors_p; this_index = 128; this_dir = 1; this_rot = 0; this_bright = 255; bg_clr = 200; bg_bri = 6; } 
       matrix_pal(); 
       break;
 
@@ -167,7 +167,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 10 - one-sin with rainbow palette // decreased delay to 5, looks smoothest
     case 10: 
-      if(mc) { this_delay = 5; target_palette = rainbowcolors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal(); 
       break;
 
@@ -179,13 +179,13 @@ void strobe_mode(uint8_t newMode, bool mc){
    
     // 12 - serendipitous with palette
     case 12:
-      if(mc) { this_delay = 10; target_palette = forestcolors_p; }
+      if(mc) { this_delay = 10; target_palette = ForestColors_p; }
 			serendipitous_pal(); 
 			break;
   
     // 13 - one-sine with lava palette // increase delay from 20 to 18 to remove jerkiness
     case 13:
-      if(mc) { this_delay = 8; target_palette = lavacolors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+      if(mc) { this_delay = 8; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
  
@@ -197,19 +197,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 15 - matrix with party palette // increase delay from 50 to 20 to speed it up
     case 15:
-      if(mc) { this_delay = 20; target_palette = partycolors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
+      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
 			matrix_pal(); 
 			break;
 
     // 16 - noise8 with palette
     case 16:
-      if(mc) { this_delay = 10; target_palette = oceancolors_p; palette_change = 1; }
+      if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
 			noise8_pal(); 
 			break;
 
     // 17 - circular noise with party palette
     case 17:
- 			if(mc) { this_delay = 10; target_palette = partycolors_p; }
+ 			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
 			circnoise_pal_2(); 
 			break;
 
@@ -239,13 +239,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 22 - one-sine with ocean palette // increase delay from 20 to 8 to fix jerkiness
     case 22:
- 			if(mc) { this_delay = 8; target_palette = oceancolors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+ 			if(mc) { this_delay = 8; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
 
     // 23 - circular noise with ocean palette
     case 23:
- 			if(mc) { this_delay = 10; target_palette = oceancolors_p; }
+ 			if(mc) { this_delay = 10; target_palette = OceanColors_p; }
 			circnoise_pal_4(); 
 			break;
 
@@ -257,25 +257,25 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 25 - matrix with forest palette // increase delay from 30 to 25
     case 25:
- 			if(mc) { this_delay = 25; target_palette = forestcolors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
+ 			if(mc) { this_delay = 25; target_palette = ForestColors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
 			matrix_pal(); 
 			break;
 
     // 26 - one-sin with party palette // increase this_speed from 4 to 6, very jerky
     case 26:
- 			if(mc) { this_delay = 6; target_palette = rainbowcolors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+ 			if(mc) { this_delay = 6; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
 
     // 27 - circular noise with party palette // maybe new palette?
     case 27:
- 			if(mc) { this_delay = 10; target_palette = partycolors_p; }
+ 			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
 			circnoise_pal_3(); 
 			break;
 
     // 28 - juggle mode with ocean palette
     case 28:
- 			if(mc) { this_delay = 10; numdots = 4; target_palette = oceancolors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
+ 			if(mc) { this_delay = 10; numdots = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
 			juggle_pal(); 
 			break;
 
@@ -299,13 +299,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 32 - circular noise with party palette
     case 32:
- 			if(mc) { this_delay = 10; target_palette = partycolors_p; }
+ 			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
 			circnoise_pal_1(); 
 			break;
 
     // 33 - noise8 with lava palette
     case 33:
- 			if(mc) { this_delay = 10; target_palette = lavacolors_p; palette_change = 0; }
+ 			if(mc) { this_delay = 10; target_palette = LavaColors_p; palette_change = 0; }
 			noise8_pal(); 
 			break;
       
@@ -317,13 +317,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 35 - one-sin with rainbow palette ring
     case 35: 
-      if(mc) { this_delay = 20; target_palette = rainbowcolors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal_ring(); 
       break;
 
     // 36 - noise8 with party palette ring
     case 36: 
-      if(mc) { this_delay = 10; target_palette = partycolors_p; palette_change = 2; } 
+      if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
       noise8_pal_ring(); 
       break;
 
@@ -335,7 +335,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 38 - one-sin with rainbow palette ring // increasing delay to 5 to avoid jerkiness
     case 38: 
-      if(mc) { this_delay = 5; target_palette = rainbowcolors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal_ring(); 
       break;
 
@@ -353,19 +353,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 41 - one-sin with rainbow palette_ring // increasing delay to 10
     case 41: 
-      if(mc) { this_delay = 5; target_palette = rainbowcolors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
       one_sin_pal_ring(); 
       break;
    
     // 42 - serendipitous with palette_ring, really cool, try more palettes
     case 42:
-      if(mc) { this_delay = 10; target_palette = rorestcolors_p; }
+      if(mc) { this_delay = 10; target_palette = ForestColors_p; }
       serendipitous_pal_ring(); 
       break;
   
     // 43 - one-sine with lava palette_ring // increasing speed to 16
     case 43:
-      if(mc) { this_delay = 16; target_palette = lavacolors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+      if(mc) { this_delay = 16; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
  
@@ -377,19 +377,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 45 - matrix with party palette_ring // has a light green background, not sure if it works with direction change
     case 45:
-      if(mc) { this_delay = 20; target_palette = partycolors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
+      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
       matrix_pal_ring(); 
       break;
 
     // 46 - noise8 with palette_ring
     case 46:
-      if(mc) { this_delay = 10; target_palette = oceancolors_p; palette_change = 1; }
+      if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
       noise8_pal_ring(); 
       break;
 
     // 47 - circular noise with party palette_ring
     case 47:
-      if(mc) { this_delay = 10; target_palette = partycolors_p; }
+      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
       circnoise_pal_2_ring(); 
       break;
 
@@ -401,19 +401,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 49 - one-sine with ocean palette_ring // increasing speed
     case 49:
-      if(mc) { this_delay = 9; target_palette = oceancolors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+      if(mc) { this_delay = 9; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
 
     // 50 - circular noise with ocean palette_ring
     case 50:
-      if(mc) { this_delay = 10; target_palette = oceancolors_p; }
+      if(mc) { this_delay = 10; target_palette = OceanColors_p; }
       circnoise_pal_4_ring(); 
       break;
 
     // 51 - confetti with party palette_ring
     case 51:
-      if(mc) { this_delay = 20; target_palette = partycolors_p; this_inc = 1; this_hue = 192; this_sat = 255; this_fade = 2; this_diff = 32; this_bright = 255; }
+      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_inc = 1; this_hue = 192; this_sat = 255; this_fade = 2; this_diff = 32; this_bright = 255; }
       confetti_pal_ring(); 
       break;
 
@@ -425,25 +425,25 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 53 - matrix with forest palette_ring
     case 53:
-      if(mc) { this_delay = 10; target_palette = forestcolors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
+      if(mc) { this_delay = 10; target_palette = ForestColors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
       matrix_pal_ring(); 
       break;
 
     // 54 - one-sin with rainbow palette_ring
     case 54:
-      if(mc) { this_delay = 4; target_palette = rainbowcolors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+      if(mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
       one_sin_pal_ring(); 
       break;
 
     // 55 - confetti with lava palette_ring
     case 55:
-      if(mc) { this_delay = 20; target_palette = lavacolors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
+      if(mc) { this_delay = 20; target_palette = LavaColors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
       confetti_pal_ring(); 
       break;
 
     // 56 - circular noise with party palette_ring
     case 56:
-      if(mc) { this_delay = 10; target_palette = partycolors_p; }
+      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
       circnoise_pal_3_ring(); 
       break;
 
@@ -455,19 +455,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 58 - circular noise with party palette_ring
     case 58:
-      if(mc) { this_delay = 10; target_palette = partycolors_p; }
+      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
       circnoise_pal_1_ring(); 
       break;
 
     // 59 - confetti with forest palette_ring
     case 59:
-      if(mc) { this_delay = 15; target_palette = forestcolors_p; this_inc = 1; this_hue = random8(255); this_fade = 1; this_bright = 255; }
+      if(mc) { this_delay = 15; target_palette = ForestColors_p; this_inc = 1; this_hue = random8(255); this_fade = 1; this_bright = 255; }
       confetti_pal_ring(); 
       break;
 
     // 60 - noise8 with lava palette_ring
     case 60:
-      if(mc) { this_delay = 10; target_palette = lavacolors_p; palette_change = 0; }
+      if(mc) { this_delay = 10; target_palette = LavaColors_p; palette_change = 0; }
       noise8_pal_ring(); 
       break;
 	
@@ -485,19 +485,19 @@ void strobe_mode(uint8_t newMode, bool mc){
 	
 	// 63 - fire with palette
 	case 63:
-		if(mc) {this_delay = 10; cooling = 80; sparking = 120; target_palette = lavalolors_p; palette_change = 0; }
+		if(mc) {this_delay = 10; cooling = 80; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
 		fire_pal();
 		break;
 		
     // 64 - juggle mode with ocean palette_ring 
     case 64:
-      if(mc) { this_delay = 10; numdots_ring = 4; target_palette = oceancolors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
+      if(mc) { this_delay = 10; numdots_ring = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
       juggle_pal_ring(); 
       break;
     
 	// 65 - juggle mode ring
 	case 65: 
-      if(mc) { this_delay = 10; numdots_ring = 2; target_palette = partycolors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+      if(mc) { this_delay = 10; numdots_ring = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
       juggle_pal_ring(); 
       break;	  
 	  
@@ -546,19 +546,22 @@ void strobe_mode(uint8_t newMode, bool mc){
 	
 	// 73 - fire mirror with palette
 	case 73:
-		if(mc) {this_delay = 10; cooling = 75; sparking = 120; target_palette = heatcolors_p; this_dir = 0;}
+		if(mc) {this_delay = 10; cooling = 75; sparking = 120; target_palette = HeatColors_p; this_dir = 0;}
 		fire_mirror_pal();
+    break;
 		
 	// 74 - fire palette with rings
 	case 74:
-		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = heatcolors_p;}
+		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = hallows_gp;}
 		fire_pal_rings();
+    break;
 	
 	// 75 - fire mirror palette with rings
 	case 75:
-		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = heatcolors_p;}
+		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = slope_gp;}
 		fire_mirror_pal_rings();
-	
+    break;
+   
 	// 76 - palette motion with option 1
 	case 76:
 		if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}

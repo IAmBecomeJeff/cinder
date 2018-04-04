@@ -1565,14 +1565,133 @@ DEFINE_GRADIENT_PALETTE(cloudcolors_gp ) {
 	255, 0, 191, 255
 	};
 	
-TProgmemRGBPalette16 cloudcolors_p = CloudColors_p;  
-TProgmemRGBPalette16 lavacolors_p = LavaColors_p;
-TProgmemRGBPalette16 oceancolors_p = OceanColors_p;
-TProgmemRGBPalette16 forescolors_p = ForestColors_p;
-TProgmemRGBPalette16 rainbowcolors_p = RainbowColors_p;
-TProgmemRGBPalette16 rainbowstripescolors_p = RainbowStripsColors_p;
-TProgmemRGBPalette16 partycolors_p = PartyColors_p;
-TProgmemRGBPalette16 heatcolors_p = HeatColors_p;
+//const TProgmemPalette16 cloudcolors_p FL_PROGMEM =
+//{
+//    CRGB::Blue,
+//    CRGB::DarkBlue,
+//    CRGB::DarkBlue,
+//    CRGB::DarkBlue,
+//
+//    CRGB::DarkBlue,
+//    CRGB::DarkBlue,
+//    CRGB::DarkBlue,
+//    CRGB::DarkBlue,
+//
+//    CRGB::Blue,
+//    CRGB::DarkBlue,
+//    CRGB::SkyBlue,
+//    CRGB::SkyBlue,
+//
+//    CRGB::LightBlue,
+//    CRGB::White,
+//    CRGB::LightBlue,
+//    CRGB::SkyBlue
+//};
+//
+//const TProgmemPalette16 lavacolors_p FL_PROGMEM =
+//{
+//    CRGB::Black,
+//    CRGB::Maroon,
+//    CRGB::Black,
+//    CRGB::Maroon,
+//
+//    CRGB::DarkRed,
+//    CRGB::Maroon,
+//    CRGB::DarkRed,
+//
+//    CRGB::DarkRed,
+//    CRGB::DarkRed,
+//    CRGB::Red,
+//    CRGB::Orange,
+//
+//    CRGB::White,
+//    CRGB::Orange,
+//    CRGB::Red,
+//    CRGB::DarkRed
+//};
+//
+//
+//const TProgmemPalette16 oceancolors_p FL_PROGMEM =
+//{
+//    CRGB::MidnightBlue,
+//    CRGB::DarkBlue,
+//    CRGB::MidnightBlue,
+//    CRGB::Navy,
+//
+//    CRGB::DarkBlue,
+//    CRGB::MediumBlue,
+//    CRGB::SeaGreen,
+//    CRGB::Teal,
+//
+//    CRGB::CadetBlue,
+//    CRGB::Blue,
+//    CRGB::DarkCyan,
+//    CRGB::CornflowerBlue,
+//
+//    CRGB::Aquamarine,
+//    CRGB::SeaGreen,
+//    CRGB::Aqua,
+//    CRGB::LightSkyBlue
+//};
+//
+//const TProgmemPalette16 forestcolors_p FL_PROGMEM =
+//{
+//    CRGB::DarkGreen,
+//    CRGB::DarkGreen,
+//    CRGB::DarkOliveGreen,
+//    CRGB::DarkGreen,
+//
+//    CRGB::Green,
+//    CRGB::ForestGreen,
+//    CRGB::OliveDrab,
+//    CRGB::Green,
+//
+//    CRGB::SeaGreen,
+//    CRGB::MediumAquamarine,
+//    CRGB::LimeGreen,
+//    CRGB::YellowGreen,
+//
+//    CRGB::LightGreen,
+//    CRGB::LawnGreen,
+//    CRGB::MediumAquamarine,
+//    CRGB::ForestGreen
+//};
+//
+///// HSV Rainbow
+//const TProgmemPalette16 rainbowcolors_p FL_PROGMEM =
+//{
+//    0xFF0000, 0xD52A00, 0xAB5500, 0xAB7F00,
+//    0xABAB00, 0x56D500, 0x00FF00, 0x00D52A,
+//    0x00AB55, 0x0056AA, 0x0000FF, 0x2A00D5,
+//    0x5500AB, 0x7F0081, 0xAB0055, 0xD5002B
+//};
+//
+//#define rainbowstripescolors_p rainbowstripecolors_p
+//const TProgmemPalette16 rainbowstripecolors_p FL_PROGMEM =
+//{
+//    0xFF0000, 0x000000, 0xAB5500, 0x000000,
+//    0xABAB00, 0x000000, 0x00FF00, 0x000000,
+//    0x00AB55, 0x000000, 0x0000FF, 0x000000,
+//    0x5500AB, 0x000000, 0xAB0055, 0x000000
+//};
+//
+//
+//const TProgmemPalette16 partycolors_p FL_PROGMEM =
+//{
+//    0x5500AB, 0x84007C, 0xB5004B, 0xE5001B,
+//    0xE81700, 0xB84700, 0xAB7700, 0xABAB00,
+//    0xAB5500, 0xDD2200, 0xF2000E, 0xC2003E,
+//    0x8F0071, 0x5F00A1, 0x2F00D0, 0x0007F9
+//};
+//
+//
+//const TProgmemPalette16 heatcolors_p FL_PROGMEM =
+//{
+//    0x000000,
+//    0x330000, 0x660000, 0x990000, 0xCC0000, 0xFF0000,
+//    0xFF3300, 0xFF6600, 0xFF9900, 0xFFCC00, 0xFFFF00,
+//    0xFFFF33, 0xFFFF66, 0xFFFF99, 0xFFFFCC, 0xFFFFFF
+//};
 
 // Single array of defined cpt-city color palettes.
 // This will let us programmatically choose one based on
@@ -1650,14 +1769,14 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   sea_treasure_gp,
   Secondary_01a_gp,
   Split_03_gp,
-  rainbowcolors_p,
-  partycolors_p,
-  lavacolors_p,
-  forestcolors_p,
-  oceancolors_p,
-  cloudcolors_p,
-  rainbowstripecolors,
-  heatcolors,
+//  rainbowcolors_p,
+//  partycolors_p,
+//  lavacolors_p,
+//  forestcolors_p,
+//  oceancolors_p,
+//  cloudcolors_p,
+//  rainbowstripecolors_p,
+//  heatcolors_p,
   rainbow_gp,
   cloudcolors_gp 
   };
