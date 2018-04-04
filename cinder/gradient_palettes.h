@@ -1539,7 +1539,41 @@ DEFINE_GRADIENT_PALETTE( Split_03_gp ) {
   191,  27, 48,  1,
   255, 167,  1,  2};
 
-  
+DEFINE_GRADIENT_PALETTE( rainbow_gp ) {
+      0,  255,  0,  0, // Red
+     32,  171, 85,  0, // Orange
+     64,  171,171,  0, // Yellow
+     96,    0,255,  0, // Green
+    128,    0,171, 85, // Aqua
+    160,    0,  0,255, // Blue
+    192,   85,  0,171, // Purple
+    224,  171,  0, 85, // Pink
+    255,  255,  0,  0};// and back to Red
+
+DEFINE_GRADIENT_PALETTE(cloudcolors_gp ) {
+    0,   0, 0, 255,
+	15, 0, 0, 139,
+	111, 0, 0, 139,
+	127, 0, 0, 255,
+	143, 0, 0, 139,
+	159, 135, 206, 250,
+	175, 135, 206, 250,
+	191, 173, 216, 230,
+	207, 200, 200, 200,
+	223, 173, 216, 230,
+	239, 135, 206, 235,
+	255, 0, 191, 255
+	};
+	
+TProgmemRGBPalette16 cloudcolors_p = CloudColors_p;  
+TProgmemRGBPalette16 lavacolors_p = LavaColors_p;
+TProgmemRGBPalette16 oceancolors_p = OceanColors_p;
+TProgmemRGBPalette16 forescolors_p = ForestColors_p;
+TProgmemRGBPalette16 rainbowcolors_p = RainbowColors_p;
+TProgmemRGBPalette16 rainbowstripescolors_p = RainbowStripsColors_p;
+TProgmemRGBPalette16 partycolors_p = PartyColors_p;
+TProgmemRGBPalette16 heatcolors_p = HeatColors_p;
+
 // Single array of defined cpt-city color palettes.
 // This will let us programmatically choose one based on
 // a number, rather than having to activate each explicitly
@@ -1616,11 +1650,16 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   sea_treasure_gp,
   Secondary_01a_gp,
   Split_03_gp,
-//  RainbowColors_p,
-//  PartyColors_p,
-//  LavaColors_p,
-//  ForestColors_p,
-//  OceanColors_p 
+  rainbowcolors_p,
+  partycolors_p,
+  lavacolors_p,
+  forestcolors_p,
+  oceancolors_p,
+  cloudcolors_p,
+  rainbowstripecolors,
+  heatcolors,
+  rainbow_gp,
+  cloudcolors_gp 
   };
 
 
