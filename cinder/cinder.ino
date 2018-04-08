@@ -580,6 +580,18 @@ void strobe_mode(uint8_t newMode, bool mc){
 		ring_fill_static_palette();
 		break;
 		
+	// 79 - revolutions
+	case 79:
+		if(mc) {rev_limit = 50; this_hue = 96; this_sat = 255; this_dir =1; this_delay = 10;}
+		revolutions();
+		break
+	
+	// 80 - revolutions with pallette	
+	case 80:
+		if(mc) {rev_limit = 50; start_index = 0; this_inc = 1; this_delay = 10; this_dir = 1; }
+		revolutions_pal();
+		break;
+		
     // if more modes added, must update max_modes in variables
   }
 }

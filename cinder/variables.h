@@ -101,7 +101,9 @@ uint8_t zooming_beats_per_minute = 122; // zooming for disco
 uint8_t color_index = 0;
 uint8_t color_speed = 1;
 uint8_t color_inc = 3;
-
+int col_count = 0; // column for revolutions
+int rev_count = 0;
+int rev_limit = 50;
 
 // KY-040 Rotary Module variables
 int pinA = 21;
