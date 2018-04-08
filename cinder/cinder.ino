@@ -239,7 +239,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 22 - one-sine with ocean palette // increase delay from 20 to 8 to fix jerkiness
     case 22:
- 			if(mc) { this_delay = 8; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+ 			if(mc) { this_delay = 8; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
 
@@ -599,10 +599,24 @@ void strobe_mode(uint8_t newMode, bool mc){
 		break;
 		
 	// 82 - spiral with palette
+	case 82:
 		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1; this_delay = 15; target_palette = ofaurora_gp;}
 		spiral_pal();
 		break;
-		
+	
+	// 83 - spiral sin 1
+	case 83:
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; freq = 6; this_delay = 15; }
+		spiral_sin();
+		break;
+
+	// 84 - spiral sin 2
+	case 84:
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; freq = 6; this_delay = 15; }
+		spiral_sin_sub();
+		break;
+
+
     // if more modes added, must update max_modes in variables
   }
 }
