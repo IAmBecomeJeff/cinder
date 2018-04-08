@@ -612,7 +612,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	// 84 - spiral sin 2
 	case 84:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 6; this_delay = 15; }
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
 		spiral_sin_sub();
 		break;
 
