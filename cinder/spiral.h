@@ -1,5 +1,5 @@
 #ifndef SPIRAL_H
-#define SPIRAL_h
+#define SPIRAL_H
 
 // spiral()
 // spiral_start = 0
@@ -17,6 +17,9 @@ void spiral(){
 		}
 	}
 	spiral_start += spiral_width;
+	if (spiral_start > 3 * spiral_width) {
+		spiral_start = 0;
+	}
 }
 
 // spiral_pal()
@@ -38,6 +41,9 @@ void spiral_pal(){
 		}
 	}
 	spiral_start += spiral_width;
+	if (spiral_start > 3 * spiral_width) {
+		spiral_start = 0;
+	}
 }
 
 
