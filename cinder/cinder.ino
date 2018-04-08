@@ -591,6 +591,17 @@ void strobe_mode(uint8_t newMode, bool mc){
 		if(mc) {rev_limit = 50; start_index = 0; this_inc = 1; this_delay = 10; this_dir = 1; }
 		revolutions_pal();
 		break;
+	
+	//81 - spiral
+	case 81:
+		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; this_delay = 20;}
+		spiral();
+		break;
+		
+	// 82 - spiral with palette
+		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1; this_delay = 15; target_palette = ofaurora_gp;}
+		spiral_pal();
+		break;
 		
     // if more modes added, must update max_modes in variables
   }
