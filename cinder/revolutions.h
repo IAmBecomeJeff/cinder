@@ -1,5 +1,5 @@
 #ifndef REVOLUTIONS_H
-#define
+#define REVOLUTION_H
 
 //  revolutions()
 //  this_dir
@@ -12,7 +12,7 @@ void revolutions(){
 	if (rev_count == 0){
 		fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0));
 		for (int i = 0; i<STRIP_LENGTH; i++){
-			ringArray[i][col_count] = CHSV(this_hue, this_sat, this_bright);  
+			leds[ringArray[i][col_count]] = CHSV(this_hue, this_sat, this_bright);  
 		}
 		if (this_dir){
 			col_count++;
@@ -49,7 +49,7 @@ void revolutions_pal(){
 	    this_index = start_index;
 			
 		for (int i = 0; i<STRIP_LENGTH; i++){
-			ringArray[i][rev_count] = ColorFromPalette(current_palette,this_index + i*this_inc, this_bright, current_blending);
+			leds[ringArray[i][rev_count]] = ColorFromPalette(current_palette,this_index + i*this_inc, this_bright, current_blending);
 		}
 		if (this_dir){
 			rev_count++;
