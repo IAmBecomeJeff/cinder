@@ -731,7 +731,8 @@ void readkeyboard() {
       // Command: n - toggle direction
       case 110:
         Serial.println(" ");
-        this_dir = !this_dir;
+    
+#include "Bounce2.h"    this_dir = !this_dir;
         break;
 
       // Command: p {0/1/2} - set demo mode (fixed/sequential/shuffle)
@@ -766,31 +767,42 @@ void readkeyboard() {
 }
 
 void checkDial() {
-  int reading = digitalRead(pinSW);   // check button
-  if (reading != lastPinSWstate){     // is it different from before?
-    lastDebounceTime = millis();    // set time
-  }
-  if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
-    if (reading != pinSWstate){     // if the button state has changed
-      pinSWstate = reading;
-      if (!pinSWstate){
-        rotary_function +=1;
-        if (rotary_function > 2){
-          rotary_function = 0;
-        }
-      }
-    }
-  }
-  lastPinSWstate = reading;
+  // int reading = digitalRead(pinSW);   // check button
+  // if (reading != lastPinSWstate){     // is it different from before?
+    // lastDebounceTime = millis();    // set time
+  // }
+  // if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
+    // if (reading != pinSWstate){     // if the button state has changed
+      // pinSWstate = reading;
+      // if (!pinSWstate){
+        // rotary_function +=1;
+        // if (rotary_function > 2){
+          // rotary_function = 0;
+        // }
+      // }
+    // }
+  // }
+  // lastPinSWstate = reading;
   
-  if (!(digitalRead(pinSW))){
+  // if (!(digitalRead(pinSW))){
+    // rotary_function += 1;
+    // if (rotary_function > 3){
+      // rotary_function = 0;
+    // }
+    
+    // Serial.print("Button Function: ");
+    // Serial.println(rotary_function);
+  // }
+  debouncer.update();
+  int value = debouncer.read();
+  if ( value == LOW ) {
     rotary_function += 1;
     if (rotary_function > 3){
       rotary_function = 0;
     }
     
     Serial.print("Button Function: ");
-    Serial.println(rotary_function);
+    Serial.println(rotary_function);	  
   }
   aVal = digitalRead(pinA);   // Read pinA
   if (aVal != pinALast){      // If pinA has changed, update things

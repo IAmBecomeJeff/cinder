@@ -6,6 +6,7 @@
 // Libraries
 #include "FastLED.h"
 #include "EEPROM.h"
+#include "Bounce2.h"
 
 // Unsigned subtraction magic
 #define qsubd(x, b) ((x>b)?wave_brightness:0)		// A digital unsigned subtraction macro. if result <0, then => 0. Otherwise, take on fixed value.
@@ -118,3 +119,4 @@ int rotary_function = 0;
 int palette_index;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 50;
+Bounce debouncer = Bounce();
