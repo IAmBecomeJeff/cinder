@@ -607,15 +607,20 @@ void strobe_mode(uint8_t newMode, bool mc){
 	// 83 - spiral sin 1
 	case 83:
 		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 6; this_delay = 15; }
-		spiral_sin();
+		spiral_sin_sub();
 		break;
 
 	// 84 - spiral sin 2
 	case 84:
 		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
-		spiral_sin_sub();
+		spiral_sin_con();
 		break;
 
+	// 85 - heartbeat
+	case 85:
+		if (mc) { bloodHue = 96; bloodSat = 255; this_dir = 0; cycleLength = 1500; pulseLength = 150; pulseOffset = 200; baseBrightness = 10; this_delay = 20; }
+		heartbeat();
+		break;
 
     // if more modes added, must update max_modes in variables
   }
@@ -731,8 +736,7 @@ void readkeyboard() {
       // Command: n - toggle direction
       case 110:
         Serial.println(" ");
-    
-#include "Bounce2.h"    this_dir = !this_dir;
+        this_dir = !this_dir;
         break;
 
       // Command: p {0/1/2} - set demo mode (fixed/sequential/shuffle)
@@ -767,42 +771,31 @@ void readkeyboard() {
 }
 
 void checkDial() {
-  // int reading = digitalRead(pinSW);   // check button
-  // if (reading != lastPinSWstate){     // is it different from before?
-    // lastDebounceTime = millis();    // set time
-  // }
-  // if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
-    // if (reading != pinSWstate){     // if the button state has changed
-      // pinSWstate = reading;
-      // if (!pinSWstate){
-        // rotary_function +=1;
-        // if (rotary_function > 2){
-          // rotary_function = 0;
-        // }
-      // }
-    // }
-  // }
-  // lastPinSWstate = reading;
+  int reading = digitalRead(pinSW);   // check button
+  if (reading != lastPinSWstate){     // is it different from before?
+    lastDebounceTime = millis();    // set time
+  }
+  if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
+    if (reading != pinSWstate){     // if the button state has changed
+      pinSWstate = reading;
+      if (!pinSWstate){
+        rotary_function +=1;
+        if (rotary_function > 2){
+          rotary_function = 0;
+        }
+      }
+    }
+  }
+  lastPinSWstate = reading;
   
-  // if (!(digitalRead(pinSW))){
-    // rotary_function += 1;
-    // if (rotary_function > 3){
-      // rotary_function = 0;
-    // }
-    
-    // Serial.print("Button Function: ");
-    // Serial.println(rotary_function);
-  // }
-  debouncer.update();
-  int value = debouncer.read();
-  if ( value == LOW ) {
+  if (!(digitalRead(pinSW))){
     rotary_function += 1;
     if (rotary_function > 3){
       rotary_function = 0;
     }
     
     Serial.print("Button Function: ");
-    Serial.println(rotary_function);	  
+    Serial.println(rotary_function);
   }
   aVal = digitalRead(pinA);   // Read pinA
   if (aVal != pinALast){      // If pinA has changed, update things

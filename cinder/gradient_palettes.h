@@ -1562,8 +1562,22 @@ DEFINE_GRADIENT_PALETTE(cloudcolors_gp ) {
 	207, 200, 200, 200,
 	223, 173, 216, 230,
 	239, 135, 206, 235,
-	255, 0, 191, 255
-	};
+	255, 0, 191, 255};
+
+// Gradient palette "cequal_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/imagej/tn/cequal.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 1860 bytes of program space.
+DEFINE_GRADIENT_PALETTE(cequal_gp) {
+	0, 1, 1, 1,
+		36, 1, 3, 1,
+		76, 1, 41, 123,
+		112, 59, 1, 252,
+		127, 117, 1, 180,
+		172, 239, 81, 1,
+		195, 252, 180, 1,
+		222, 252, 250, 147,
+		255, 252, 252, 252};
 	
 //const TProgmemPalette16 cloudcolors_p FL_PROGMEM =
 //{
@@ -1778,7 +1792,8 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
 //  rainbowstripecolors_p,
 //  heatcolors_p,
   rainbow_gp,
-  cloudcolors_gp 
+  cloudcolors_gp,
+  cequal_gp
   };
 
 

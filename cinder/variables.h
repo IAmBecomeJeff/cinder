@@ -52,7 +52,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 84;		// maximum number of modes
+uint8_t max_mode    = 85;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -119,4 +119,16 @@ int rotary_function = 0;
 int palette_index;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 50;
+<<<<<<< HEAD
+
+// Heartbeat variables
+uint8_t bloodHue = 96;  // Blood color [hue from 0-255]
+uint8_t bloodSat = 255;  // Blood staturation [0-255]
+int flowDirection = -1;   // Use either 1 or -1 to set flow direction
+uint16_t cycleLength = 1500;  // Lover values = continuous flow, higher values = distinct pulses.
+uint16_t pulseLength = 150;  // How long the pulse takes to fade out.  Higher value is longer.
+uint16_t pulseOffset = 200;  // Delay before second pulse.  Higher value is more delay.
+uint8_t baseBrightness = 10;  // Brightness of LEDs when not pulsing. Set to 0 for off.
+=======
 Bounce debouncer = Bounce();
+>>>>>>> 928060c4df764b6321bedcf8021938834c0034e8
