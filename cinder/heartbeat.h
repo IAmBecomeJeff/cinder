@@ -15,7 +15,26 @@
 //   HSV and provided all the variables to play with up above.
 //   -Marc
 
-void heartBeat() {
+uint8_t pulseWave8(uint32_t ms, uint16_t cycleLength, uint16_t pulseLength) {
+  uint16_t T = ms % cycleLength;
+  if (T > pulseLength) return baseBrightness;
+  uint16_t halfPulse = pulseLength / 2;
+  if (T <= halfPulse) {
+    return (T * 255) / halfPulse;  //first half = going up
+  }
+  else {
+    return((pulseLength - T) * 255) / halfPulse;  //second half = going down
+  }
+}
+
+int sumPulse(int time_shift) {
+  //time_shift = 0;  //Uncomment to heart beat/pulse all LEDs together
+  int pulse1 = pulseWave8(millis() + time_shift, cycleLength, pulseLength);
+  int pulse2 = pulseWave8(millis() + time_shift + pulseOffset, cycleLength, pulseLength);
+  return qadd8(pulse1, pulse2);  // Add pulses together without overflow
+}
+
+void heartbeat() {
 	if (this_delay == 0) { flowDirection = -1; }
 	else { flowDirection = 1; }
 	for (int i = 0; i < STRIP_LENGTH; i++) {
@@ -25,24 +44,9 @@ void heartBeat() {
 	}
 }
 
-int sumPulse(int time_shift) {
-	//time_shift = 0;  //Uncomment to heart beat/pulse all LEDs together
-	int pulse1 = pulseWave8(millis() + time_shift, cycleLength, pulseLength);
-	int pulse2 = pulseWave8(millis() + time_shift + pulseOffset, cycleLength, pulseLength);
-	return qadd8(pulse1, pulse2);  // Add pulses together without overflow
-}
 
-uint8_t pulseWave8(uint32_t ms, uint16_t cycleLength, uint16_t pulseLength) {
-	uint16_t T = ms % cycleLength;
-	if (T > pulseLength) return baseBrightness;
-	uint16_t halfPulse = pulseLength / 2;
-	if (T <= halfPulse) {
-		return (T * 255) / halfPulse;  //first half = going up
-	}
-	else {
-		return((pulseLength - T) * 255) / halfPulse;  //second half = going down
-	}
-}
+
+
 //End_heart_beat_functions
 //---------------------------------------------------------------
 

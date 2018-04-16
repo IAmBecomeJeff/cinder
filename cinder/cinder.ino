@@ -584,7 +584,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 	case 79:
 		if(mc) {rev_limit = 50; this_hue = 96; this_sat = 255; this_dir =1; this_delay = 10;}
 		revolutions();
-		break
+		break;
 	
 	// 80 - revolutions with pallette	
 	case 80:
@@ -610,14 +610,14 @@ void strobe_mode(uint8_t newMode, bool mc){
 		spiral_sin_sub();
 		break;
 
-	// 84 - spiral sin 2
-	case 84:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
-		spiral_sin_con();
-		break;
+//	// 84 - spiral sin 2
+//	case 84:
+//		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
+//		spiral_sin_con();
+//		break;
 
-	// 85 - heartbeat
-	case 85:
+	// 84 - heartbeat
+	case 84:
 		if (mc) { bloodHue = 96; bloodSat = 255; this_dir = 0; cycleLength = 1500; pulseLength = 150; pulseOffset = 200; baseBrightness = 10; this_delay = 20; }
 		heartbeat();
 		break;

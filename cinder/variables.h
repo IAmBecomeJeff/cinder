@@ -119,7 +119,7 @@ int rotary_function = 0;
 int palette_index;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 50;
-<<<<<<< HEAD
+
 
 // Heartbeat variables
 uint8_t bloodHue = 96;  // Blood color [hue from 0-255]
@@ -129,6 +129,9 @@ uint16_t cycleLength = 1500;  // Lover values = continuous flow, higher values =
 uint16_t pulseLength = 150;  // How long the pulse takes to fade out.  Higher value is longer.
 uint16_t pulseOffset = 200;  // Delay before second pulse.  Higher value is more delay.
 uint8_t baseBrightness = 10;  // Brightness of LEDs when not pulsing. Set to 0 for off.
-=======
+
 Bounce debouncer = Bounce();
->>>>>>> 928060c4df764b6321bedcf8021938834c0034e8
+
+int spiral_start;
+int spiral_inc;
+int spiral_width;

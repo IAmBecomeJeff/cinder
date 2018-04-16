@@ -57,7 +57,7 @@ void spiral_sin() {
 	start_index += this_inc;
 	this_index = start_index;
 	for (int k = 0; k < NUM_LEDS; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
-		for (int r = 0; j < 4; r++) {
+		for (int r = 0; r < 4; r++) {
 			int spiral_bri = qsubd(scale8(cubicwave8((k*all_freq) + r*64), 120),60);
 			leds[ringArray[k][r]] = ColorFromPalette(current_palette, this_index + k * this_inc, spiral_bri, current_blending);
 		}
@@ -69,8 +69,8 @@ void spiral_sin_sub() {
 	start_index += this_inc;
 	this_index = start_index;
 	for (int k = 0; k < NUM_LEDS; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
-		for (int r = 0; j < 4; r++) {
-			int spiral_bri = qsubd(scale8(cubicwave8((k*all_freq) + r * 64), 120) - 60), 0);
+		for (int r = 0; r < 4; r++) {
+			int spiral_bri = qsubd(scale8(cubicwave8((k*all_freq) + r * 64), 120) - 60, 0);
 			leds[ringArray[k][r]] = ColorFromPalette(current_palette, this_index + k * this_inc, spiral_bri, current_blending);
 		}
 		this_index += this_rot;
