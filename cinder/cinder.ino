@@ -6,7 +6,7 @@ void setup() {
   Serial.begin(SERIAL_BAUDRATE); 
   Serial.setTimeout(SERIAL_TIMEOUT);
   
-  delay(1000);  
+  delay(2000);  
 
   // Set up LEDS
 	LEDS.setBrightness(max_bright);
@@ -610,14 +610,14 @@ void strobe_mode(uint8_t newMode, bool mc){
 		spiral_sin_sub();
 		break;
 
-//	// 84 - spiral sin 2
-//	case 84:
-//		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
-//		spiral_sin_con();
-//		break;
-
-	// 84 - heartbeat
+	// 84 - spiral sin 2
 	case 84:
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
+		spiral_sin();
+		break;
+
+	// 85 - heartbeat
+	case 85:
 		if (mc) { bloodHue = 96; bloodSat = 255; this_dir = 0; cycleLength = 1500; pulseLength = 150; pulseOffset = 200; baseBrightness = 10; this_delay = 20; }
 		heartbeat();
 		break;

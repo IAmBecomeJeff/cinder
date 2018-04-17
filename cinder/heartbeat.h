@@ -35,10 +35,10 @@ int sumPulse(int time_shift) {
 }
 
 void heartbeat() {
-	if (this_delay == 0) { flowDirection = -1; }
+	if (this_dir == 0) { flowDirection = -1; }
 	else { flowDirection = 1; }
 	for (int i = 0; i < STRIP_LENGTH; i++) {
-		uint8_t bloodVal = sumPulse((5 / STRIP_LENGTH / 2) + (STRIP_LENGTH / 2) * i * this_dir);
+		uint8_t bloodVal = sumPulse((5 / STRIP_LENGTH / 2) + (STRIP_LENGTH / 2) * i * flowDirection);
 		ringCHSV(i, bloodHue, bloodSat, bloodVal);
 		//leds[i] = CHSV(bloodHue, bloodSat, bloodVal);
 	}
