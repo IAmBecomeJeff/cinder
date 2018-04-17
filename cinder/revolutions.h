@@ -25,7 +25,10 @@ void revolutions(){
 		}
 	}
 	rev_count++;
+	Serial.print("Rev count: ");
+	Serial.println(rev_count);
 	if(rev_count > rev_limit){
+		Serial.print("Reset rev count");
 		rev_count = 0;
 	}
 }
@@ -62,7 +65,10 @@ void revolutions_pal(){
 		}
 	}
 	rev_count++;
+	Serial.print("Rev count: ");
+	Serial.println(rev_count);
 	if(rev_count > rev_limit){
+		Serial.print("Reset rev count");
 		rev_count = 0;
 	}
 }
