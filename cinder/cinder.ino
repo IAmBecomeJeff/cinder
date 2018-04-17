@@ -9,7 +9,7 @@ void setup() {
   delay(2000);  
 
   // Set up LEDS
-	LEDS.setBrightness(max_bright);
+  LEDS.setBrightness(max_bright);
 
   // -- Single strip of 576 LEDS set for development testing ------------------------------- //
   
@@ -45,6 +45,8 @@ void setup() {
   pinMode(pinB,INPUT);
   pinMode(pinSW,INPUT_PULLUP); // or pinMode(pinSW,INPUT); if I use the 10k resistor
   pinALast = digitalRead(pinA);
+  debouncer.attach(pinSW);
+  debouncer.interval(5);
   
   // Init rings
   for (uint8_t i=0;i<144;i++){
@@ -771,24 +773,26 @@ void readkeyboard() {
 }
 
 void checkDial() {
-  int reading = digitalRead(pinSW);   // check button
-  if (reading != lastPinSWstate){     // is it different from before?
-    lastDebounceTime = millis();    // set time
-  }
-  if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
-    if (reading != pinSWstate){     // if the button state has changed
-      pinSWstate = reading;
-      if (!pinSWstate){
-        rotary_function +=1;
-        if (rotary_function > 2){
-          rotary_function = 0;
-        }
-      }
-    }
-  }
-  lastPinSWstate = reading;
-  
-  if (!(digitalRead(pinSW))){
+  //int reading = digitalRead(pinSW);   // check button
+  //if (reading != lastPinSWstate){     // is it different from before?
+  //  lastDebounceTime = millis();    // set time
+  //}
+  //if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
+  //  if (reading != pinSWstate){     // if the button state has changed
+  //    pinSWstate = reading;
+  //    if (!pinSWstate){
+  //      rotary_function +=1;
+  //      if (rotary_function > 2){
+  //        rotary_function = 0;
+  //      }
+  //    }
+  //  }
+  //}
+  //lastPinSWstate = reading;
+	debouncer.update();
+	pinSWstate = debouncer.read();
+
+  if (!pinSWstate){
     rotary_function += 1;
     if (rotary_function > 3){
       rotary_function = 0;
@@ -797,6 +801,8 @@ void checkDial() {
     Serial.print("Button Function: ");
     Serial.println(rotary_function);
   }
+
+
   aVal = digitalRead(pinA);   // Read pinA
   if (aVal != pinALast){      // If pinA has changed, update things
     rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
