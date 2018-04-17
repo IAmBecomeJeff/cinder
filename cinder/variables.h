@@ -110,15 +110,15 @@ int rev_limit = 50;
 int pinA = 21;
 int pinB = 22;
 int pinSW = 23;
-//int lastPinSWstate = 1;
+int lastPinSWstate = 1;
 int pinSWstate;
 int pinALast;
 int aVal;
 int rotateCount = 0;
 int rotary_function = 0;
 int palette_index;
-//unsigned long lastDebounceTime = 0;
-//unsigned long debounceDelay = 50;
+unsigned long lastDebounceTime = 0;
+unsigned long debounceDelay = 50;
 
 
 // Heartbeat variables

@@ -46,7 +46,7 @@ void setup() {
   pinMode(pinSW,INPUT_PULLUP); // or pinMode(pinSW,INPUT); if I use the 10k resistor
   pinALast = digitalRead(pinA);
   debouncer.attach(pinSW);
-  debouncer.interval(5);
+  debouncer.interval(100);
   
   // Init rings
   for (uint8_t i=0;i<144;i++){
@@ -151,7 +151,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 7 - juggle mode
     case  7: 
-      if(mc) { this_delay = 10; numdots = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+      if(mc) { this_delay = 10; numdots = 20; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
       juggle_pal(); 
       break;
 
@@ -499,7 +499,7 @@ void strobe_mode(uint8_t newMode, bool mc){
     
 	// 65 - juggle mode ring
 	case 65: 
-      if(mc) { this_delay = 10; numdots_ring = 2; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+      if(mc) { this_delay = 10; numdots_ring = 12; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
       juggle_pal_ring(); 
       break;	  
 	  
@@ -584,13 +584,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 		
 	// 79 - revolutions
 	case 79:
-		if(mc) {rev_limit = 50; this_hue = 96; this_sat = 255; this_dir =1; this_delay = 10;}
+		if(mc) {rev_limit = 10; this_hue = 96; this_sat = 255; this_dir =1; this_delay = 10;}
 		revolutions();
 		break;
 	
 	// 80 - revolutions with pallette	
 	case 80:
-		if(mc) {rev_limit = 50; start_index = 0; this_inc = 1; this_delay = 10; this_dir = 1; }
+		if(mc) {rev_limit = 10; start_index = 0; this_inc = 1; this_delay = 10; this_dir = 1; }
 		revolutions_pal();
 		break;
 	
@@ -608,14 +608,14 @@ void strobe_mode(uint8_t newMode, bool mc){
 	
 	// 83 - spiral sin 1
 	case 83:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 6; this_delay = 15; }
-		spiral_sin_sub();
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 10; this_phase = 0; this_speed = 2; }
+		spiral_sin();
 		break;
 
 	// 84 - spiral sin 2
 	case 84:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 15; }
-		spiral_sin();
+		if (mc) { start_index = 0; this_inc = 4; this_rot = 1; all_freq = 16; this_delay = 10; this_phase = 0; this_speed = 2;}
+		spiral_sin_sub();
 		break;
 
 	// 85 - heartbeat
@@ -773,24 +773,12 @@ void readkeyboard() {
 }
 
 void checkDial() {
-  //int reading = digitalRead(pinSW);   // check button
-  //if (reading != lastPinSWstate){     // is it different from before?
-  //  lastDebounceTime = millis();    // set time
-  //}
-  //if ((millis() - lastDebounceTime) > debounceDelay) {  // is current time 50ms since the button was pressed?
-  //  if (reading != pinSWstate){     // if the button state has changed
-  //    pinSWstate = reading;
-  //    if (!pinSWstate){
-  //      rotary_function +=1;
-  //      if (rotary_function > 2){
-  //        rotary_function = 0;
-  //      }
-  //    }
-  //  }
-  //}
-  //lastPinSWstate = reading;
-	debouncer.update();
-	pinSWstate = debouncer.read();
+  debouncer.update();
+  if ( debouncer.fell() ){
+    pinSWstate = 0;
+  } else {
+    pinSWstate =1 ;
+  }
 
   if (!pinSWstate){
     rotary_function += 1;
@@ -846,9 +834,13 @@ void checkDial() {
           if (digitalRead(pinB) != aVal){
             this_delay ++;
           } else {
+            if (this_delay == 1){
+              this_delay = 1;
+            } else {
             this_delay --;
+            }
           }
-          constrain(this_delay, 0, 255);
+          constrain(this_delay, 1, 255);
           Serial.print("Delay: ");
           Serial.println(this_delay);
           break;
