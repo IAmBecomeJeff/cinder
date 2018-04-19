@@ -1,5 +1,5 @@
 #ifndef REVOLUTIONS_H
-#define REVOLUTION_H
+#define REVOLUTIONS_H
 
 //  revolutions()
 //  this_dir

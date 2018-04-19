@@ -792,13 +792,13 @@ void checkDial() {
 
 
   aVal = digitalRead(pinA);   // Read pinA
-  if (aVal != pinALast){      // If pinA has changed, update things
-    rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
-    if (rotateCount){    // Need to let it change twice
+  if (aVal != pinALast)&&(aVal==LOW){      // If pinA has changed, update things.   Added the &&
+    //rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
+    //if (rotateCount){    // Need to let it change twice
       switch (rotary_function) {
         
         case 0:
-          if (digitalRead(pinB) != aVal){   // Means pin A changed first, we're rotating CW
+          if (digitalRead(pinB) == LOW){ //!= aVal){   // Means pin A changed first, we're rotating CW
             led_mode ++;      // Move to next pattern
           } else {            // Means pin B changed first, we're moving CCW
             led_mode--;       // Move to previous pattern
@@ -814,7 +814,7 @@ void checkDial() {
           
         case 1:
           updatePaletteIndex(target_palette);
-          if (digitalRead(pinB) != aVal){
+          if (digitalRead(pinB) == LOW){ //!= aVal){
             palette_index++;
           } else {
             palette_index--;
@@ -831,7 +831,7 @@ void checkDial() {
           break;
           
         case 2:
-          if (digitalRead(pinB) != aVal){
+          if (digitalRead(pinB) == LOW){ //!= aVal){
             this_delay ++;
           } else {
             if (this_delay == 1){
@@ -846,7 +846,7 @@ void checkDial() {
           break;
           
         case 3:
-          if (digitalRead(pinB) != aVal){
+          if (digitalRead(pinB) == LOW){ //!= aVal){
             this_bright ++;
           } else {
             this_bright --;
@@ -858,7 +858,7 @@ void checkDial() {
           break;
           
       }
-    }
-    pinALast = aVal;    
+    //}    
   }
+  pinALast = aVal;
 }	
