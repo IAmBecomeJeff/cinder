@@ -632,7 +632,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	case 87:
 	// 87 - meteorRain
-		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = True; this_delay = 30; }
+		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = True; meteor_index = 0;  this_delay = 30; }
 		meteorRain();
 		break;
 
