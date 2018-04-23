@@ -82,11 +82,17 @@ uint8_t wave_brightness = 255;    // Brightness of the waves/bars
 uint8_t xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
 int ringArray[144][4];      	  // Array for rings
-uint8_t x_prev;					  // Variables for gravity
+
+int x_prev;						  // Variables for gravity
 uint8_t x0;						  // Variables for gravity
-int accel;					  // Variables for gravity
+int x_grav;	  					  // Variables for gravity
+int accel;						  // Variables for gravity
 uint8_t v0;					 	  // Variables for gravity
-uint8_t pause;						// Variable for gravity
+uint8_t pause;					  // Variables for gravity
+uint8_t grav_count;				  // Variables for gravity
+uint8_t timer;					  // Variables for gravity
+bool atBottom = False;					  // Variables for gravity
+
 uint8_t numdots_ring;   			// dots for juggle_pal_ring
 uint8_t cooling = 55;				// Cooling variable for fire
 uint8_t cooling1;
