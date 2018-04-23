@@ -627,6 +627,15 @@ void strobe_mode(uint8_t newMode, bool mc){
 	// 86 - gravity
 	case 86:
 		if (mc) { x0 = 143; v0 = 0; accel = -9.8; this_delay = 50; pause = 20; }
+		gravity();
+		break;
+
+	case 87:
+	// 87 - meteorRain
+		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = True; this_delay = 30; }
+		meteorRain();
+		break;
+
     // if more modes added, must update max_modes in variables
   }
 }
