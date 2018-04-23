@@ -632,7 +632,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	case 87:
 	// 87 - meteorRain
-		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 30; }
+		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 20; meteorTrailDecay = 128; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 10; }
 		meteorRain();
 		break;
 
@@ -804,14 +804,14 @@ void checkDial() {
 
 
   aVal = digitalRead(pinA);   // Read pinA
-  if ((aVal != pinALast)&&(aVal==LOW)){      // If pinA has changed, update things.   Added the &&
-    //rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
-    //if (rotateCount){    // Need to let it change twice
+  if ((aVal != pinALast)){//&&(aVal==LOW)){      // If pinA has changed, update things.   Added the &&
+    rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
+    if (rotateCount){    // Need to let it change twice
       switch (rotary_function) {
         
         case 0:
-          if (digitalRead(pinB) == LOW){ //!= aVal){   // Means pin A changed first, we're rotating CW
-            led_mode ++;      // Move to next pattern
+          if (digitalRead(pinB) != aVal){   // Means pin A changed first, we're rotating CW
+            led_mode++;      // Move to next pattern
           } else {            // Means pin B changed first, we're moving CCW
             led_mode--;       // Move to previous pattern
           }
@@ -826,7 +826,7 @@ void checkDial() {
           
         case 1:
           updatePaletteIndex(target_palette);
-          if (digitalRead(pinB) == LOW){ //!= aVal){
+          if (digitalRead(pinB) != aVal){
             palette_index++;
           } else {
             palette_index--;
@@ -843,7 +843,7 @@ void checkDial() {
           break;
           
         case 2:
-          if (digitalRead(pinB) == LOW){ //!= aVal){
+          if (digitalRead(pinB) != aVal){
             this_delay ++;
           } else {
             if (this_delay == 1){
@@ -859,9 +859,9 @@ void checkDial() {
           
         case 3:
           if (digitalRead(pinB) == LOW){ //!= aVal){
-            this_bright ++;
+            this_bright++;
           } else {
-            this_bright --;
+            this_bright--;
           }
           constrain(this_bright,0,max_bright);
           LEDS.setBrightness(this_bright);
@@ -870,7 +870,7 @@ void checkDial() {
           break;
           
       }
-    //}    
+    }    
   }
   pinALast = aVal;
 }	

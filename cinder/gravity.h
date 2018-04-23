@@ -18,13 +18,22 @@
 //uint8_t count = 0;
 
 void gravity() {   
-
+  Serial.print("timer: ");
+  Serial.println(timer);
   if (timer == 0) {x_grav = x0;}
 
+  Serial.print("atBottom: ");
+  Serial.println(atBottom);
   if (!atBottom) {
 	  x_prev = x_grav;
 	  x_grav = x0 + v0 * timer + 0.5 * accel * timer * timer;
-	  timer += this_delay / 1000;
+	  timer += this_delay / 100;
+    Serial.print("x_prev: "); 
+    Serial.println(x_prev);
+    Serial.print("x_grav: ");
+    Serial.println(x_grav);
+    Serial.print("timer: ");
+    Serial.println(timer);
   } else {
 	  grav_count++;
   }
