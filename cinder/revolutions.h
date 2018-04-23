@@ -52,15 +52,15 @@ void revolutions_pal(){
 	    this_index = start_index;
 			
 		for (int i = 0; i<STRIP_LENGTH; i++){
-			leds[ringArray[i][rev_count]] = ColorFromPalette(current_palette,this_index + i*this_inc, this_bright, current_blending);
+			leds[ringArray[i][col_count]] = ColorFromPalette(current_palette,this_index + i*this_inc, this_bright, current_blending);
 		}
 		if (this_dir){
-			rev_count++;
+			col_count++;
 		}else{
-			if (rev_count==0){
-				rev_count=3;
+			if (col_count==0){
+				col_count=3;
 			}else{
-				rev_count--;
+				col_count--;
 			}
 		}
 	}
