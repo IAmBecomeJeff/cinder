@@ -11,7 +11,7 @@ void meteorRain() {
 
 			for (int j = 0; j < meteorSize; j++) {
 				if ((meteor_index - j < STRIP_LENGTH) && (meteor_index - j >= 0)) {
-					ringCRGB(i - j, r, g, b);
+					ringCRGB(meteor_index - j, meteor_r, meteor_g, meteor_b);
 				}
 			}
 			meteor_index++;
@@ -20,16 +20,6 @@ void meteorRain() {
 			meteor_index = 0;
 		}
 }
-
-
-
-
-
-
-
-
-
-
 
 
 #endif

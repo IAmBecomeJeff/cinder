@@ -29,18 +29,18 @@ void gravity() {
 	  grav_count++;
   }
 
-  if (x_grav <= 0) {atBottom = True;}
+  if (x_grav <= 0) {atBottom = 1;}
 
   if (grav_count >= pause) { // Once we reach the time for pause, reset
 	  timer = 0;
 	  grav_count = 0;
-	  atBottom = False;
+	  atBottom = 0;
   }
 
   palette_index = x_grav * 255 / 143;
   
   ringCRGB(x_prev,0,0,0); // maybe use fadeToBlackBy?
-  ringPalette(x_grav, current_palette, paletteindex, this_bright, current_blending);
+  ringPalette(x_grav, current_palette, palette_index, this_bright, current_blending);
 
 } // gravity()
 

@@ -91,7 +91,7 @@ uint8_t v0;					 	  // Variables for gravity
 uint8_t pause;					  // Variables for gravity
 uint8_t grav_count;				  // Variables for gravity
 uint8_t timer;					  // Variables for gravity
-bool atBottom = False;			  // Variables for gravity
+bool atBottom = 0;			  // Variables for gravity
 
 byte meteor_r;
 byte meteor_g;

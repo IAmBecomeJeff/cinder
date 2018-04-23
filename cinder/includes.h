@@ -27,6 +27,7 @@
 #include "juggle_pal_ring.h"
 #include "matrix_pal.h"
 #include "matrix_pal_ring.h"
+#include "meteorRain.h"
 #include "noise16_pal.h"
 #include "noise8_pal.h"
 #include "noise8_pal_ring.h"

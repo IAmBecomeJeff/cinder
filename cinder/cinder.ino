@@ -632,7 +632,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	case 87:
 	// 87 - meteorRain
-		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = True; meteor_index = 0;  this_delay = 30; }
+		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 10; meteorTrailDecay = 64; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 30; }
 		meteorRain();
 		break;
 
@@ -804,7 +804,7 @@ void checkDial() {
 
 
   aVal = digitalRead(pinA);   // Read pinA
-  if (aVal != pinALast)&&(aVal==LOW){      // If pinA has changed, update things.   Added the &&
+  if ((aVal != pinALast)&&(aVal==LOW)){      // If pinA has changed, update things.   Added the &&
     //rotateCount = !rotateCount;   // If at 0, change to 1... if at 1 change to 0 and don't update.
     //if (rotateCount){    // Need to let it change twice
       switch (rotary_function) {
