@@ -624,10 +624,10 @@ void strobe_mode(uint8_t newMode, bool mc){
 		heartbeat();
 		break;
 
-	// 86 - gravity
+	// 86 - gravballs
 	case 86:
-		if (mc) { x0 = 143; v0 = 0; accel = -9.8; this_delay = 50; pause = 20; }
-		gravity();
+		if (mc) { gravity = -15; timeinc = 2; this_delay = 10; }
+		gravballs();
 		break;
 
 	case 87:
@@ -647,6 +647,13 @@ void strobe_mode(uint8_t newMode, bool mc){
 		if (mc) { twinkle_speed = 4; twinkle_density = 5; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 10; }
 		twinkle();
 		break;
+
+	case 90:
+	// 90 - plasma
+		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+		plasma();
+		break;
+
 
     // if more modes added, must update max_modes in variables
   }

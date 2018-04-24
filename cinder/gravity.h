@@ -17,6 +17,8 @@
 //uint8_t paletteindex;
 //uint8_t count = 0;
 
+
+
 void gravity() {   
   Serial.print("timer: ");
   Serial.println(timer);
@@ -52,6 +54,26 @@ void gravity() {
   ringPalette(x_grav, current_palette, palette_index, this_bright, current_blending);
 
 } // gravity()
+
+
+
+void gravball() {
+	fill_solid(leds, NUM_LEDS, CRGB(0, 0, 0)); // fadeToBlackBy would be good here
+	for (int k = 0; k < numballs; k++) {
+		myballs[k].velocity = myballs[k].velocityold + gravity * timeinc;
+		myballs[k].distance = myballs[k].distanceold + myballs[k].velocity * timeinc;
+
+		int i = map(myballs[k].distance, 0, 32767, 0, STRIP_LENGTH);
+
+		myballs[k].velocityold = myballs[k].velocity;
+		myballs[k].distanceold = myballs[k].distance;
+
+		if (i <= 1 && abs(myballs[k].velocityold) < 700){ myballs[k].velocityold = 0; myballs[k].distanceold = random(0,8000) + 26000; myballs[k].ballhue = random(0,255); } // Reset
+		if (i <= 1 && myballs[k].velocityold < 0) { myballs[k].velocityold = -myballs[k].velocityold; } // Bounce
+		ringCHSV(i, myballs[k].ballhue, this_sat, this_bright);
+	}
+} // gravball()
+
 
 #endif
 

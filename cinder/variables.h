@@ -52,7 +52,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 89;		// maximum number of modes
+uint8_t max_mode    = 90;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -92,7 +92,28 @@ uint8_t pause;					  // Variables for gravity
 uint8_t grav_count;				  // Variables for gravity
 uint8_t timer;					  // Variables for gravity
 bool atBottom = 0;			  // Variables for gravity
+int gravity = -15;
+int timeinc = 2;
+int numballs = 6;
 
+typedef struct {
+	int distanceold;
+	int distance;
+	int velocityold;
+	int velocity;
+	int ballhue;
+} balls;
+
+balls myballs[numballs];
+
+//Variables for plasma
+int plasma_phase1;
+int plasma_phase2;
+int plasmaIndex;
+int plasmaBright;
+
+
+//Variables for meteor
 byte meteor_r;
 byte meteor_g;
 byte meteor_b;
