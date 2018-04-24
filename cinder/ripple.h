@@ -46,4 +46,35 @@ void ripple() {
 	}
 } // ripple()
 
+void ripple2() {
+
+	fadeToBlackBy(leds, NUM_LEDS, fadeval);                             // 8 bit, 1 = slow, 255 = fast
+
+	switch (rip_step) {
+
+	case -1:                                                          // Initialize ripple variables.
+		rip_center = random(STRIP_LENGTH);
+		rip_color = random8();
+		rip_step = 0;
+		break;
+
+	case 0:
+		leds[rip_center] = ColorFromPalette(currentPalette, rip_color, myfade, currentBlending);
+
+		rip_step++;
+		break;
+
+	case rip_maxSteps:                                                    // At the end of the ripples.
+		rip_step = -1;
+		break;
+
+	default:                                                          // Middle of the ripples.
+		ringPaletteAdd(rip_center + rip_step + STRIP_LENGTH) % STRIP_LENGTH, currentPalette, rip_color, myfade / rip_step * 2, currentBlending);       // Simple wrap from Marc Miller
+		ringPaletteAdd(rip_center - rip_step + STRIP_LENGTH) % STRIP_LENGTH, currentPalette, rip_color, myfade / rip_step * 2, currentBlending);
+		rip_step++;                                                         // Next step.
+		break;
+	} // switch step
+
+} // ripple2()
+
 #endif

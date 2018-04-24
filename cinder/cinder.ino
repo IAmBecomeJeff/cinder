@@ -638,7 +638,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	case 88:
 	// 88 - ripple
-		if (mc) { this_delay = 50; maxSteps = 16; fadeRate = 0.8; }
+		if (mc) { this_delay = 50; fadeRate = 0.8; }
 		ripple();
 		break;
 
@@ -654,6 +654,11 @@ void strobe_mode(uint8_t newMode, bool mc){
 		plasma();
 		break;
 
+	case 91:
+	// 91 - ripple2
+		if (mc) { myfade = 255; fadeval = 128; this_delay = 10; }
+		ripple2();
+		break;
 
     // if more modes added, must update max_modes in variables
   }

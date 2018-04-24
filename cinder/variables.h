@@ -52,7 +52,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 90;		// maximum number of modes
+uint8_t max_mode    = 91;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -126,11 +126,15 @@ int meteor_index;
 int rip_color;
 int rip_center = 0;
 int rip_step = -1;
-int rip_maxSteps = 16;
+#define rip_maxSteps = 16;
 float rip_fadeRate = 0.8;
 //Ripple background color
 uint32_t rip_currentBg = random(256);
 uint32_t rip_nextBg = currentBg;
+uint8_t myfade = 255;
+uint8_t fadeval = 128;
+//uint8_t bgcol = 0;
+
 
 
 //Twinkle Variables
