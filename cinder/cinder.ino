@@ -636,6 +636,18 @@ void strobe_mode(uint8_t newMode, bool mc){
 		meteorRain();
 		break;
 
+	case 88:
+	// 88 - ripple
+		if (mc) { this_delay = 50; maxSteps = 16; fadeRate = 0.8; }
+		ripple();
+		break;
+
+	case 89:
+	// 89 - twinkle
+		if (mc) { twinkle_speed = 4; twinkle_density = 5; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 10; }
+		twinkle();
+		break;
+
     // if more modes added, must update max_modes in variables
   }
 }

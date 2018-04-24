@@ -52,7 +52,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 87;		// maximum number of modes
+uint8_t max_mode    = 89;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -100,6 +100,27 @@ byte meteorSize;
 byte meteorTrailDecay;
 bool meteorRandomDecay;
 int meteor_index;
+
+//Variables for ripple 
+int rip_color;
+int rip_center = 0;
+int rip_step = -1;
+int rip_maxSteps = 16;
+float rip_fadeRate = 0.8;
+//Ripple background color
+uint32_t rip_currentBg = random(256);
+uint32_t rip_nextBg = currentBg;
+
+
+//Twinkle Variables
+byte twinkle_speed = 4; // 0 - 8
+byte twinkle_density = 5;	// 0 - 8
+CRGB twinkle_bg = CRGB::Black; // CRGB(CRGB::FairyLight).nscale8_video(16);
+byte auto_select_background_color = 0;
+byte cool_like_incandescent = 1;
+uint8_t bglight;
+uint8_t backgroundBrightness;
+CRGB bg;
 
 uint8_t numdots_ring;   			// dots for juggle_pal_ring
 uint8_t cooling = 55;				// Cooling variable for fire
