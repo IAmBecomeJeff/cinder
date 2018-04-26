@@ -48,13 +48,36 @@ void setup() {
   debouncer.attach(pinSW);
   debouncer.interval(100);
   
-  // Init rings
+  // Init ring array
   for (uint8_t i=0;i<144;i++){
 	ringArray[i][0]=i;
 	ringArray[i][1]=287-i;
 	ringArray[i][2]=288+i;
 	ringArray[i][3]=575-i;
   }
+	
+  // Init spiral array
+
+	for(int i=0; i<STRIP_LENGTH; i+=4*w){
+		for(int j=0; j<w; j++){
+			spiralArray[0][i+j]     = i + j;
+			spiralArray[0][i+j+w]   = 287 - w - i - j;
+			spiralArray[0][i+j+2*w] = 288 + 2*w + i + j;
+			spiralArray[0][i+j+3*w] = 575 - 3*w - i - j;		
+			spiralArray[1][i+j]     = 287 - i - j;
+			spiralArray[1][i+j+w]   = 288 + w + i + j;
+			spiralArray[1][i+j+2*w] = 575 - 2*w - i - j;
+			spiralArray[1][i+j+3*w] = 3*w + i + j;		
+			spiralArray[2][i+j]     = 288 + i + j;
+			spiralArray[2][i+j+w]   = 575 - w - i - j;
+			spiralArray[2][i+j+2*w] = 2*w + i + j;
+			spiralArray[2][i+j+3*w] = 287 - 3*w - i - j;
+			spiralArray[3][i+j]     = 575 - i - j;
+			spiralArray[3][i+j+w]   = w + i + j;
+			spiralArray[3][i+j+2*w] = 287 - 2*w - i - j;
+			spiralArray[3][i+j+3*w] = 288 + 3*w + i + j;
+		}
+	}  
 	
   // Init first mode
   strobe_mode(led_mode, 1);
