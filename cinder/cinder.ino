@@ -647,9 +647,9 @@ void strobe_mode(uint8_t newMode, bool mc){
 		heartbeat();
 		break;
 
-	// 86 - gravballs
+	// 86 - gravballs // broken
 	case 86:
-		if (mc) { gravity = -15; timeinc = 2; this_delay = 10; }
+		if (mc) { grav = -15; timeinc = 2; this_delay = 10; }
 		gravballs();
 		break;
 
@@ -660,14 +660,14 @@ void strobe_mode(uint8_t newMode, bool mc){
 		break;
 
 	case 88:
-	// 88 - ripple
-		if (mc) { this_delay = 50; fadeRate = 0.8; }
+	// 88 - ripple - broken
+		if (mc) { this_delay = 50; rip_fadeRate = 0.8; }
 		ripple();
 		break;
 
 	case 89:
 	// 89 - twinkle
-		if (mc) { twinkle_speed = 4; twinkle_density = 5; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 10; }
+		if (mc) { twinkle_speed = 3; twinkle_density = 1; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
 		twinkle();
 		break;
 
@@ -679,7 +679,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	case 91:
 	// 91 - ripple2
-		if (mc) { myfade = 255; fadeval = 128; this_delay = 10; }
+		if (mc) { myfade = 255; fadeval = 128; this_delay = 25; }
 		ripple2();
 		break;
 
@@ -905,7 +905,7 @@ void checkDial() {
           break;
           
         case 3:
-          if (digitalRead(pinB) == LOW){ //!= aVal){
+          if (digitalRead(pinB) != aVal){
             this_bright++;
           } else {
             this_bright--;

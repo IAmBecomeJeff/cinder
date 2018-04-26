@@ -53,7 +53,7 @@ void twinkle() {
 		bg = current_palette[0];
 		bglight = bg.getAverageLight();
 		if (bglight > 64) {
-			bg.nscale8_video(16) 
+			bg.nscale8_video(16); 
 		} else if (bglight > 16){
 			bg.nscale8_video(64);
 		} else {
@@ -70,7 +70,7 @@ void twinkle() {
 		uint16_t myclockoffset16 = PRNG16;
 		PRNG16 = (uint16_t)(PRNG16 * 2053) + 1384;
 		uint8_t myspeedmultiplierQ5_3 = ((((PRNG16 & 0xFF) >> 4) + (PRNG16 & 0x0F)) & 0x0F) + 0x08;
-		uint32_t myclock30 = (uint32_t)((clock32 * myspeedmultplierQ5_3) >> 3) + myclockoffset16;
+		uint32_t myclock30 = (uint32_t)((clock32 * myspeedmultiplierQ5_3) >> 3) + myclockoffset16;
 		uint8_t myunique8 = PRNG16 >> 8;
 
 		CRGB c = computeOneTwinkle(myclock30, myunique8);

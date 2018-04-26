@@ -57,10 +57,10 @@ void gravity() {
 
 
 
-void gravball() {
+void gravballs() {
 	fill_solid(leds, NUM_LEDS, CRGB(0, 0, 0)); // fadeToBlackBy would be good here
 	for (int k = 0; k < numballs; k++) {
-		myballs[k].velocity = myballs[k].velocityold + gravity * timeinc;
+		myballs[k].velocity = myballs[k].velocityold + grav * timeinc;
 		myballs[k].distance = myballs[k].distanceold + myballs[k].velocity * timeinc;
 
 		int i = map(myballs[k].distance, 0, 32767, 0, STRIP_LENGTH);
@@ -72,7 +72,7 @@ void gravball() {
 		if (i <= 1 && myballs[k].velocityold < 0) { myballs[k].velocityold = -myballs[k].velocityold; } // Bounce
 		ringCHSV(i, myballs[k].ballhue, this_sat, this_bright);
 	}
-} // gravball()
+} // gravballs()
 
 
 #endif

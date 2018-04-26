@@ -24,7 +24,7 @@ void ripple_pal_ring() {
       break;
 
     case 0:
-	  ringPalette(center, currentPalette, colour, myfade, current_blending);      
+	  ringPalette(center, current_palette, colour, myfade, current_blending);      
       step ++;
       break;
 
@@ -33,8 +33,8 @@ void ripple_pal_ring() {
       break;
 
     default:                                                          // Middle of the ripples.
-      ringPaletteAdd((center + step + 144) % 144, currentPalette, colour, myfade/step*2, current_blending);
-      ringPaletteAdd((center - step + 144) % 144, currentPalette, colour, myfade/step*2, current_blending);
+      ringPaletteAdd((center + step + 144) % 144, current_palette, colour, myfade/step*2, current_blending);
+      ringPaletteAdd((center - step + 144) % 144, current_palette, colour, myfade/step*2, current_blending);
       step ++;                                                         // Next step.
       break;  
   } // switch step

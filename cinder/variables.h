@@ -94,9 +94,9 @@ uint8_t pause;					  // Variables for gravity
 uint8_t grav_count;				  // Variables for gravity
 uint8_t timer;					  // Variables for gravity
 bool atBottom = 0;			  // Variables for gravity
-int gravity = -15;
+int grav = -15;
 int timeinc = 2;
-int numballs = 6;
+const int numballs = 6;
 
 typedef struct {
 	int distanceold;
@@ -105,6 +105,7 @@ typedef struct {
 	int velocity;
 	int ballhue;
 } balls;
+
 
 balls myballs[numballs];
 
@@ -128,11 +129,11 @@ int meteor_index;
 int rip_color;
 int rip_center = 0;
 int rip_step = -1;
-#define rip_maxSteps = 16;
+#define rip_maxSteps 16
 float rip_fadeRate = 0.8;
 //Ripple background color
 uint32_t rip_currentBg = random(256);
-uint32_t rip_nextBg = currentBg;
+uint32_t rip_nextBg = rip_currentBg;
 uint8_t myfade = 255;
 uint8_t fadeval = 128;
 //uint8_t bgcol = 0;

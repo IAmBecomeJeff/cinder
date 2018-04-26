@@ -10,7 +10,7 @@ int wrap(int step) {
 void ripple() {
 	
 	if (rip_currentBg == rip_nextBg) {
-		rip_nextBG = random(256);
+		rip_nextBg = random(256);
 	} else if (rip_nextBg > rip_currentBg) {
 		rip_currentBg++;
 	} else {
@@ -35,7 +35,7 @@ void ripple() {
 			//Serial.println(pow(fadeRate, step));
 			ringCHSV(wrap(rip_center + rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
 			ringCHSV(wrap(rip_center - rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
-			if (step > 3) {
+			if (rip_step > 3) {
 				ringCHSV(wrap(rip_center + rip_step - 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
 				ringCHSV(wrap(rip_center - rip_step + 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
 			}
@@ -59,8 +59,7 @@ void ripple2() {
 		break;
 
 	case 0:
-		leds[rip_center] = ColorFromPalette(currentPalette, rip_color, myfade, currentBlending);
-
+		leds[rip_center] = ColorFromPalette(current_palette, rip_color, myfade, current_blending);
 		rip_step++;
 		break;
 
@@ -69,8 +68,8 @@ void ripple2() {
 		break;
 
 	default:                                                          // Middle of the ripples.
-		ringPaletteAdd(rip_center + rip_step + STRIP_LENGTH) % STRIP_LENGTH, currentPalette, rip_color, myfade / rip_step * 2, currentBlending);       // Simple wrap from Marc Miller
-		ringPaletteAdd(rip_center - rip_step + STRIP_LENGTH) % STRIP_LENGTH, currentPalette, rip_color, myfade / rip_step * 2, currentBlending);
+		ringPaletteAdd((rip_center + rip_step + STRIP_LENGTH) % STRIP_LENGTH, current_palette, rip_color, myfade / rip_step * 2, current_blending);       // Simple wrap from Marc Miller
+		ringPaletteAdd((rip_center - rip_step + STRIP_LENGTH) % STRIP_LENGTH, current_palette, rip_color, myfade / rip_step * 2, current_blending);
 		rip_step++;                                                         // Next step.
 		break;
 	} // switch step
