@@ -647,10 +647,10 @@ void strobe_mode(uint8_t newMode, bool mc){
 		heartbeat();
 		break;
 
-	// 86 - gravballs // broken
+	// 86 - one sin spiral
 	case 86:
-		if (mc) { grav = -15; timeinc = 2; this_delay = 10; }
-		gravballs();
+		if (mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		one_sin_spiral();
 		break;
 
 	case 87:
