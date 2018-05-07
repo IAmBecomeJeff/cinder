@@ -605,11 +605,11 @@ void strobe_mode(uint8_t newMode, bool mc){
 		ring_fill_static_palette();
 		break;
 		
-	// 79 - revolutions
-	case 79:
-		if(mc) {rev_limit = 10; this_hue = 96; this_sat = 255; this_dir =1; this_delay = 10;}
-		revolutions();
-		break;
+  // 79 - spiral palette
+  case 79:
+    if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
+    palette_spiral();
+    break;
 	
 	// 80 - revolutions with pallette	
 	case 80:
@@ -631,7 +631,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 	
 	// 83 - spiral sin 1
 	case 83:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 10; this_phase = 0; this_speed = 2; }
+		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 5; this_phase = 0; this_speed = 2; }
 		spiral_sin();
 		break;
 
@@ -649,21 +649,21 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	// 86 - one sin spiral
 	case 86:
-		if (mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
 		one_sin_spiral();
 		break;
 
 	case 87:
 	// 87 - meteorRain
-		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 20; meteorTrailDecay = 128; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 10; }
+		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 20; meteorTrailDecay = 64; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 10; }
 		meteorRain();
 		break;
 
 	case 88:
-	// 88 - ripple - broken
-		if (mc) { this_delay = 50; rip_fadeRate = 0.8; }
-		ripple();
-		break;
+  // 88 - twinkle (cuz ripple is broken)
+    if (mc) { twinkle_speed = 4; twinkle_density = 2; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
+    twinkle();
+    break;
 
 	case 89:
 	// 89 - twinkle
@@ -689,6 +689,18 @@ void strobe_mode(uint8_t newMode, bool mc){
 		plasma_spiral();
 		break;
 
+  case 93:
+    // 93 - plasma spiral 2
+    if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+    plasma_spiral2();
+    break;
+
+  // 94 - helix spiral
+  case 94:
+    if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; that_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; that_speed = 3; wave_brightness = 255; }
+    helix_spiral();
+    break;
+    
     // if more modes added, must update max_modes in variables
   }
 }

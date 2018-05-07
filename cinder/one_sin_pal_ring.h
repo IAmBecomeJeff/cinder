@@ -27,7 +27,7 @@
 void one_sin_pal_ring() { 
   start_index+=this_inc;
   this_index = start_index;
-  this_phase += this_speed;                                                                     // You can change direction and speed individually.
+  this_phase -= this_speed;                                                                     // You can change direction and speed individually.
 
   for (int k=0; k<STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
     int this_bright = qsubd(cubicwave8((k*all_freq)+this_phase), this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..

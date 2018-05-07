@@ -4,7 +4,7 @@
 void meteorRain() {
 		if (meteor_index < STRIP_LENGTH + STRIP_LENGTH) {
 			for (int j = 0; j < NUM_LEDS; j++) {
-				if ((meteorRandomDecay) || (random(10)>5)) {
+				if (meteorRandomDecay) {
 					leds[j].fadeToBlackBy(meteorTrailDecay);
 				}
 			}

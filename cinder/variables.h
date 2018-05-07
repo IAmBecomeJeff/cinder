@@ -52,7 +52,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 92;		// maximum number of modes
+uint8_t max_mode    = 94;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -66,6 +66,7 @@ uint8_t palette_change;           // 1 = similar palette, 2 = random4 palette, 3
 uint8_t start_index     = 0;      // Foreground hue to start with (sine-routines)
 uint8_t this_beat;                // Beat tracker (juggle routine)
 uint8_t this_bright     = 50;      // Standard brightness
+uint8_t that_bright     = 50;     // second brightness
 uint8_t this_cutoff     = 192;    // Cutoff value; lower = longer wave
 int     this_delay      = 0;      // Standard delay
 uint8_t this_diff       = 1;      // Standard palette index jump
@@ -75,9 +76,11 @@ uint8_t this_hue        = 0;      // Standard hue
 uint8_t this_index      = 0;      // Standard palette index
 uint8_t this_inc        = 1;      // Standard increment. Changes starting color for each pass (sine-routines)
 int     this_phase      = 0;      // Standard phase change - sines
+int     that_phase      = 0;      // second phase
 uint8_t this_rot        = 1;      // Standard hue rotation rate
 uint8_t this_sat        = 255;    // Standard saturation
 uint8_t this_speed      = 4;      // Standard speed change
+uint8_t that_speed      = 4;      // Second speed
 uint8_t wave_brightness = 255;    // Brightness of the waves/bars
 uint8_t xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
