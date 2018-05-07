@@ -683,6 +683,12 @@ void strobe_mode(uint8_t newMode, bool mc){
 		ripple2();
 		break;
 
+	case 92:
+		// 92 - plasma spiral
+		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+		plasma_spiral();
+		break;
+
     // if more modes added, must update max_modes in variables
   }
 }
