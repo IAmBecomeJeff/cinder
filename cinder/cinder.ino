@@ -78,7 +78,31 @@ void setup() {
 			spiralArray[3][i+j+3*w] = 288 + 3*w + i + j;
 		}
 	}  
-	
+
+	for (int i = 0; i<STRIP_LENGTH; i += 4 * w) {
+		for (int j = 0; j<w; j++) {
+			spiralArrayRev[0][i + j] = i + j;
+			spiralArrayRev[0][i + j + w] = 575 - w - i - j;
+			spiralArrayRev[0][i + j + 2 * w] = 288 + 2 * w + i + j; 
+			spiralArrayRev[0][i + j + 3 * w] = 287 - 3 * w - i - j;
+
+			spiralArrayRev[1][i + j] = 287 - i - j;
+			spiralArrayRev[1][i + j + w] = w + i + j; 
+			spiralArrayRev[1][i + j + 2 * w] = 575 - 2 * w - i - j;
+			spiralArrayRev[1][i + j + 3 * w] = 288 + 3 * w + i + j;
+
+			spiralArrayRev[2][i + j] = 288 + i + j;
+			spiralArrayRev[2][i + j + w] = 287 - w - i - j;
+			spiralArrayRev[2][i + j + 2 * w] = 2 * w + i + j;
+			spiralArrayRev[2][i + j + 3 * w] = 575 - 3 * w - i - j; 
+
+			spiralArrayRev[3][i + j] = 575 - i - j;
+			spiralArrayRev[3][i + j + w] = 288 + w + i + j;
+			spiralArrayRev[3][i + j + 2 * w] = 287 - 2 * w - i - j;
+			spiralArrayRev[3][i + j + 3 * w] = 3 * w + i + j; 
+		}
+	}
+
   // Init first mode
   strobe_mode(led_mode, 1);
 }

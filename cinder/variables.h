@@ -86,6 +86,7 @@ uint8_t xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t yd[NUM_LEDS];             // Y-array for 2d coordinates of leds
 int ringArray[144][4];      	  // Array for rings
 int spiralArray[4][144];		  // Array for spirals
+int spiralArrayRev[4][144];
 int w = 3; 						  // width of spirals
 
 int x_prev;						  // Variables for gravity
