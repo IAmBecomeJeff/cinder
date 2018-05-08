@@ -673,7 +673,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
 	// 86 - one sin spiral
 	case 86:
-		if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
+		if (mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
 		one_sin_spiral();
 		break;
 
