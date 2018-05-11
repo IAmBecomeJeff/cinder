@@ -41,6 +41,8 @@ int this_arg;			// Serial input argument
 
 // LED Meta Variables, particularly palettes
 struct CRGB leds[NUM_LEDS];
+struct CRGB old_leds[NUM_LEDS];
+struct CRGB cur_leds[NUM_LEDS];
 CRGBPalette16 current_palette;         // Current palette we're using
 CRGBPalette16 target_palette;          // Next palette to transition to
 TBlendType current_blending;           // Linear vs No-Blending
@@ -56,6 +58,8 @@ uint8_t max_mode    = 94;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
+bool transitioning = 0;	// transitioning flag
+blending_ratio = 0;
 
 // LED Routine/Shared Variables
 uint8_t all_freq        = 32;     // Frequency (width of bars) (sine-routines)
@@ -102,13 +106,13 @@ int grav = -15;
 int timeinc = 2;
 const int numballs = 6;
 
-typedef struct {
+typedef struct balls {
 	int distanceold;
 	int distance;
 	int velocityold;
 	int velocity;
 	int ballhue;
-} balls;
+} ;
 
 
 balls myballs[numballs];

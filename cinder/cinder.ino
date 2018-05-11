@@ -130,7 +130,25 @@ void loop() {
   EVERY_N_MILLIS_I(this_timer, this_delay) {
     this_timer.setPeriod(this_delay); 
     strobe_mode(led_mode, 0);
+	// strobe_mode(led_mode, 0, cur_leds);
+	// strobe_mode(old_mode, 0, old_leds);
   }
+
+  //if (transitioning) {
+	 // blending_ratio += 17;
+	 // for (int i = 0; i < NUM_LEDS; i++) {
+		//  leds[i] = blend(old_leds[i], cur_leds[i], blending_ratio);
+	 // }
+	 // if (blending_ratio >= 255) {
+		//  transitioning = 0;
+		//  blending_ratio = 0;
+	 // }
+  //}
+  //else {
+	 // for (int i = 0; i < NUM_LEDS; i++) {
+		//  leds[i] = cur_leds[i];
+	 // }
+  //}
 
   // Optionally add glitter
   if(glitter) addglitter(10); 
@@ -149,9 +167,10 @@ void strobe_mode(uint8_t newMode, bool mc){
 
   // If this_ is a *new* mode, clear out LED array.
   if(mc) {
-    fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0));
+    fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0)); // comment out for transitioning
     Serial.print("Mode: "); 
     Serial.println(led_mode);
+	// transitioning = 1;
   }
 
   switch (newMode) {
@@ -898,19 +917,23 @@ void checkDial() {
     if (rotateCount){    // Need to let it change twice
       switch (rotary_function) {
         
-        case 0:
-          if (digitalRead(pinB) != aVal){   // Means pin A changed first, we're rotating CW
-            led_mode++;      // Move to next pattern
-          } else {            // Means pin B changed first, we're moving CCW
-            led_mode--;       // Move to previous pattern
-          }
-            if (led_mode < 0){
-            led_mode = max_mode;
-            }
-            if (led_mode > max_mode){
-            led_mode = 0;
-            }
-            strobe_mode(led_mode, 1);
+        case 0: // add !transitioning to let the new mode get set up
+			//if (!transitioning) {
+				old_mode = led_mode;
+				if (digitalRead(pinB) != aVal) {   // Means pin A changed first, we're rotating CW
+					led_mode++;      // Move to next pattern
+				}
+				else {            // Means pin B changed first, we're moving CCW
+					led_mode--;       // Move to previous pattern
+				}
+				if (led_mode < 0) {
+					led_mode = max_mode;
+				}
+				if (led_mode > max_mode) {
+					led_mode = 0;
+				}
+				strobe_mode(led_mode, 1);
+			//}
           break;
           
         case 1:
