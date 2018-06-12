@@ -22,6 +22,9 @@
 #define DATA_PIN 7
 #define CLOCK_PIN 14
 
+// Switch pins
+#define switchA 3
+#define switchB 4
 // LED Meta Defines
 #define COLOR_ORDER BGR
 

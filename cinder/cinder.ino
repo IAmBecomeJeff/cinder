@@ -48,6 +48,10 @@ void setup() {
   debouncer.attach(pinSW);
   debouncer.interval(100);
   
+  // Set up switches
+  pinMode(switchA, INPUT_PULLUP);
+  pinMode(switchB, INPUT_PULLUP);
+
   // Init ring array
   for (uint8_t i=0;i<144;i++){
 	ringArray[i][0]=i;
@@ -114,6 +118,14 @@ void loop() {
   // Check rotary dial
   checkDial();
   
+  // Check switchA
+  if digitalRead(switchA) {
+	  this_dir = 0;
+  }
+  else {
+	  this_dir = 1;
+  }
+
   // Palette transitions - always running
   EVERY_N_MILLISECONDS(50) {
     uint8_t maxChanges = 24; 
