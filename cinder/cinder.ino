@@ -118,12 +118,22 @@ void loop() {
   // Check rotary dial
   checkDial();
   
-  // Check switchA
+  // Check switchA for direction
   if digitalRead(switchA) {
 	  this_dir = 0;
   }
   else {
 	  this_dir = 1;
+  }
+
+  // Check switchB for demo
+  EVERY_N_SECONDS(30) {
+	  if digitalRead(switchB) {
+		  led_mode++;
+		  if (led_mode > max_mode) {
+			  led_mode = 70;
+		  }
+	  }
   }
 
   // Palette transitions - always running
