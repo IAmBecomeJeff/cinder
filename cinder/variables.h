@@ -25,6 +25,11 @@
 // Switch pins
 #define switchA 3
 #define switchB 4
+
+// Acellerometer pins
+//#define SDA 18
+//#define SCL 19
+
 // LED Meta Defines
 #define COLOR_ORDER BGR
 
