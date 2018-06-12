@@ -11,7 +11,7 @@ void setup() {
   // Set up LEDS
   LEDS.setBrightness(max_bright);
 
-  // -- Single strip of 576 LEDS set for development testing ------------------------------- //
+  // -- Single strip of 576 LEDS ------------------------------- //
   
   LEDS.addLeds<LED_TYPE, DATA_PIN, CLOCK_PIN, COLOR_ORDER>(leds, NUM_LEDS); 
 
@@ -157,7 +157,7 @@ void loop() {
   }
 
   //if (transitioning) {
-	 // blending_ratio += 17;
+	 // blending_ratio += 17; // gives 15 iterations
 	 // for (int i = 0; i < NUM_LEDS; i++) {
 		//  leds[i] = blend(old_leds[i], cur_leds[i], blending_ratio);
 	 // }
@@ -186,7 +186,7 @@ void loop() {
  * @param mc      : signifies if we're changing modes or not
  */
 void strobe_mode(uint8_t newMode, bool mc){
-
+	// void strobe_mode(uint8_t newMode, bool mc, bool old){
   // If this_ is a *new* mode, clear out LED array.
   if(mc) {
     fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0)); // comment out for transitioning
@@ -199,107 +199,107 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 0 - all off
     case  0: 
-      if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0 )); } 
-      break;
+			if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 0, 0, 0 )); } 
+			break;
 
     // 1 - all on
     case  1: 
-      if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 255, 255, 255 )); } 
-      break;
+			if(mc) { fill_solid(leds, NUM_LEDS, CRGB( 255, 255, 255 )); } 
+			break;
 
     // 2 - two-sin
     case  2: 
-      if(mc) { this_delay = 10; all_freq = 2; this_speed = 1; thatspeed = 1; this_hue = 0; thathue = 128; this_dir = 0; this_rot = 1; thatrot = 1; this_cutoff = 128; thatcutoff = 192; } 
-      two_sin(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 2; this_speed = 1; thatspeed = 1; this_hue = 0; thathue = 128; this_dir = 0; this_rot = 1; thatrot = 1; this_cutoff = 128; thatcutoff = 192; } 
+			two_sin(); 
+			break;
 
     // 3 - one-sin with rainbow palette
     case  3: 
-      if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal(); 
-      break;
+			if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal(); 
+			break;
 
     // 4 - noise8 with party palette
     case  4: 
-      if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
-      noise8_pal(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
+			noise8_pal(); 
+			break;
 
     // 5 - two-sin
     case  5: 
-      if(mc) { this_delay = 10; all_freq = 4; this_speed = -1; thatspeed = 0; this_hue = 64; thathue = 192; this_dir = 0; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 192; } 
-      two_sin(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 4; this_speed = -1; thatspeed = 0; this_hue = 64; thathue = 192; this_dir = 0; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 192; } 
+			two_sin(); 
+			break;
 
     // 6 - one-sin with rainbow palette //increased from 20 to 8, smooths out there
     case  6: 
-      if(mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal(); 
-      break;
+			if(mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal(); 
+			break;
 
     // 7 - juggle mode
     case  7: 
-      if(mc) { this_delay = 10; numdots = 20; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
-      juggle_pal(); 
-      break;
+			if(mc) { this_delay = 10; numdots = 20; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+			juggle_pal(); 
+			break;
 
     // 8 - matrix with palette // increased delay from 40 to 15
     case  8: 
-      if(mc) { this_delay = 15; target_palette = LavaColors_p; this_index = 128; this_dir = 1; this_rot = 0; this_bright = 255; bg_clr = 200; bg_bri = 6; } 
-      matrix_pal(); 
-      break;
+			if(mc) { this_delay = 15; target_palette = LavaColors_p; this_index = 128; this_dir = 1; this_rot = 0; this_bright = 255; bg_clr = 200; bg_bri = 6; } 
+			matrix_pal(); 
+			break;
 
     // 9 - two-sin // green + pink
     case  9: 
-      if(mc) { this_delay = 10; all_freq = 6; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 64; } 
-      two_sin(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 6; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 64; } 
+			two_sin(); 
+			break;
 
     // 10 - one-sin with rainbow palette // decreased delay to 5, looks smoothest
     case 10: 
-      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal(); 
-      break;
+			if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal(); 
+			break;
 
     // 11 - three-sin with palette // good three sine // delay 20 works well
     case 11: 
-      if(mc) { this_delay = 20; mul1 = 5; mul2 = 8; mul3 = 7; }
+			if(mc) { this_delay = 20; mul1 = 5; mul2 = 8; mul3 = 7; }
 			three_sin_pal(); 
 			break;
    
     // 12 - serendipitous with palette
     case 12:
-      if(mc) { this_delay = 10; target_palette = ForestColors_p; }
+			if(mc) { this_delay = 10; target_palette = ForestColors_p; }
 			serendipitous_pal(); 
 			break;
   
     // 13 - one-sine with lava palette // increase delay from 20 to 18 to remove jerkiness
     case 13:
-      if(mc) { this_delay = 8; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+			if(mc) { this_delay = 8; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 			one_sin_pal(); 
 			break;
  
     // 14 - two-sin
     case 14:
-      if(mc) { this_delay = 10; all_freq = 20; this_speed = 2; thatspeed = -1; this_hue = 24; thathue = 180; this_dir = 1; this_rot = 0; thatrot = 1; this_cutoff = 64; thatcutoff = 128; }
+			if(mc) { this_delay = 10; all_freq = 20; this_speed = 2; thatspeed = -1; this_hue = 24; thathue = 180; this_dir = 1; this_rot = 0; thatrot = 1; this_cutoff = 64; thatcutoff = 128; }
 			two_sin(); 
 			break;
 
     // 15 - matrix with party palette // increase delay from 50 to 20 to speed it up
     case 15:
-      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
+			if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
 			matrix_pal(); 
 			break;
 
     // 16 - noise8 with palette
     case 16:
-      if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
+			if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
 			noise8_pal(); 
 			break;
 
     // 17 - circular noise with party palette
     case 17:
- 			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
+   			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
 			circnoise_pal_2(); 
 			break;
 
@@ -401,358 +401,352 @@ void strobe_mode(uint8_t newMode, bool mc){
       
     // 34 - two-sin ring
     case 34: 
-      if(mc) { this_delay = 10; all_freq = 2; this_speed = 1; thatspeed = 1; this_hue = 0; thathue = 128; this_dir = 0; this_rot = 1; thatrot = 1; this_cutoff = 128; thatcutoff = 192; } 
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 2; this_speed = 1; thatspeed = 1; this_hue = 0; thathue = 128; this_dir = 0; this_rot = 1; thatrot = 1; this_cutoff = 128; thatcutoff = 192; } 
+			two_sin_ring(); 
+			break;
 
     // 35 - one-sin with rainbow palette ring
     case 35: 
-      if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 20; target_palette = RainbowColors_p; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal_ring(); 
+			break;
 
     // 36 - noise8 with party palette ring
     case 36: 
-      if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
-      noise8_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = PartyColors_p; palette_change = 2; } 
+			noise8_pal_ring(); 
+			break;
 
     // 37 - two-sin ring
     case 37: 
-      if(mc) { this_delay = 10; all_freq = 4; this_speed = -1; thatspeed = 0; this_hue = 64; thathue = 192; this_dir = 0; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 192; } 
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 4; this_speed = -1; thatspeed = 0; this_hue = 64; thathue = 192; this_dir = 0; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 192; } 
+			two_sin_ring(); 
+			break;
 
     // 38 - one-sin with rainbow palette ring // increasing delay to 5 to avoid jerkiness
     case 38: 
-      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 10; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal_ring(); 
+			break;
 
     // 39 - two-sin_ring
     case 39:
-      if(mc) { this_delay = 20; all_freq = 10; this_speed = 1; thatspeed = -2; this_hue = 28; thathue = 180; this_dir = 0; this_rot = 1; thatrot = -1; this_cutoff = 128; thatcutoff = 192; }
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 20; all_freq = 10; this_speed = 1; thatspeed = -2; this_hue = 28; thathue = 180; this_dir = 0; this_rot = 1; thatrot = -1; this_cutoff = 128; thatcutoff = 192; }
+			two_sin_ring(); 
+			break;
       
     // 40 - two-sin ring
     case 40: 
-      if(mc) { this_delay = 10; all_freq = 6; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 64; } 
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 6; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 0; thatrot = 0; this_cutoff = 64; thatcutoff = 64; } 
+			two_sin_ring(); 
+			break;
 
     // 41 - one-sin with rainbow palette_ring // increasing delay to 10
     case 41: 
-      if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 16; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; } 
+			one_sin_pal_ring(); 
+			break;
    
     // 42 - serendipitous with palette_ring, really cool, try more palettes
     case 42:
-      if(mc) { this_delay = 10; target_palette = ForestColors_p; }
-      serendipitous_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = ForestColors_p; }
+			serendipitous_pal_ring(); 
+			break;
   
     // 43 - one-sine with lava palette_ring // increasing speed to 16
     case 43:
-      if(mc) { this_delay = 16; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 16; target_palette = LavaColors_p; all_freq = 8; bg_clr = 0; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+			one_sin_pal_ring(); 
+			break;
  
     // 44 - two-sin_ring
     case 44:
-      if(mc) { this_delay = 10; all_freq = 20; this_speed = 2; thatspeed = -1; this_hue = 24; thathue = 180; this_dir = 1; this_rot = 0; thatrot = 1; this_cutoff = 64; thatcutoff = 128; }
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 10; all_freq = 20; this_speed = 2; thatspeed = -1; this_hue = 24; thathue = 180; this_dir = 1; this_rot = 0; thatrot = 1; this_cutoff = 64; thatcutoff = 128; }
+			two_sin_ring(); 
+			break;
 
     // 45 - matrix with party palette_ring // has a light green background, not sure if it works with direction change
     case 45:
-      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
-      matrix_pal_ring(); 
-      break;
+			if(mc) { this_delay = 20; target_palette = PartyColors_p; this_index = 64; this_dir = 0; this_rot = 1; this_bright = 255; bg_clr = 100; bg_bri = 10; }
+			matrix_pal_ring(); 
+			break;
 
     // 46 - noise8 with palette_ring
     case 46:
-      if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
-      noise8_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = OceanColors_p; palette_change = 1; }
+			noise8_pal_ring(); 
+			break;
 
     // 47 - circular noise with party palette_ring
     case 47:
-      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
-      circnoise_pal_2_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
+			circnoise_pal_2_ring(); 
+			break;
 
     // 48 - two-sin_ring
     case 48:
-      if(mc) { this_delay = 20; all_freq = 10; this_speed = 1; thatspeed = -2; this_hue = 48; thathue = 160; this_dir = 0; this_rot = 1; thatrot = -1; this_cutoff = 128; thatcutoff = 192; }
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 20; all_freq = 10; this_speed = 1; thatspeed = -2; this_hue = 48; thathue = 160; this_dir = 0; this_rot = 1; thatrot = -1; this_cutoff = 128; thatcutoff = 192; }
+			two_sin_ring(); 
+			break;
 
     // 49 - one-sine with ocean palette_ring // increasing speed
     case 49:
-      if(mc) { this_delay = 9; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 9; target_palette = OceanColors_p; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+			one_sin_pal_ring(); 
+			break;
 
     // 50 - circular noise with ocean palette_ring
     case 50:
-      if(mc) { this_delay = 10; target_palette = OceanColors_p; }
-      circnoise_pal_4_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = OceanColors_p; }
+			circnoise_pal_4_ring(); 
+			break;
 
     // 51 - confetti with party palette_ring
     case 51:
-      if(mc) { this_delay = 20; target_palette = PartyColors_p; this_inc = 1; this_hue = 192; this_sat = 255; this_fade = 2; this_diff = 32; this_bright = 255; }
-      confetti_pal_ring(); 
-      break;
+			if(mc) { this_delay = 20; target_palette = PartyColors_p; this_inc = 1; this_hue = 192; this_sat = 255; this_fade = 2; this_diff = 32; this_bright = 255; }
+			confetti_pal_ring(); 
+			break;
 
     // 52 - two-sin_ring
     case 52:
-      if(mc) { this_delay = 10; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 1; thatrot = 2; this_cutoff = 128; thatcutoff = 64; }
-      two_sin_ring(); 
-      break;
+			if(mc) { this_delay = 10; this_speed = 2; thatspeed = 3; this_hue = 96; thathue = 224; this_dir = 1; this_rot = 1; thatrot = 2; this_cutoff = 128; thatcutoff = 64; }
+			two_sin_ring(); 
+			break;
 
     // 53 - matrix with forest palette_ring
     case 53:
-      if(mc) { this_delay = 10; target_palette = ForestColors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
-      matrix_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = ForestColors_p; this_index = 192; this_dir = 0; this_rot = 0; this_bright = 255; bg_clr = 50; bg_bri = 0; }
+			matrix_pal_ring(); 
+			break;
 
     // 54 - one-sin with rainbow palette_ring
     case 54:
-      if(mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+			one_sin_pal_ring(); 
+			break;
 
     // 55 - confetti with lava palette_ring
     case 55:
-      if(mc) { this_delay = 20; target_palette = LavaColors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
-      confetti_pal_ring(); 
-      break;
+			if(mc) { this_delay = 20; target_palette = LavaColors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
+			confetti_pal_ring(); 
+			break;
 
     // 56 - circular noise with party palette_ring
     case 56:
-      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
-      circnoise_pal_3_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
+			circnoise_pal_3_ring(); 
+			break;
 
     // 57 - one-sin with palette_ring // reduce from 25 to 20
     case 57:
-      if(mc) { this_delay = 20; SetupSimilar4Palette(); all_freq = 4; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 8; wave_brightness = 255; }
-      one_sin_pal_ring(); 
-      break;
+			if(mc) { this_delay = 20; SetupSimilar4Palette(); all_freq = 4; bg_clr = 64; bg_bri = 4; this_bright = 255; start_index = 64; this_inc = 2; this_cutoff = 224; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 8; wave_brightness = 255; }
+			one_sin_pal_ring(); 
+			break;
 
     // 58 - circular noise with party palette_ring
     case 58:
-      if(mc) { this_delay = 10; target_palette = PartyColors_p; }
-      circnoise_pal_1_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = PartyColors_p; }
+			circnoise_pal_1_ring(); 
+			break;
 
     // 59 - confetti with forest palette_ring
     case 59:
-      if(mc) { this_delay = 15; target_palette = ForestColors_p; this_inc = 1; this_hue = random8(255); this_fade = 1; this_bright = 255; }
-      confetti_pal_ring(); 
-      break;
+			if(mc) { this_delay = 15; target_palette = ForestColors_p; this_inc = 1; this_hue = random8(255); this_fade = 1; this_bright = 255; }
+			confetti_pal_ring(); 
+			break;
 
     // 60 - noise8 with lava palette_ring
     case 60:
-      if(mc) { this_delay = 10; target_palette = LavaColors_p; palette_change = 0; }
-      noise8_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; target_palette = LavaColors_p; palette_change = 0; }
+			noise8_pal_ring(); 
+			break;
 	
   	// 61 - fire rings
   	case 61:
-    	if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
-    	fire_rings();
-    	break;
+    		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90;}
+    		fire_rings();
+    		break;
 	
 	// 62 - fire
   	case 62:
-  		if(mc) {this_delay = 10; cooling = 100; sparking = 120; }
-  		fire();
-		break;
+  			if(mc) {this_delay = 10; cooling = 100; sparking = 120; }
+  			fire();
+			break;
 	
 	// 63 - fire with palette
 	case 63:
-		if(mc) {this_delay = 10; cooling = 80; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
-		fire_pal();
-		break;
+			if(mc) {this_delay = 10; cooling = 80; sparking = 120; target_palette = LavaColors_p; palette_change = 0; }
+			fire_pal();
+			break;
 		
     // 64 - juggle mode with ocean palette_ring 
     case 64:
-      if(mc) { this_delay = 10; numdots_ring = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
-      juggle_pal_ring(); 
-      break;
+			if(mc) { this_delay = 10; numdots_ring = 4; target_palette = OceanColors_p; this_fade = 32; this_beat = 12; this_bright = 255; this_diff = 20; } // if ring, use numdots_ring
+			juggle_pal_ring(); 
+			break;
     
 	// 65 - juggle mode ring
 	case 65: 
-      if(mc) { this_delay = 10; numdots_ring = 12; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
-      juggle_pal_ring(); 
-      break;	  
+			if(mc) { this_delay = 10; numdots_ring = 12; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+			juggle_pal_ring(); 
+			break;	  
 	  
 	// 66 - pride rainbows
 	case 66:
-		if(mc) { this_delay = 10; }	// maybe update delay?
-		pride();
-		break;
+			if(mc) { this_delay = 10; }	// maybe update delay?
+			pride();
+			break;
 		
 	// 67 - rainbow march with wide waves
     case 67:
- 		if(mc) { this_delay = 10; this_dir = 1; this_rot = 1; this_diff = 1; }
-		rainbow_march_ring(); 
-		break;
+ 			if(mc) { this_delay = 10; this_dir = 1; this_rot = 1; this_diff = 1; }
+			rainbow_march_ring(); 
+			break;
 
     // 68 - rainbow march with narrow waves
     case 68:
- 		if(mc) { this_delay = 10; this_dir = 1; this_rot = 2; this_diff = 10; }
-		rainbow_march_ring(); 
-		break;
+ 			if(mc) { this_delay = 10; this_dir = 1; this_rot = 2; this_diff = 10; }
+			rainbow_march_ring(); 
+			break;
 	
 	// 69 - disco strobe
 	case 69:
-		if(mc) { this_delay = 1; }
-		discostrobe();
-		delayToSyncFrameRate(this_delay);
-		break;
+			if(mc) { this_delay = 1; }
+			discostrobe();
+			delayToSyncFrameRate(this_delay);
+			break;
 
 	// 70 - fire mirror
 	case 70:
-		if(mc) { this_delay = 10; cooling = 60; sparking = 90; }
-		fire_mirror();
-		break;
+			if(mc) { this_delay = 10; cooling = 60; sparking = 90; }
+			fire_mirror();
+			break;
 
 	// 71 - fire mirror with rings
 	case 71:
-		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 1;}
-		fire_mirror_rings();
-		break;
+			if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 1;}
+			fire_mirror_rings();
+			break;
 	
 	// 72 - fire mirror with rings, from middle
 	case 72:
-		if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 0 ; }
-		fire_mirror_rings();
-		break;
+			if(mc) {this_delay = 10; cooling1 = 80; sparking1 = 90; cooling2 = 55; sparking2 = 70; cooling3 = 70; sparking3 = 70; cooling4 = 55; sparking4 = 90; this_dir = 0 ; }
+			fire_mirror_rings();
+			break;
 	
 	// 73 - fire mirror with palette
 	case 73:
-		if(mc) {this_delay = 10; cooling = 75; sparking = 120; target_palette = HeatColors_p; this_dir = 0;}
-		fire_mirror_pal();
-    break;
+			if(mc) {this_delay = 10; cooling = 75; sparking = 120; target_palette = HeatColors_p; this_dir = 0;}
+			fire_mirror_pal();
+			break;
 		
 	// 74 - fire palette with rings
 	case 74:
-		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = hallows_gp;}
-		fire_pal_rings();
-    break;
+			if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = hallows_gp;}
+			fire_pal_rings();
+			break;
 	
 	// 75 - fire mirror palette with rings
 	case 75:
-		if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = slope_gp;}
-		fire_mirror_pal_rings();
-    break;
+			if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = slope_gp;}
+			fire_mirror_pal_rings();
+			break;
    
 	// 76 - palette motion with option 1
 	case 76:
-		if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}
-		palette_motion();
-		break;
+			if(mc) { this_delay = 15; color_index = 0; color_speed = 0; color_inc = 3; target_palette = ofaurora_gp;}
+			palette_motion();
+			break;
 	
 	// 77 - palette motion with option 2
 	case 77:
-		if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
-		palette_motion();
-		break;
+			if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
+			palette_motion();
+			break;
 		
 	// 78 - palette viewer
 	case 78:
-		if(mc) {target_palette = sea_treasure_gp;}
-		ring_fill_static_palette();
-		break;
+			if(mc) {target_palette = sea_treasure_gp;}
+			ring_fill_static_palette();
+			break;
 		
-  // 79 - spiral palette
-  case 79:
-    if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
-    palette_spiral();
-    break;
+	// 79 - spiral palette
+	case 79:
+			if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
+			palette_spiral();
+			break;
 	
 	//80 - spiral
 	case 80:
-		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; this_delay = 20;}
-		spiral();
-		break;
+			if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; this_delay = 20;}
+			spiral();
+			break;
 		
 	// 81 - spiral with palette
 	case 81:
-		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1; this_delay = 15; target_palette = ofaurora_gp;}
-		spiral_pal();
-		break;
+			if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1; this_delay = 15; target_palette = ofaurora_gp;}
+			spiral_pal();
+			break;
 	
 	// 82 - spiral sin 1
 	case 82:
-		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 5; this_phase = 0; this_speed = 2; }
-		spiral_sin();
-		break;
+			if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 5; this_phase = 0; this_speed = 2; }
+			spiral_sin();
+			break;
 
 	// 83 - spiral sin 2
 	case 83:
-		if (mc) { start_index = 0; this_inc = 4; this_rot = 1; all_freq = 16; this_delay = 10; this_phase = 0; this_speed = 2;}
-		spiral_sin_sub();
-		break;
+			if (mc) { start_index = 0; this_inc = 4; this_rot = 1; all_freq = 16; this_delay = 10; this_phase = 0; this_speed = 2;}
+			spiral_sin_sub();
+			break;
 
 	// 84 - one sin spiral
 	case 84:
-		if (mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
-		one_sin_spiral();
-		break;
+			if (mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
+			one_sin_spiral();
+			break;
 
-	case 85:
-	// 85 - meteorRain
-		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 20; meteorTrailDecay = 64; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 10; }
-		meteorRain();
-		break;
+	// 85 - twinkle (cuz ripple is broken)
+	case 85:		
+			if (mc) { twinkle_speed = 4; twinkle_density = 2; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
+			twinkle();
+			break;
 
+	// 86 - twinkle
 	case 86:
-  // 86 - twinkle (cuz ripple is broken)
-    if (mc) { twinkle_speed = 4; twinkle_density = 2; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
-    twinkle();
-    break;
+			if (mc) { twinkle_speed = 3; twinkle_density = 1; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
+			twinkle();
+			break;
 
+	// 87 - plasma
 	case 87:
-	// 87 - twinkle
-		if (mc) { twinkle_speed = 3; twinkle_density = 1; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
-		twinkle();
-		break;
+			if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+			plasma();
+			break;
 
+	// 88 - ripple2
 	case 88:
-	// 88 - plasma
-		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
-		plasma();
-		break;
+			if (mc) { myfade = 255; fadeval = 128; this_delay = 25; }
+			ripple2();
+			break;
 
+	// 89 - plasma spiral
 	case 89:
-	// 89 - ripple2
-		if (mc) { myfade = 255; fadeval = 128; this_delay = 25; }
-		ripple2();
-		break;
+			if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+			plasma_spiral();
+			break;
 
+    // 90 - plasma spiral 2
 	case 90:
-		// 90 - plasma spiral
-		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
-		plasma_spiral();
-		break;
+			if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
+			plasma_spiral2();
+			break;
 
-  case 91:
-    // 91 - plasma spiral 2
-    if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
-    plasma_spiral2();
-    break;
-
-  // 92 - helix spiral
-  case 92:
-    if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; that_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; that_speed = 3; wave_brightness = 255; }
-    helix_spiral();
-    break;
+	// 91 - helix spiral
+	case 91:
+			if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; that_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; that_speed = 3; wave_brightness = 255; }
+			helix_spiral();
+			break;
     
     // if more modes added, must update max_modes in variables
   }

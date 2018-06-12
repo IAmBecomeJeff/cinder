@@ -62,7 +62,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 92;		// maximum number of modes
+uint8_t max_mode    = 91;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -101,18 +101,6 @@ int spiralArray[4][144];		  // Array for spirals
 int spiralArrayRev[4][144];
 int w = 3; 						  // width of spirals
 
-int x_prev;						  // Variables for gravity
-uint8_t x0;						  // Variables for gravity
-int x_grav;	  					  // Variables for gravity
-int accel;						  // Variables for gravity
-uint8_t v0;					 	  // Variables for gravity
-uint8_t pause;					  // Variables for gravity
-uint8_t grav_count;				  // Variables for gravity
-uint8_t timer;					  // Variables for gravity
-bool atBottom = 0;			  // Variables for gravity
-int grav = -15;
-int timeinc = 2;
-const int numballs = 6;
 
 typedef struct balls {
 	int distanceold;
@@ -131,15 +119,6 @@ int plasma_phase2;
 int plasmaIndex;
 int plasmaBright;
 
-
-//Variables for meteor
-byte meteor_r;
-byte meteor_g;
-byte meteor_b;
-byte meteorSize;
-byte meteorTrailDecay;
-bool meteorRandomDecay;
-int meteor_index;
 
 //Variables for ripple 
 int rip_color;
@@ -181,9 +160,6 @@ uint8_t zooming_beats_per_minute = 122; // zooming for disco
 uint8_t color_index = 0;
 uint8_t color_speed = 1;
 uint8_t color_inc = 3;
-int col_count = 0; // column for revolutions
-int rev_count = 0;
-int rev_limit = 50;
 
 // KY-040 Rotary Module variables
 int pinA = 21;
@@ -198,16 +174,6 @@ int rotary_function = 0;
 int palette_index;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 50;
-
-
-// Heartbeat variables
-uint8_t bloodHue = 96;  // Blood color [hue from 0-255]
-uint8_t bloodSat = 255;  // Blood staturation [0-255]
-int flowDirection = -1;   // Use either 1 or -1 to set flow direction
-uint16_t cycleLength = 1500;  // Lover values = continuous flow, higher values = distinct pulses.
-uint16_t pulseLength = 150;  // How long the pulse takes to fade out.  Higher value is longer.
-uint16_t pulseOffset = 200;  // Delay before second pulse.  Higher value is more delay.
-uint8_t baseBrightness = 10;  // Brightness of LEDs when not pulsing. Set to 0 for off.
 
 Bounce debouncer = Bounce();
 
