@@ -654,92 +654,80 @@ void strobe_mode(uint8_t newMode, bool mc){
     palette_spiral();
     break;
 	
-	// 80 - revolutions with pallette	
+	//80 - spiral
 	case 80:
-		if(mc) {rev_limit = 10; start_index = 0; this_inc = 1; this_delay = 10; this_dir = 1; }
-		revolutions_pal();
-		break;
-	
-	//81 - spiral
-	case 81:
 		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; this_delay = 20;}
 		spiral();
 		break;
 		
-	// 82 - spiral with palette
-	case 82:
+	// 81 - spiral with palette
+	case 81:
 		if(mc){spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1; this_delay = 15; target_palette = ofaurora_gp;}
 		spiral_pal();
 		break;
 	
-	// 83 - spiral sin 1
-	case 83:
+	// 82 - spiral sin 1
+	case 82:
 		if (mc) { start_index = 0; this_inc = 1; this_rot = 1; all_freq = 20; this_delay = 5; this_phase = 0; this_speed = 2; }
 		spiral_sin();
 		break;
 
-	// 84 - spiral sin 2
-	case 84:
+	// 83 - spiral sin 2
+	case 83:
 		if (mc) { start_index = 0; this_inc = 4; this_rot = 1; all_freq = 16; this_delay = 10; this_phase = 0; this_speed = 2;}
 		spiral_sin_sub();
 		break;
 
-	// 85 - heartbeat
-	case 85:
-		if (mc) { bloodHue = 96; bloodSat = 255; this_dir = 0; cycleLength = 1500; pulseLength = 150; pulseOffset = 200; baseBrightness = 10; this_delay = 20; }
-		heartbeat();
-		break;
-
-	// 86 - one sin spiral
-	case 86:
+	// 84 - one sin spiral
+	case 84:
 		if (mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
 		one_sin_spiral();
 		break;
 
-	case 87:
-	// 87 - meteorRain
+	case 85:
+	// 85 - meteorRain
 		if (mc) { meteor_r = 255; meteor_g = 140; meteor_b = 0; meteorSize = 20; meteorTrailDecay = 64; meteorRandomDecay = 1; meteor_index = 0;  this_delay = 10; }
 		meteorRain();
 		break;
 
-	case 88:
-  // 88 - twinkle (cuz ripple is broken)
+	case 86:
+  // 86 - twinkle (cuz ripple is broken)
     if (mc) { twinkle_speed = 4; twinkle_density = 2; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
     twinkle();
     break;
 
-	case 89:
-	// 89 - twinkle
+	case 87:
+	// 87 - twinkle
 		if (mc) { twinkle_speed = 3; twinkle_density = 1; twinkle_bg = CRGB::Black; auto_select_background_color = 0; cool_like_incandescent = 1; this_delay = 15; }
 		twinkle();
 		break;
 
-	case 90:
-	// 90 - plasma
+	case 88:
+	// 88 - plasma
 		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
 		plasma();
 		break;
 
-	case 91:
-	// 91 - ripple2
+	case 89:
+	// 89 - ripple2
 		if (mc) { myfade = 255; fadeval = 128; this_delay = 25; }
 		ripple2();
 		break;
 
-	case 92:
-		// 92 - plasma spiral
+	case 90:
+		// 90 - plasma spiral
 		if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
 		plasma_spiral();
 		break;
 
-  case 93:
-    // 93 - plasma spiral 2
+  case 91:
+    // 91 - plasma spiral 2
     if (mc) { target_palette = es_ocean_breeze_036_gp; this_delay = 10; }
     plasma_spiral2();
     break;
 
-  // 94 - helix spiral
-  case 94:
+  // 92 - helix spiral
+  case 92:
     if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_cutoff = 224; this_phase = 0; that_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; that_speed = 3; wave_brightness = 255; }
     helix_spiral();
     break;
@@ -956,13 +944,14 @@ void checkDial() {
           
         case 2:
           if (digitalRead(pinB) != aVal){
-            this_delay ++;
+			  if (this_delay == 1) {
+				  this_delay = 1;
+			  }
+			  else {
+				  this_delay--;
+			  }
           } else {
-            if (this_delay == 1){
-              this_delay = 1;
-            } else {
-            this_delay --;
-            }
+				  this_delay++;
           }
           constrain(this_delay, 1, 255);
           Serial.print("Delay: ");
