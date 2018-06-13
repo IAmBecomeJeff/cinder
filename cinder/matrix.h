@@ -16,61 +16,120 @@
  * this_bright
  */
 
-void matrix_pal() {                                           // One line matrix
+void matrix_pal(bool old) {                                           // One line matrix
+	if (old) {
+		if (old_this_rot) old_this_index++;                                   // Increase palette index to change colours on the fly
 
-  if (this_rot) this_index++;                                   // Increase palette index to change colours on the fly
-  
-  if (random8(90) > 80) {
-    if (this_dir == 0)
-      leds[0] = ColorFromPalette(current_palette, this_index, this_bright, current_blending); 
-    else
-      leds[NUM_LEDS-1] = ColorFromPalette( current_palette, this_index, this_bright, current_blending);
-  } else {
-    if (this_dir == 0)
-      leds[0] = CHSV(bg_clr, this_sat, bg_bri); 
-    else
-      leds[NUM_LEDS-1] = CHSV(bg_clr, this_sat, bg_bri);
-  }
+		if (random8(90) > 80) {
+			if (old_this_dir == 0)
+				old_leds[0] = ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+			else
+				old_leds[NUM_LEDS - 1] = ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+		}
+		else {
+			if (old_this_dir == 0)
+				old_leds[0] = CHSV(old_bg_clr, old_this_sat, old_bg_bri);
+			else
+				old_leds[NUM_LEDS - 1] = CHSV(old_bg_clr, old_this_sat, old_bg_bri);
+		}
 
-  if (this_dir == 0) {
-    for (int i = NUM_LEDS-1; i >0 ; i-- ) leds[i] = leds[i-1];
-  } else {
-    for (int i = 0; i < NUM_LEDS-1 ; i++ ) leds[i] = leds[i+1];
-  }
+		if (old_this_dir == 0) {
+			for (int i = NUM_LEDS - 1; i > 0; i--) old_leds[i] = old_leds[i - 1];
+		}
+		else {
+			for (int i = 0; i < NUM_LEDS - 1; i++) old_leds[i] = old_leds[i + 1];
+		}
+	}
+	else {
+		if (this_rot) this_index++;                                   // Increase palette index to change colours on the fly
 
+		if (random8(90) > 80) {
+			if (this_dir == 0)
+				cur_leds[0] = ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+			else
+				cur_leds[NUM_LEDS - 1] = ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+		}
+		else {
+			if (this_dir == 0)
+				cur_leds[0] = CHSV(bg_clr, this_sat, bg_bri);
+			else
+				cur_leds[NUM_LEDS - 1] = CHSV(bg_clr, this_sat, bg_bri);
+		}
+
+		if (this_dir == 0) {
+			for (int i = NUM_LEDS - 1; i >0; i--) cur_leds[i] = cur_leds[i - 1];
+		}
+		else {
+			for (int i = 0; i < NUM_LEDS - 1; i++) cur_leds[i] = cur_leds[i + 1];
+		}
+	}
 } // matrix_pal()
 
 
 
-void matrix_pal_ring() {                                           // One line matrix
+void matrix_pal_ring(bool old) {                                           // One line matrix
+	if (old) {
+		if (old_this_rot) old_this_index++;                                   // Increase palette index to change colours on the fly
 
-  if (this_rot) this_index++;                                   // Increase palette index to change colours on the fly
-  
-  if (random8(90) > 80) {
-    if (this_dir == 0)
-	  ringPalette(0, current_palette, this_index, this_bright, current_blending);
-    else
-	  ringPalette(STRIP_LENGTH-1, current_palette, this_index, this_bright, current_blending);
-  } else {
-    if (this_dir == 0)
-	  ringCHSV(0, bg_clr, this_sat, bg_bri);
-    else
-	  ringCHSV(STRIP_LENGTH-1, bg_clr, this_sat, bg_bri);
-  }
+		if (random8(90) > 80) {
+			if (old_this_dir == 0)
+				ringPalette(1, 0, old_palette, old_this_index, old_this_bright, current_blending);
+			else
+				ringPalette(1, STRIP_LENGTH - 1, old_palette, old_this_index, old_this_bright, current_blending);
+		}
+		else {
+			if (old_this_dir == 0)
+				ringCHSV(1, 0, old_bg_clr, old_this_sat, old_bg_bri);
+			else
+				ringCHSV(1, STRIP_LENGTH - 1, old_bg_clr, old_this_sat, old_bg_bri);
+		}
 
-  if (this_dir == 0) {
-    for (int i = STRIP_LENGTH-1; i >0 ; i-- ) {
-		for (int j=0; j<4; j++){
-			leds[ringArray[i][j]] = leds[ringArray[i-1][j]];
+		if (old_this_dir == 0) {
+			for (int i = STRIP_LENGTH - 1; i > 0; i--) {
+				for (int j = 0; j < 4; j++) {
+					old_leds[ringArray[i][j]] = old_leds[ringArray[i - 1][j]];
+				}
+			}
 		}
-  }
-  }  else {
-    for (int i = 0; i < STRIP_LENGTH-1 ; i++ ) {
-		for (int j=0;j<4;j++){
-			leds[ringArray[i][j]] = leds[ringArray[i+1][j]];
+		else {
+			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
+				for (int j = 0; j < 4; j++) {
+					old_leds[ringArray[i][j]] = old_leds[ringArray[i + 1][j]];
+				}
+			}
 		}
-  }
-  }
+	}
+	else {
+		if (this_rot) this_index++;                                   // Increase palette index to change colours on the fly
+
+		if (random8(90) > 80) {
+			if (this_dir == 0)
+				ringPalette(0, 0, current_palette, this_index, this_bright, current_blending);
+			else
+				ringPalette(0, STRIP_LENGTH - 1, current_palette, this_index, this_bright, current_blending);
+		}
+		else {
+			if (this_dir == 0)
+				ringCHSV(0, 0, bg_clr, this_sat, bg_bri);
+			else
+				ringCHSV(0, STRIP_LENGTH - 1, bg_clr, this_sat, bg_bri);
+		}
+
+		if (this_dir == 0) {
+			for (int i = STRIP_LENGTH - 1; i >0; i--) {
+				for (int j = 0; j<4; j++) {
+					cur_leds[ringArray[i][j]] = cur_leds[ringArray[i - 1][j]];
+				}
+			}
+		}
+		else {
+			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
+				for (int j = 0; j<4; j++) {
+					cur_leds[ringArray[i][j]] = cur_leds[ringArray[i + 1][j]];
+				}
+			}
+		}
+	}
 } // matrix_pal_ring()
 
 

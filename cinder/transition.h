@@ -1,27 +1,5 @@
-
-// LED Routine/Shared Variables
-uint8_t old_all_freq = 32;     // Frequency (width of bars) (sine-routines)
-uint8_t old_bg_clr = 0;      // Background color
-uint8_t old_bg_bri = 0;      // Background brightness
-uint8_t old_start_index = 0;      // Foreground hue to start with (sine-routines)
-uint8_t old_this_beat;                // Beat tracker (juggle routine)
-uint8_t old_this_bright = 50;      // Standard brightness
-uint8_t old_that_bright = 50;     // second brightness
-uint8_t old_this_cutoff = 192;    // Cutoff value; lower = longer wave
-int     old_this_delay = 0;      // Standard delay
-uint8_t old_this_diff = 1;      // Standard palette index jump
-uint8_t old_this_dir = 0;      // Standard direction
-uint8_t old_this_fade = 224;    // Standard fade rate
-uint8_t old_this_hue = 0;      // Standard hue
-uint8_t old_this_index = 0;      // Standard palette index
-uint8_t old_this_inc = 1;      // Standard increment. Changes starting color for each pass (sine-routines)
-int     old_this_phase = 0;      // Standard phase change - sines
-int     old_that_phase = 0;      // second phase
-uint8_t old_this_rot = 1;      // Standard hue rotation rate
-uint8_t old_this_sat = 255;    // Standard saturation
-uint8_t old_this_speed = 4;      // Standard speed change
-uint8_t old_that_speed = 4;      // Second speed
-uint8_t old_wave_brightness = 255;    // Brightness of the waves/bars
+#ifndef TRANSITION_H
+#define TRANSITION_H
 
 
 void update_old_variables() {
@@ -47,4 +25,194 @@ void update_old_variables() {
 	old_this_speed = this_speed;
 	old_that_speed = that_speed;
 	old_wave_brightness = wave_brightness;
+	old_plasma_phase1 = plasma_phase1;
+	old_plasma_phase2 = plasma_phase2;
+	old_plasmaIndex = plasmaIndex;
+	old_plasmaBright = plasmaBright;
+	old_rip_color = rip_color;
+	old_rip_center = rip_center;
+	old_rip_step = rip_step;
+	old_rip_fadeRate = rip_fadeRate;
+	old_rip_currentBg = rip_currentBg;
+	old_rip_nextBg = rip_nextBg;
+	old_myfade = myfade;
+	old_fadeval = fadeval;
+	old_twinkle_speed = twinkle_speed;
+	old_twinkle_density = twinkle_density;
+	old_twinkle_bg = twinkle_bg;
+	old_auto_select_background_color = auto_select_background_color;
+	old_cool_like_incandescent = cool_like_incandescent;
+	old_bglight = bglight;
+	old_backgroundBrightness = backgroundBrightness;
+	old_bg = bg;
+	old_numdots = numdots;
+	old_numdots_ring = numdots_ring;
+	old_cooling = cooling;
+	old_cooling1 = cooling1;
+	old_cooling2 = cooling2;
+	old_cooling3 = cooling3;
+	old_cooling4 = cooling4;
+	old_sparking = sparking;
+	old_sparking1 = sparking1;
+	old_sparking2 = sparking2;
+	old_sparking3 = sparking3;
+	old_sparking4 = sparking4;
+	old_zooming_beats_per_minute = zooming_beats_per_minute;
+	old_color_index = color_index;
+	old_color_speed = color_speed;
+	old_color_inc = color_inc;
+	old_dist = dist;
+	old_scale = scale;
+	old_dist2 = dist2;
+	old_scale2 = scale2;
+	old_Xorig = Xorig;
+	old_Yorig = Yorig;
+	old_X = X;
+	old_Y = Y;
+	old_Xn = Xn;
+	old_Yn = Yn;
+	old_Xorig2 = Xorig2;
+	old_Yorig2 = Yorig2;
+	old_X2 = X2;
+	old_Y2 = Y2;
+	old_Xn2 = Xn2;
+	old_Yn2 = Yn2;
+	old_wave1 = wave1;
+	old_wave2 = wave2;
+	old_wave3 = wave3;
+	old_mul1 = mul1;
+	old_mul2 = mul2;
+	old_mul3 = mul3;
+	old wave1r = wave1r;
+	old_wave2r = wave2r;
+	old_wave3r = wave3r;
+	old_mul1r = mul1r;
+	old_mul2r = mul2r;
+	old_mul3r = mul3r;
+	old_thathue = thathue;
+	old_thatrot = thatrot;
+	old_thatspeed = thatspeed;
+	old_thatphase = thatphase;
+	old_thatcutoff = thatcutoff;
+	for (i = 0; i < NUM_LEDS; i++) {
+		old_xd[i] = xd[i];
+		old_yd[i] = yd[i];
+	}
+	old_palette = current_palette;
 }
+//
+//class led_class {
+//public:
+//	struct CRGB leds[576];
+//	CRGBPalette16 palette;
+//
+//	uint8_t all_freq;
+//	uint8_t bg_clr;
+//	uint8_t bg_bri;
+//	uint8_t start_index;
+//	uint8_t this_beat;
+//	uint8_t this_bright;
+//	uint8_t that_bright;
+//	uint8_t this_cutoff;
+//	bool this_delay;
+//	uint8_t this_diff;
+//	bool this_dir;
+//	uint8_t this_fade;
+//	uint8_t this_hue;
+//	uint8_t this_index;
+//	uint8_t this_inc;
+//	int this_phase;
+//	int that_phase;
+//	uint8_t this_rot;
+//	uint8_t this_sat;
+//	uint8_t this_speed;
+//	uint8_t that_speed;
+//	uint8_t wave_brightness;
+//
+//	int plasma_phase1;
+//	int plasma_phase2;
+//	int plasmaIndex;
+//	int plasmaBright;
+//
+//	int rip_color;
+//	int rip_center;
+//	int rip_step;
+//	float rip_fadeRate;
+//	uint32_t rip_currentBg;
+//	uint32_t rip_nextBg;
+//	uint8_t myfade;
+//	uint8_t fadeval;
+//	byte twinkle_speed;
+//	byte twinkle_density;
+//	CRGB twinkle_bg;
+//	byte auto_select_background_color;
+//	byte cool_like_incandescent;
+//	uint8_t bglight;
+//	uint8_t backgroundBrightness;
+//	CRGB bg;
+//
+//	uint8_t numdots;
+//	uint8_t numdots_ring;
+//
+//	uint8_t cooling;				
+//	uint8_t cooling1;
+//	uint8_t cooling2;
+//	uint8_t cooling3;
+//	uint8_t cooling4;
+//	uint8_t sparking;				
+//	uint8_t sparking1;
+//	uint8_t sparking2;
+//	uint8_t sparking3;
+//	uint8_t sparking4;
+//	
+//	uint8_t zooming_beats_per_minute; 
+//	uint8_t color_index;
+//	uint8_t color_speed;
+//	uint8_t color_inc;
+//
+//	uint16_t dist;        
+//	uint16_t scale;         
+//	uint16_t dist2;        
+//	uint16_t scale2;
+//
+//	uint16_t Xorig = 0x013;
+//	uint16_t Yorig = 0x021;
+//	uint16_t X = Xorig;
+//	uint16_t Y = Yorig;
+//	uint16_t Xn;
+//	uint16_t Yn;
+//
+//	uint16_t Xorig2 = 0x013;
+//	uint16_t Yorig2 = 0x021;
+//	uint16_t X2 = Xorig;
+//	uint16_t Y2 = Yorig;
+//	uint16_t Xn2;
+//	uint16_t Yn2;
+//
+//	int wave1;
+//	int wave2;
+//	int wave3;
+//	uint8_t mul1;
+//	uint8_t mul2;
+//	uint8_t mul3;
+//
+//	int wave1r;
+//	int wave2r;
+//	int wave3r;
+//	uint8_t mul1r;
+//	uint8_t mul2r;
+//	uint8_t mul3r;
+//
+//	uint8_t thathue ;                                      
+//	uint8_t thatrot;                                        
+//	int8_t thatspeed;                                        
+//	int thatphase;                                           
+//	uint8_t thatcutoff;
+//};
+
+
+
+
+
+
+#endif

@@ -26,5 +26,6 @@
 #include "serendipitous.h"
 #include "spiral.h"
 #include "three_sin.h"
+#include "transition.h"
 #include "twinkle.h"
 #include "two_sin.h"

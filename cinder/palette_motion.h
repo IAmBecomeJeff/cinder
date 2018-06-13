@@ -13,11 +13,21 @@
 //	}
 //}
 
-void palette_motion(){
-  if(this_dir){
-	color_index += color_speed;
-  }else{color_index-=color_speed;}
-	ring_fill_palette(color_index, color_inc, current_palette, this_bright, current_blending);
+void palette_motion(bool old){
+	if (old) {
+		if (old_this_dir) {
+			old_color_index += old_color_speed;
+		}
+		else { old_color_index -= old_color_speed; }
+		ring_fill_palette(1, old_color_index, old_color_inc, old_palette, old_this_bright, current_blending);
+	}
+	else {
+		if (this_dir) {
+			color_index += color_speed;
+		}
+		else { color_index -= color_speed; }
+		ring_fill_palette(0, color_index, color_inc, current_palette, this_bright, current_blending);
+	}
 }
 
 

@@ -53,6 +53,7 @@ struct CRGB old_leds[NUM_LEDS];
 struct CRGB cur_leds[NUM_LEDS];
 CRGBPalette16 current_palette;         // Current palette we're using
 CRGBPalette16 target_palette;          // Next palette to transition to
+CRGBPalette16 old_palette;
 TBlendType current_blending;           // Linear vs No-Blending
 extern const TProgmemRGBGradientPalettePtr g_gradient_palettes[];   // from gradient_palettes.h
 extern const uint8_t g_gradient_palette_count;                      // # of fixed palettes
@@ -206,8 +207,8 @@ uint16_t Yn;
 
 uint16_t Xorig2 = 0x013;
 uint16_t Yorig2 = 0x021;
-uint16_t X2=Xorig;
-uint16_t Y2=Yorig;
+uint16_t X2=Xorig2;
+uint16_t Y2=Yorig2;
 uint16_t Xn2;
 uint16_t Yn2;
 
@@ -235,3 +236,81 @@ uint8_t thatrot = 0;                                          // You can change 
 int8_t thatspeed = 4;                                         // You can change the speed, and use negative values.
 int thatphase = 0;                                            // Phase change value gets calculated.
 uint8_t thatcutoff = 192;                                     // You can change the cutoff value to display that wave. Lower value = longer wave.
+
+
+
+///////// Variables for transitioning:
+// LED Routine/Shared Variables
+uint8_t old_all_freq, old_bg_clr, old_bg_bric old_start_index, old_this_beat, old_this_bright, old_that_bright, old_this_cutoff;
+int     old_this_delay = 0;      // Standard delay
+uint8_t old_this_diff, old_this_dir, old_this_fade, old_this_hue, old_this_index, old_this_inc;
+int     old_this_phase = 0;      // Standard phase change - sines
+int     old_that_phase = 0;      // second phase
+uint8_t old_this_rot = 1;      // Standard hue rotation rate
+uint8_t old_this_sat = 255;    // Standard saturation
+uint8_t old_this_speed = 4;      // Standard speed change
+uint8_t old_that_speed = 4;      // Second speed
+uint8_t old_wave_brightness = 255;    // Brightness of the waves/bars
+uint8_t old_xd[NUM_LEDS];             // X-array for 2d coordinates of leds
+uint8_t old_yd[NUM_LEDS];
+
+int old_plasma_phase1, old_plasma_phase2, old_plasmaIndex, old_plasmaBright;
+
+int old_rip_color;
+int old_rip_center = 0;
+int old_rip_step = -1;
+float old_rip_fadeRate = 0.8;
+uint32_t old_rip_currentBg = random(256);
+uint32_t old_rip_nextBg = rip_currentBg;
+uint8_t old_myfade = 255;
+uint8_t old_fadeval = 128;
+
+byte old_twinkle_speed = 4;
+byte old_twinkle_density = 5;
+CRGB old_twinkle_bg = CRGB::Black;
+byte old_auto_select_background_color = 0;
+byte old_cool_like_incandescent = 1;
+uint8_t old_bglight;
+uint8_t old_backgroundBrightness;
+CRGB old_bg;
+
+uint8_t old_numdots, old_numdots_ring;
+
+uint8_t old_cooling, old_cooling1, old_cooling2, old_cooling3, old_cooling4;
+uint8_t old_sparking, old_sparking1, old_sparking2, old_sparking3, old_sparking4;
+
+uint8_t old_zooming_beats_per_minute = 122;
+uint8_t old_color_index = 0;
+uint8_t old_color_speed = 1;
+uint8_t old_color_inc = 3;
+
+uint16_t old_dist = 12345;
+uint16_t old_scale = 30;
+uint16_t old_dist2 = 12345;
+uint16_t old_scale2 = 30;
+
+uint16_t old_Xorig = 0x013;
+uint16_t old_Yorig = 0x021;
+uint16_t old_X = old_Xorig;
+uint16_t old_Y = old_Yorig;
+uint16_t old_Xn;
+uint16_t old_Yn;
+
+uint16_t old_Xorig2 = 0x013;
+uint16_t old_Yorig2 = 0x021;
+uint16_t old_X2 = old_Xorig;
+uint16_t old_Y2 = old_Yorig;
+uint16_t old_Xn2;
+uint16_t old_Yn2;
+
+int old_wave1, old_wave2, old_wave3;
+uint8_t old_mul1, old_mul2, old_mul3;
+int old_wave1r, old_wave2r, old_wave3r;
+uint8_t old_mul1r, old_mul2r, old_mul3r;
+
+uint8_t old_thathue = 140;
+uint8_t old_thatrot = 0;
+int8_t old_thatspeed = 4;
+int old_thatphase = 0;
+uint8_t old_thatcutoff = 192;
+
