@@ -119,7 +119,7 @@ void loop() {
   checkDial();
   
   // Check switchA for direction
-  if digitalRead(switchA) {
+  if (digitalRead(switchA)) {
 	  this_dir = 0;
   }
   else {
@@ -128,11 +128,14 @@ void loop() {
 
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
-	  if digitalRead(switchB) {
+	  if (digitalRead(switchB)) {
 		  led_mode++;
 		  if (led_mode > max_mode) {
 			  led_mode = 70;
 		  }
+      Serial.print("Mode: "); 
+      Serial.println(led_mode);
+      strobe_mode(led_mode,1);
 	  }
   }
 

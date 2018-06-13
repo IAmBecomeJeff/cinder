@@ -29,7 +29,7 @@ void circnoise_pal_2() {
     leds[i] = ColorFromPalette(current_palette, index, bri, LINEARBLEND);   // With that value, look up the 8 bit colour palette value and assign it to the current LED.
 
   }
-} 
+} // circnoise_pal_2()
 
 
 #endif

@@ -67,7 +67,7 @@ uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
 bool transitioning = 0;	// transitioning flag
-blending_ratio = 0;
+int blending_ratio = 0;
 
 // LED Routine/Shared Variables
 uint8_t all_freq        = 32;     // Frequency (width of bars) (sine-routines)
@@ -111,7 +111,7 @@ typedef struct balls {
 } ;
 
 
-balls myballs[numballs];
+//balls myballs[numballs];
 
 //Variables for plasma
 int plasma_phase1;
@@ -145,7 +145,11 @@ uint8_t bglight;
 uint8_t backgroundBrightness;
 CRGB bg;
 
+
+uint8_t numdots;
 uint8_t numdots_ring;   			// dots for juggle_pal_ring
+
+//Fire Variables
 uint8_t cooling = 55;				// Cooling variable for fire
 uint8_t cooling1;
 uint8_t cooling2;
@@ -156,6 +160,8 @@ uint8_t sparking1;
 uint8_t sparking2;
 uint8_t sparking3;
 uint8_t sparking4;
+
+//Disco Variables
 uint8_t zooming_beats_per_minute = 122; // zooming for disco
 uint8_t color_index = 0;
 uint8_t color_speed = 1;
@@ -177,6 +183,55 @@ unsigned long debounceDelay = 50;
 
 Bounce debouncer = Bounce();
 
+//Spiral Variables
 int spiral_start;
 int spiral_inc;
 int spiral_width;
+
+// noise8 variables
+
+uint16_t dist = 12345;         // A random number for our noise generator.
+uint16_t scale = 30;          // Wouldn't recommend changing this_ on the fly, or the animation will be really blocky.
+uint16_t dist2 = 12345;         // A random number for our noise generator.
+uint16_t scale2 = 30;          // Wouldn't recommend changing this_ on the fly, or the animation will be really blocky.
+
+// serendipitous variables
+
+uint16_t Xorig = 0x013;
+uint16_t Yorig = 0x021;
+uint16_t X=Xorig;
+uint16_t Y=Yorig;
+uint16_t Xn;
+uint16_t Yn;
+
+uint16_t Xorig2 = 0x013;
+uint16_t Yorig2 = 0x021;
+uint16_t X2=Xorig;
+uint16_t Y2=Yorig;
+uint16_t Xn2;
+uint16_t Yn2;
+
+// three sin variables
+
+int wave1;
+int wave2;
+int wave3;
+uint8_t mul1;
+uint8_t mul2;
+uint8_t mul3;
+
+int wave1r;
+int wave2r;
+int wave3r;
+uint8_t mul1r;
+uint8_t mul2r;
+uint8_t mul3r;
+
+
+// two_sin_pal variables-------------------------------------------------------------------------
+
+uint8_t thathue = 140;                                        // You can change the starting hue for other wave.
+uint8_t thatrot = 0;                                          // You can change how quickly the hue rotates for the other wave. Currently 0.
+int8_t thatspeed = 4;                                         // You can change the speed, and use negative values.
+int thatphase = 0;                                            // Phase change value gets calculated.
+uint8_t thatcutoff = 192;                                     // You can change the cutoff value to display that wave. Lower value = longer wave.
