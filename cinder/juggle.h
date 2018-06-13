@@ -12,7 +12,7 @@
  *  this_bright
  *  this_diff
  */
-
+// use beatsin16_halfup and beatsin16_halfdown to make it go one way
 
 void juggle_pal() {                                            // Several colored dots, weaving in and out of sync with each other
   this_index = 0;                                           // Reset the hue values.
