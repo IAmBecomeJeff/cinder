@@ -131,10 +131,8 @@ void loop() {
 	  if (digitalRead(switchB)) {
 		  led_mode++;
 		  if (led_mode > max_mode) {
-			  led_mode = 70;
+			  led_mode = 2;
 		  }
-      Serial.print("Mode: "); 
-      Serial.println(led_mode);
       strobe_mode(led_mode,1);
 	  }
   }
@@ -242,7 +240,7 @@ void strobe_mode(uint8_t newMode, bool mc){
 
     // 7 - juggle mode
     case  7: 
-			if(mc) { this_delay = 10; numdots = 20; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
+			if(mc) { this_delay = 10; numdots = 6; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
 			juggle_pal(); 
 			break;
 
