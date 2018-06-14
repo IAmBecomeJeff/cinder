@@ -204,8 +204,8 @@ void circnoise_pal_1_ring(bool old) {
 			uint16_t old_shift_x = beatsin8(17);                  // the x position of the noise field swings @ 17 bpm
 			uint16_t old_shift_y = millis() / 100;                // the y position becomes slowly incremented
 
-			uint32_t old_old_real_x = (old_xd[i] + old_shift_x) * old_scale;       // calculate the coordinates within the noise field
-			uint32_t real_y = (old_yd[i] + old_shift_y) * old_scale;       // based on the precalculated positions
+			uint32_t old_real_x = (old_xd[i] + old_shift_x) * old_scale;       // calculate the coordinates within the noise field
+			uint32_t old_real_y = (old_yd[i] + old_shift_y) * old_scale;       // based on the precalculated positions
 
 			uint8_t old_noise = inoise16(old_real_x, old_real_y, 4223) >> 8;           // get the noise data and scale it down
 

@@ -241,7 +241,7 @@ uint8_t thatcutoff = 192;                                     // You can change 
 
 ///////// Variables for transitioning:
 // LED Routine/Shared Variables
-uint8_t old_all_freq, old_bg_clr, old_bg_bric old_start_index, old_this_beat, old_this_bright, old_that_bright, old_this_cutoff;
+uint8_t old_all_freq, old_bg_clr, old_bg_bri, old_start_index, old_this_beat, old_this_bright, old_that_bright, old_this_cutoff;
 int     old_this_delay = 0;      // Standard delay
 uint8_t old_this_diff, old_this_dir, old_this_fade, old_this_hue, old_this_index, old_this_inc;
 int     old_this_phase = 0;      // Standard phase change - sines
@@ -314,3 +314,6 @@ int8_t old_thatspeed = 4;
 int old_thatphase = 0;
 uint8_t old_thatcutoff = 192;
 
+int old_spiral_start;
+int old_spiral_inc;
+int old_spiral_width;

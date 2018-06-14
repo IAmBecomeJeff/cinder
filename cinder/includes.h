@@ -10,7 +10,6 @@
 // Display routines
 #include "circnoise.h"
 #include "confetti.h"
-#include "discostrobe.h"
 #include "fire.h"
 #include "gradient_palettes.h"
 #include "juggle.h"

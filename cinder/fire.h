@@ -251,8 +251,8 @@ void fire_mirror_pal(bool old) {
 				ringPalette(1, STRIP_LENGTH - 1 - j, old_palette, colorindex);
 			}
 			else {
-				ringPalette((1, STRIP_LENGTH / 2) - 1 - j, old_palette, colorindex);
-				ringPalette((1, STRIP_LENGTH / 2) + j, cold_palette, colorindex);
+				ringPalette(1, (STRIP_LENGTH / 2) - 1 - j, old_palette, colorindex);
+				ringPalette(1, (STRIP_LENGTH / 2) + j, old_palette, colorindex);
 			}
 		}
 	}
@@ -276,8 +276,8 @@ void fire_mirror_pal(bool old) {
 				ringPalette(0, STRIP_LENGTH - 1 - j, current_palette, colorindex);
 			}
 			else {
-				ringPalette((0, STRIP_LENGTH / 2) - 1 - j, current_palette, colorindex);
-				ringPalette((0, STRIP_LENGTH / 2) + j, current_palette, colorindex);
+				ringPalette(0, (STRIP_LENGTH / 2) - 1 - j, current_palette, colorindex);
+				ringPalette(0, (STRIP_LENGTH / 2) + j, current_palette, colorindex);
 			}
 		}
 	}

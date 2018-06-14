@@ -102,10 +102,10 @@ void ring_nblend(bool old, uint16_t pix, CRGB new_color, fract8 blend_amount){
 // Ring version of fill_palette
  void ring_fill_palette(bool old, uint8_t startIndex, uint8_t incIndex, CRGBPalette16 pal=current_palette, uint8_t bri = this_bright, TBlendType blending=current_blending){
 	 if (old) {
-		 uint8_t old_colorIndex = old_startIndex;
+		 uint8_t colorIndex = startIndex;
 		 for (uint16_t i = 0; i < STRIP_LENGTH; i++) {
 			 ringPalette(1, i, pal, colorIndex, bri, blending);
-			 old_colorIndex += old_incIndex;
+			 colorIndex += incIndex;
 		 }
 	 }
 	 else {

@@ -83,7 +83,7 @@ void update_old_variables() {
 	old_mul1 = mul1;
 	old_mul2 = mul2;
 	old_mul3 = mul3;
-	old wave1r = wave1r;
+	old_wave1r = wave1r;
 	old_wave2r = wave2r;
 	old_wave3r = wave3r;
 	old_mul1r = mul1r;
@@ -94,7 +94,7 @@ void update_old_variables() {
 	old_thatspeed = thatspeed;
 	old_thatphase = thatphase;
 	old_thatcutoff = thatcutoff;
-	for (i = 0; i < NUM_LEDS; i++) {
+	for (int i = 0; i < NUM_LEDS; i++) {
 		old_xd[i] = xd[i];
 		old_yd[i] = yd[i];
 	}

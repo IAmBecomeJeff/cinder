@@ -108,7 +108,7 @@ void setup() {
 	}
 
   // Init first mode
-  strobe_mode(led_mode, 1);
+  strobe_mode(led_mode, 1, 0);
 }
 
 void loop() {
@@ -136,7 +136,7 @@ void loop() {
 		  }
 		  update_old_variables();
 		  transitioning = 1;
-		  strobe_mode(led_mode,1);
+		  strobe_mode(led_mode,1,0);
 	  }
   }
 
@@ -802,7 +802,7 @@ void readkeyboard() {
       case 99:
         Serial.println(" ");
         led_mode = 0;
-        strobe_mode(led_mode, 1);
+        strobe_mode(led_mode, 1,0);
         break;
 
       // Command: d {delay} - set the delay amount to {delay} (0-255)
@@ -823,7 +823,7 @@ void readkeyboard() {
           led_mode = (led_mode - 1);
           if (led_mode == 255) led_mode = max_mode; 
         }
-        strobe_mode(led_mode, 1);
+        strobe_mode(led_mode, 1,0);
         break;
 
       // Command: f {palette_number} - set the current palette
@@ -860,11 +860,13 @@ void readkeyboard() {
 
       // Command: m {mode} - select mode {mode} (0-255)
       case 109:
-		old_mode = led_mode;
+  		  old_mode = led_mode;
         led_mode = Serial.parseInt();
         led_mode = constrain(led_mode, 0, max_mode);
         Serial.println(led_mode);
-        strobe_mode(led_mode, 1);
+        update_old_variables();
+        transitioning = 1;
+        strobe_mode(led_mode, 1,0);
         break;
 
       // Command: n - toggle direction
@@ -930,25 +932,24 @@ void checkDial() {
       switch (rotary_function) {
         
         case 0: // add !transitioning to let the new mode get set up
-			//if (!transitioning) {
-				old_mode = led_mode;
-				if (digitalRead(pinB) != aVal) {   // Means pin A changed first, we're rotating CW
-					old_mode = led_mode;
-					led_mode++;      // Move to next pattern
-				}
-				else {            // Means pin B changed first, we're moving CCW
-					old_mode = led_mode;
-					led_mode--;       // Move to previous pattern
-				}
-				if (led_mode < 0) {
-					led_mode = max_mode;
-				}
-				if (led_mode > max_mode) {
-					led_mode = 0;
-				}
-				update_old_variables();
-				strobe_mode(led_mode, 1);
-			//}
+			  if (!transitioning) {
+  				old_mode = led_mode;
+  				if (digitalRead(pinB) != aVal) {   // Means pin A changed first, we're rotating CW
+  					led_mode++;      // Move to next pattern
+  				}
+  				else {            // Means pin B changed first, we're moving CCW
+  					led_mode--;       // Move to previous pattern
+  				}
+  				if (led_mode < 0) {
+  					led_mode = max_mode;
+  				}
+  				if (led_mode > max_mode) {
+  					led_mode = 0;
+  				}
+  				update_old_variables();
+          transitioning = 1 ; 
+  				strobe_mode(led_mode, 1,0);
+			  }
           break;
           
         case 1:
