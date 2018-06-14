@@ -163,7 +163,7 @@ void loop() {
   }
 
   if (transitioning) {
-	  blending_ratio += 17; // gives 15 iterations
+	  blending_ratio += 1; // gives 15 iterations
 	  for (int i = 0; i < NUM_LEDS; i++) {
 		  leds[i] = blend(old_leds[i], cur_leds[i], blending_ratio);
 	  }
@@ -678,7 +678,7 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 			ring_fill_static_palette(old);
 			break;
 		
-	// 79 - spiral palette
+	// 79 - spiral palette // problems
 	case 79:
 			if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
 			palette_spiral(old);
