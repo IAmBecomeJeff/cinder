@@ -69,6 +69,7 @@ int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
 bool transitioning = 0;	// transitioning flag
 int blending_ratio = 0;
+bool transition_wait = 0;
 
 // LED Routine/Shared Variables
 uint8_t all_freq        = 32;     // Frequency (width of bars) (sine-routines)

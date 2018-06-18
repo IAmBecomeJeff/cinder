@@ -128,7 +128,7 @@ void loop() {
 
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
-	  if (digitalRead(switchB)) {
+	  if (!digitalRead(switchB)) {
 		  old_mode = led_mode;
 		  led_mode++;
 		  if (led_mode > max_mode) {
@@ -656,7 +656,7 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 
 	// 74 - fire palette with rings
 	case 74:
-			if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 150; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 90; target_palette = hallows_gp;}
+			if(mc) {this_delay = 10; cooling1 = 60; sparking1 = 80; cooling2 = 95; sparking2 = 90; cooling3 = 80; sparking3 = 50; cooling4 = 90; sparking4 = 85; target_palette = hallows_gp;}
 			fire_pal_rings(old);
 			break;
 
@@ -684,19 +684,19 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 			ring_fill_static_palette(old);
 			break;
 
-	//79 - spiral
+	//79 - spiral BAD
 	case 79:
 			if (mc) { this_delay = 20; spiral_start = 0; spiral_inc = 3; spiral_width = 3; this_hue = 128; this_sat = 255; }
 			spiral(old);
 			break;
 
-	//80 - spiral
+	//80 - spiral BAD
 	case 80:
 			if(mc){this_delay = 20; spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; }
 			spiral(old);
 			break;
 
-	// 81 - spiral with palette
+	// 81 - spiral with palette SURPRISINGLY OKAY
 	case 81:
 			if(mc){this_delay = 15; spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1;  target_palette = ofaurora_gp;}
 			spiral_pal(old);
@@ -716,7 +716,7 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 
 	// 84 - one sin spiral
 	case 84:
-			if (mc) { this_delay = 8; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
+			if (mc) { this_delay = 4; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; wave_brightness = 255; }
 			one_sin_spiral(old);
 			break;
 

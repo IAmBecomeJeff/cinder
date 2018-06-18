@@ -128,7 +128,7 @@ void loop() {
 
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
-	  if (digitalRead(switchB)) {
+	  if (!digitalRead(switchB)) {
 		  old_mode = led_mode;
 		  led_mode++;
 		  if (led_mode > max_mode) {
@@ -485,206 +485,206 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
     // 32 - circular noise with party palette
     case 51:
  			if(mc) { this_delay = 10; target_palette = Orange_to_Purple_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 52:
  			if(mc) { this_delay = 10; target_palette = slope_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 53:
  			if(mc) { this_delay = 10; target_palette = Ribbon_Colors_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 54:
  			if(mc) { this_delay = 10; target_palette = BlacK_Blue_Magenta_White_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 55:
  			if(mc) { this_delay = 10; target_palette = fire_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 56:
  			if(mc) { this_delay = 10; target_palette = Sunset_Real_gp; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 57:
  			if(mc) { this_delay = 10; scale = 10; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 58:
  			if(mc) { this_delay = 10; scale = 100; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 59:
  			if(mc) { this_delay = 10; scale = 500; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 60:
  			if(mc) { this_delay = 10; scale = 1000; }
-			circnoise_pal_1_ring_(old);
+			circnoise_pal_1_ring(old);
 			break;
 
 //*****circnoise2
     // 32 - circular noise with party palette
     case 61:
  			if(mc) { this_delay = 10; target_palette = Orange_to_Purple_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 62:
  			if(mc) { this_delay = 10; target_palette = slope_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 63:
  			if(mc) { this_delay = 10; target_palette = Ribbon_Colors_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 64:
  			if(mc) { this_delay = 10; target_palette = BlacK_Blue_Magenta_White_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 65:
  			if(mc) { this_delay = 10; target_palette = fire_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 66:
  			if(mc) { this_delay = 10; target_palette = Sunset_Real_gp; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 67:
  			if(mc) { this_delay = 10; scale = 10; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 68:
  			if(mc) { this_delay = 10; scale = 100; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 69:
  			if(mc) { this_delay = 10; scale = 1000; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 70:
  			if(mc) { this_delay = 10; scale = 10000; }
-			circnoise_pal_2_ring_(old);
+			circnoise_pal_2_ring(old);
 			break;
 //*****circnoise3
     // 32 - circular noise with party palette
     case 71:
  			if(mc) { this_delay = 10; target_palette = Orange_to_Purple_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 72:
  			if(mc) { this_delay = 10; target_palette = slope_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 73:
  			if(mc) { this_delay = 10; target_palette = Ribbon_Colors_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 74:
  			if(mc) { this_delay = 10; target_palette = BlacK_Blue_Magenta_White_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 75:
  			if(mc) { this_delay = 10; target_palette = fire_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 76:
  			if(mc) { this_delay = 10; target_palette = Sunset_Real_gp; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 77:
  			if(mc) { this_delay = 10; scale = 10; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 78:
  			if(mc) { this_delay = 10; scale = 100; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 79:
  			if(mc) { this_delay = 10; scale = 1000; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 80:
  			if(mc) { this_delay = 10; scale = 10000; }
-			circnoise_pal_3_ring_(old);
+			circnoise_pal_3_ring(old);
 			break;
 //*****circnoise4
     // 32 - circular noise with party palette
     case 81:
  			if(mc) { this_delay = 10; target_palette = Orange_to_Purple_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 82:
  			if(mc) { this_delay = 10; target_palette = slope_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 83:
  			if(mc) { this_delay = 10; target_palette = Ribbon_Colors_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 84:
  			if(mc) { this_delay = 10; target_palette = BlacK_Blue_Magenta_White_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 85:
  			if(mc) { this_delay = 10; target_palette = fire_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 86:
  			if(mc) { this_delay = 10; target_palette = Sunset_Real_gp; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 87:
  			if(mc) { this_delay = 10; scale = 10; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 88:
  			if(mc) { this_delay = 10; scale = 100; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 89:
  			if(mc) { this_delay = 10; scale = 1000; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // 32 - circular noise with party palette
     case 90:
  			if(mc) { this_delay = 10; scale = 10000; }
-			circnoise_pal_4_ring_(old);
+			circnoise_pal_4_ring(old);
 			break;
     // if more modes added, must update max_modes in variables
   }

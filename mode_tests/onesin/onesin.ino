@@ -128,7 +128,7 @@ void loop() {
 
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
-	  if (digitalRead(switchB)) {
+	  if (!digitalRead(switchB)) {
 		  old_mode = led_mode;
 		  led_mode++;
 		  if (led_mode > max_mode) {
@@ -308,383 +308,383 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 
 			// 14 - one-sin // Various palettes
 	case 16:
-		if (mc) { this_delay = 4; target_palette = froth316_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = froth316_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 17:
-		if (mc) { this_delay = 4; target_palette = Skydye11_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay =15; target_palette = Skydye11_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 18:
-		if (mc) { this_delay = 4; target_palette = Wizzl019_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = Wizzl019_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 19:
-		if (mc) { this_delay = 4; target_palette = Tropical_Colors_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay =15; target_palette = Tropical_Colors_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 20:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 21:
-		if (mc) { this_delay = 4; target_palette = hallows_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = hallows_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 22:
-		if (mc) { this_delay = 4; target_palette = vibrant_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = vibrant_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin **************** all_freq changes
 	case 23:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 24:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 25:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 26:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 27:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 28:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 29:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin ************* this_rot changes
 	case 30:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 31:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 32:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 33:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 34:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin ****** this_speed changes
 	case 35:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 36:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
-		// 14 - one-sin 
+		// 14 - one-sin KEEP
 	case 37:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 38:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 16; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 16; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 39:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin ************* this_rot changes, all_freq alternates, this speed changes
 	case 40:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 41:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
-		// 14 - one-sin 
+		// 14 - one-sin KEEP
 	case 42:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = -6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 43:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 44:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 	case 45:
-		if (mc) { this_delay = 4; target_palette = Orange_to_Purple_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = Orange_to_Purple_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 46:
-		if (mc) { this_delay = 4; target_palette = Orange_to_Purple_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = Orange_to_Purple_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 47:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 48:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 2; this_cutoff = 100; this_rot = 1; this_speed = 16; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 2; this_cutoff = 100; this_rot = 1; this_speed = 16; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 49:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 4; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 4; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal_ring(old);
 		break;
 
 		// 14 - one-sin 
 	case 50:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 51:
-		if (mc) { this_delay = 4; target_palette = hallows_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = hallows_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
-		// 14 - one-sin 
+		// 14 - one-sin  KEEP
 	case 52:
-		if (mc) { this_delay = 4; target_palette = vibrant_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 5; target_palette = vibrant_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin **************** all_freq changes
 	case 53:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 2; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 54:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 55:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 56:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 57:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 58:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 59:
-		if (mc) { this_delay = 4; target_palette = cequal_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = cequal_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin ************* this_rot changes
 	case 60:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 61:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 62:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 63:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 64:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin ****** this_speed changes
 	case 65:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 66:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 67:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 68:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 16; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 16; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 69:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin ************* this_rot changes, all_freq alternates, this speed changes
 	case 70:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 71:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 128; this_rot = 1; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 72:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 2; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 73:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 4; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 74:
-		if (mc) { this_delay = 4; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = slope_gp; all_freq = 4; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 8; this_speed = 1; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 	case 75:
-		if (mc) { this_delay = 4; target_palette = Orange_to_Purple_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = Orange_to_Purple_gp; all_freq = 6; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 2; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 76:
-		if (mc) { this_delay = 4; target_palette = Orange_to_Purple_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = Orange_to_Purple_gp; all_freq = 8; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 4; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 77:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 10; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 8; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 78:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 2; this_cutoff = 100; this_rot = 1; this_speed = 16; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 12; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 2; this_phase = 2; this_cutoff = 100; this_rot = 1; this_speed = 16; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
 		// 14 - one-sin 
 	case 79:
-		if (mc) { this_delay = 4; target_palette = bhw1_28_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 4; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
+		if (mc) { this_delay = 15; target_palette = bhw1_28_gp; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 4; this_phase = 4; this_cutoff = 224; this_rot = 0; this_speed = 6; wave_brightness = 255; }
 		one_sin_pal(old);
 		break;
 
