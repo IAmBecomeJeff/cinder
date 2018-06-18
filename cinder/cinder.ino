@@ -163,6 +163,7 @@ void loop() {
   }
 
   if (transitioning) {
+	  glitter = 1;
     if (transition_wait){
   	   blending_ratio += 1;
      }
@@ -172,6 +173,7 @@ void loop() {
 	  if (blending_ratio >= 255) {
 		  transitioning = 0;
 		  blending_ratio = 0;
+		  glitter = 0;
 	  }
     transition_wait = !transition_wait;
   }
@@ -682,10 +684,10 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 			ring_fill_static_palette(old);
 			break;
 
-	// 79 - spiral palette // problems
+	//79 - spiral
 	case 79:
-			if(mc) { this_delay = 15; color_index = 0; color_speed = 1; color_inc = 3; target_palette = ofaurora_gp;}
-			palette_spiral(old);
+			if (mc) { this_delay = 20; spiral_start = 0; spiral_inc = 3; spiral_width = 3; this_hue = 128; this_sat = 255; }
+			spiral(old);
 			break;
 
 	//80 - spiral
