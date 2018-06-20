@@ -149,4 +149,10 @@ void ring_fill_static_palette(bool old, CRGBPalette16 pal=current_palette, uint8
 		}
 	}
 } 
+
+void ring_juggle(int pos, CRGBPalette16 pal, uint8_t index, uint8_t bri= this_bright, TBlendType blending = current_blending){
+	for (byte j = 0; j<4; j++) {
+		jug_leds[ringArray[pos][j]] = ColorFromPalette(pal, index, bri, blending);
+	}
+}
 #endif

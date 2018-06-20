@@ -32,6 +32,9 @@ void update_old_variables() {
 	old_rip_color = rip_color;
 	old_rip_center = rip_center;
 	old_rip_step = rip_step;
+	if (old_rip_step < 0) {
+		old_rip_step = -1;
+	}
 	old_rip_fadeRate = rip_fadeRate;
 	old_rip_currentBg = rip_currentBg;
 	old_rip_nextBg = rip_nextBg;

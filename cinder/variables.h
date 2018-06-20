@@ -51,6 +51,7 @@ int this_arg;			// Serial input argument
 struct CRGB leds[NUM_LEDS];
 struct CRGB old_leds[NUM_LEDS];
 struct CRGB cur_leds[NUM_LEDS];
+struct CRGB jug_leds[NUM_LEDS];
 CRGBPalette16 current_palette;         // Current palette we're using
 CRGBPalette16 target_palette;          // Next palette to transition to
 CRGBPalette16 old_palette;
@@ -63,7 +64,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 91;		// maximum number of modes
+uint8_t max_mode    = 92;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -85,7 +86,7 @@ uint8_t this_cutoff     = 192;    // Cutoff value; lower = longer wave
 int     this_delay      = 0;      // Standard delay
 uint8_t this_diff       = 1;      // Standard palette index jump
 uint8_t this_dir        = 0;      // Standard direction
-uint8_t this_fade       = 224;    // Standard fade rate
+uint8_t this_fade       = 16;    // Standard fade rate
 uint8_t this_hue        = 0;      // Standard hue
 uint8_t this_index      = 0;      // Standard palette index
 uint8_t this_inc        = 1;      // Standard increment. Changes starting color for each pass (sine-routines)
@@ -102,6 +103,8 @@ int ringArray[144][4];      	  // Array for rings
 int spiralArray[4][144];		  // Array for spirals
 int spiralArrayRev[4][144];
 int w = 3; 						  // width of spirals
+uint8_t jug_fade = 16;
+uint8_t jug_index = 0;
 
 
 typedef struct balls {
@@ -126,6 +129,7 @@ int plasmaBright;
 int rip_color;
 int rip_center = 0;
 int rip_step = -1;
+int rip_delay = -10;
 #define rip_maxSteps 16
 float rip_fadeRate = 0.8;
 //Ripple background color

@@ -301,7 +301,7 @@ void fire_rings1(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!old_this_dir) {
+			if (old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -322,7 +322,7 @@ void fire_rings1(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!this_dir) {
+			if (this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(heat[j]);
 			}
 			else {
@@ -346,7 +346,7 @@ void fire_rings2(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!old_this_dir) {
+			if (old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -366,7 +366,7 @@ void fire_rings2(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!this_dir) {
+			if (this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(heat[j]);
 			}
 			else {
@@ -390,7 +390,7 @@ void fire_rings3(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!old_this_dir) {
+			if (old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -410,7 +410,7 @@ void fire_rings3(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!this_dir) {
+			if (this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(heat[j]);
 			}
 			else {
@@ -434,7 +434,7 @@ void fire_rings4(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!old_this_dir) {
+			if (old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -454,7 +454,7 @@ void fire_rings4(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!this_dir) {
+			if (this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(heat[j]);
 			}
 			else {

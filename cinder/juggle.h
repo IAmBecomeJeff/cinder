@@ -54,4 +54,71 @@ void juggle_pal_ring(bool old) {                                            // S
 	}
 } // juggle_pal_ring()
 
+void juggle_pal_ring_onedir(bool old) {                                            // Several colored dots, weaving in and out of sync with each other
+  if (old) {
+    old_this_index = 0;                                           // Reset the hue values.
+    fadeToBlackBy(old_leds, NUM_LEDS, old_this_fade);
+    for (int i = 0; i < old_numdots_ring; i++) {
+      if(!old_this_dir){
+        ringPaletteAdd(1, beatsin16_halfdown(old_this_beat + i + old_numdots_ring, 0, STRIP_LENGTH - 1), old_palette, old_this_index, old_this_bright, current_blending);
+      }else{
+        ringPaletteAdd(1, beatsin16_halfup(old_this_beat + i + old_numdots_ring, 0, STRIP_LENGTH - 1), old_palette, old_this_index, old_this_bright, current_blending);
+      }
+      // Munge the values and pick a colour from the palette
+      old_this_index += old_this_diff;
+    }
+  }
+  else {
+    this_index = 0;                                           // Reset the hue values.
+    fadeToBlackBy(cur_leds, NUM_LEDS, this_fade);
+    for (int i = 0; i < numdots_ring; i++) {
+      if(!this_dir){
+        ringPaletteAdd(0, beatsin16_halfdown(this_beat + 2*i + numdots_ring, 0, STRIP_LENGTH - 1), current_palette, this_index, this_bright, current_blending);
+      }else{
+        ringPaletteAdd(0, beatsin16_halfup(this_beat + i + numdots_ring, 0, STRIP_LENGTH - 1), current_palette, this_index, this_bright, current_blending);
+      }
+      this_index += this_diff;
+    }
+  }
+} // juggle_pal_ring()
+
+
+  void juggle_fire(bool old){
+    //this_index = 0;
+    fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);
+    for(int i = 0; i < numdots_ring; i++){
+      if(!this_dir){
+      ring_juggle(beatsin16_halfdown(this_beat+3*i + numdots_ring, 0, STRIP_LENGTH -1), current_palette, this_index, this_bright, current_blending);
+      }else{
+      ring_juggle(beatsin16_halfup(this_beat+3*i + numdots_ring, 0, STRIP_LENGTH -1), current_palette, this_index, this_bright, current_blending);   
+      }
+      this_index += this_diff;
+    }
+    fire_rings1(old);
+    fire_rings2(old);
+    fire_rings3(old);
+    fire_rings4(old);
+    for(int i = 0; i < NUM_LEDS; i++){
+      if(old){
+        old_leds[i] += jug_leds[i];
+      }else{
+        cur_leds[i] += jug_leds[i];
+      }
+    }
+  }
+
+
+
+//
+////add juggle
+//void add_juggle_down() {
+//	fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);
+//	int pos1 = beatsin16_halfdown(30, 0, STRIP_LENGTH-1);
+//	//int pos2 = beatsin16_halfdown(70, 0, STRIP_LENGTH);
+//  jug_index++;
+//  if (jug_index > 250){jug_index = 0;}
+//	ring_juggle(pos1, current_palette, jug_index);	
+//}
+//
+
 #endif

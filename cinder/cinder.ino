@@ -129,14 +129,23 @@ void loop() {
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
 	  if (!digitalRead(switchB)) {
-		  old_mode = led_mode;
-		  led_mode++;
-		  if (led_mode > max_mode) {
-			  led_mode = 2;
-		  }
-		  update_old_variables();
-		  transitioning = 1;
-		  strobe_mode(led_mode,1,0);
+      if (rotary_function==1){
+        updatePaletteIndex(target_palette);
+        palette_index++;
+        if (palette_index > g_gradient_palette_count -1){palette_index= 0;}
+        target_palette = g_gradient_palettes[palette_index];  
+        Serial.print("Palette number: ");
+        Serial.println(palette_index);
+      }else{
+  		  old_mode = led_mode;
+  		  led_mode++;
+  		  if (led_mode > max_mode) {
+  			  led_mode = 2;
+  		  }
+  		  update_old_variables();
+  		  transitioning = 1;
+  		  strobe_mode(led_mode,1,0);
+        }
 	  }
   }
 
@@ -156,10 +165,10 @@ void loop() {
   EVERY_N_MILLIS_I(this_timer, this_delay) {
     this_timer.setPeriod(this_delay);
     //strobe_mode(led_mode, 0);
-	strobe_mode(led_mode, 0, 0);
-	if (transitioning) {
-		strobe_mode(old_mode, 0, 1);
-	}
+	  strobe_mode(led_mode, 0, 0);
+	  if (transitioning) {
+		  strobe_mode(old_mode, 0, 1);
+	  }
   }
 
   if (transitioning) {
@@ -542,7 +551,7 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 
     // 55 - confetti with lava palette_ring
     case 55:
-			if(mc) { this_delay = 20; target_palette = LavaColors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
+			if(mc) { this_delay = 10; target_palette = LavaColors_p; this_inc = 2; this_hue = 128; this_fade = 8; this_diff = 64; this_bright = 255; }
 			confetti_pal_ring(old);
 			break;
 
@@ -600,10 +609,10 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 			juggle_pal_ring(old);
 			break;
 
-	// 65 - juggle mode ring
+	// 65 - juggle mode one direction
 	case 65:
-			if(mc) { this_delay = 10; numdots_ring = 12; target_palette = PartyColors_p; this_fade = 16; this_beat = 8; this_bright = 255; this_diff = 64; } // if ring, use numdots_ring
-			juggle_pal_ring(old);
+			if(mc) { this_delay = 5; numdots_ring = 5; target_palette = LavaColors_p; this_fade = 16; this_beat = 6; this_bright = 255; this_diff = 50; } // if ring, use numdots_ring
+			juggle_pal_ring_onedir(old);
 			break;
 
 	// 66 - pride rainbows
@@ -680,27 +689,29 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 
 	// 78 - palette viewer
 	case 78:
-			if(mc) {target_palette = sea_treasure_gp;}
+			if(mc) {this_delay = 5; target_palette = sea_treasure_gp;}
 			ring_fill_static_palette(old);
 			break;
 
-	//79 - spiral BAD
-	case 79:
-			if (mc) { this_delay = 20; spiral_start = 0; spiral_inc = 3; spiral_width = 3; this_hue = 128; this_sat = 255; }
-			spiral(old);
-			break;
 
-	//80 - spiral BAD
-	case 80:
-			if(mc){this_delay = 20; spiral_start = 0; spiral_inc = 4; spiral_width = 2; this_hue = 96; this_sat = 255; }
-			spiral(old);
-			break;
+  // 79 - juggle mode one direction
+  case 79:
+      if(mc) { this_delay = 5; numdots_ring = 5; target_palette = purple_flower_gp; this_fade = 16; this_beat = 6; this_bright = 255; this_diff = 50; } // if ring, use numdots_ring
+      juggle_pal_ring_onedir(old);
+      break;
 
-	// 81 - spiral with palette SURPRISINGLY OKAY
-	case 81:
-			if(mc){this_delay = 15; spiral_start = 0; spiral_inc = 4; spiral_width = 2; start_index = 0; this_inc = 1;  target_palette = ofaurora_gp;}
-			spiral_pal(old);
-			break;
+
+  // 80 - juggle mode one direction
+  case 80:
+      if(mc) { this_delay = 5; numdots_ring = 8; target_palette = alarm_p4_0_2_gp; this_fade = 16; this_beat = 20; this_bright = 255; this_diff = 32; } // if ring, use numdots_ring
+      juggle_pal_ring_onedir(old);
+      break;
+
+  // 81 - juggle mode one direction
+  case 81:
+      if(mc) { this_delay = 5; numdots_ring = 6; target_palette = cequal_gp; this_fade = 16; this_beat = 0; this_bright = 255; this_diff = 42; } // if ring, use numdots_ring
+      juggle_pal_ring_onedir(old);
+      break;
 
 	// 82 - spiral sin 1
 	case 82:
@@ -761,6 +772,12 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 			if (mc) { this_delay = 5; target_palette = RainbowColors_p; all_freq = 20; bg_clr = 0; bg_bri = 0; this_bright = 255; start_index = 64; this_inc = 1; this_phase = 0; that_phase = 0; this_cutoff = 224; this_rot = 0; this_speed = 3; that_speed = 3; wave_brightness = 255; }
 			helix_spiral(old);
 			break;
+
+	// 92 - juggle fire rings
+	case 92:
+		if (mc) { this_delay = 7; target_palette = es_emerald_dragon_01_gp; numdots_ring = 3; jug_fade = 32; this_beat = 10; this_diff = 80; cooling1 = 80; sparking1 = 40; cooling2 = 80; sparking2 = 30; cooling3 = 80; sparking3 = 35; cooling4 = 75; sparking4 = 45; }
+		juggle_fire(old);
+		break;
 
     // if more modes added, must update max_modes in variables
   }
@@ -938,7 +955,7 @@ void checkDial() {
       switch (rotary_function) {
 
         case 0: // add !transitioning to let the new mode get set up
-			  if (!transitioning) {
+			  //if (!transitioning) {
   				old_mode = led_mode;
   				if (digitalRead(pinB) != aVal) {   // Means pin A changed first, we're rotating CW
   					led_mode++;      // Move to next pattern
@@ -955,7 +972,7 @@ void checkDial() {
   				update_old_variables();
 				transitioning = 1 ;
   				strobe_mode(led_mode, 1,0);
-			  }
+			  //}
           break;
 
         case 1:

@@ -28,8 +28,11 @@ void one_sin_pal(bool old) {
 	if (old) {
 		old_start_index += old_this_inc;
 		old_this_index = old_start_index;
+   if (this_dir){
 		old_this_phase += old_this_speed;                                                                     // You can change direction and speed individually.
-
+   }else {
+    old_this_phase -= old_this_speed;
+   }
 		for (int k = 0; k < NUM_LEDS; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
 			int old_this_bright = qsubd(cubicwave8((k*old_all_freq) + old_this_phase), old_this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
 			old_leds[k] = CHSV(old_bg_clr, 255, old_bg_bri);                                                        // First set a background colour, but fully saturated.
@@ -40,8 +43,11 @@ void one_sin_pal(bool old) {
 	else {
 		start_index += this_inc;
 		this_index = start_index;
-		this_phase += this_speed;                                                                     // You can change direction and speed individually.
-
+    if(this_dir){ 
+     this_phase += this_speed;                                                                     // You can change direction and speed individually.
+   }else{
+		this_phase -= this_speed;                                                                     // You can change direction and speed individually.
+   }
 		for (int k = 0; k<NUM_LEDS; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
 			int this_bright = qsubd(cubicwave8((k*all_freq) + this_phase), this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
 			cur_leds[k] = CHSV(bg_clr, 255, bg_bri);                                                        // First set a background colour, but fully saturated.
@@ -56,8 +62,11 @@ void one_sin_pal_ring(bool old) {
 	if (old) {
 		old_start_index += old_this_inc;
 		old_this_index = old_start_index;
+   if(this_dir){
+    old_this_phase += old_this_speed;  
+   }else{
 		old_this_phase -= old_this_speed;                                                                     // You can change direction and speed individually.
-
+   }
 		for (int k = 0; k < STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
 			int old_this_bright = qsubd(cubicwave8((k*old_all_freq) + old_this_phase), old_this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
 			ringCHSV(1,k, old_bg_clr, 155, old_bg_bri);
@@ -68,8 +77,11 @@ void one_sin_pal_ring(bool old) {
 	else {
 		start_index += this_inc;
 		this_index = start_index;
+   if(this_dir){
+    this_phase += this_speed;  
+   }else{
 		this_phase -= this_speed;                                                                     // You can change direction and speed individually.
-
+   }
 		for (int k = 0; k<STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
 			int this_bright = qsubd(cubicwave8((k*all_freq) + this_phase), this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
 			ringCHSV(0, k, bg_clr, 155, bg_bri);

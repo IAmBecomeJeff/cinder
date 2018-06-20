@@ -1579,6 +1579,21 @@ DEFINE_GRADIENT_PALETTE(cequal_gp) {
 		222, 252, 250, 147,
 		255, 252, 252, 252};
 	
+// Gradient palette "purple_flower_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/neota/flor/tn/purple-flower.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 28 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( purple_flower_gp ) {
+    0,   0,  0,  0,
+   66,  20,  4, 45,
+  132, 121, 20,255,
+  180, 179, 73,255,
+  228, 255,164,255,
+  241, 255,207,255,
+  255, 255,255,255};
+	
+	
 //const TProgmemPalette16 cloudcolors_p FL_PROGMEM =
 //{
 //    CRGB::Blue,
@@ -1718,17 +1733,18 @@ DEFINE_GRADIENT_PALETTE(cequal_gp) {
 // This list of color palettes acts as a "playlist"; you can
 // add or delete, or re-arrange as you wish.
 const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
-  Sunset_Real_gp,
+  ib_jul01_gp,
+  es_vintage_57_gp,
+  es_vintage_01_gp,
   es_rivendell_15_gp,
-  es_ocean_breeze_036_gp,
   rgi_15_gp,
   retro2_16_gp,
   Analogous_1_gp,
   es_pinksplash_08_gp,
+  es_pinksplash_07_gp,
   Coral_reef_gp,
   es_ocean_breeze_068_gp,
-  es_pinksplash_07_gp,
-  es_vintage_01_gp,
+  es_ocean_breeze_036_gp,
   departure_gp,
   es_landscape_64_gp,
   es_landscape_33_gp,
@@ -1736,8 +1752,6 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   gr65_hult_gp,
   gr64_hult_gp,
   GMT_drywet_gp,
-  ib_jul01_gp,
-  es_vintage_57_gp,
   ib15_gp,
   Fuschia_7_gp,
   es_emerald_dragon_08_gp,
@@ -1746,6 +1760,7 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   Colorfull_gp,
   Magenta_Evening_gp,
   Pink_Purple_gp,
+  Sunset_Real_gp,
   es_autumn_19_gp,
   BlacK_Blue_Magenta_White_gp,
   BlacK_Magenta_Red_gp,
@@ -1783,17 +1798,11 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   sea_treasure_gp,
   Secondary_01a_gp,
   Split_03_gp,
-//  rainbowcolors_p,
-//  partycolors_p,
-//  lavacolors_p,
-//  forestcolors_p,
-//  oceancolors_p,
-//  cloudcolors_p,
-//  rainbowstripecolors_p,
-//  heatcolors_p,
+  GMT_seafloor_gp,
   rainbow_gp,
   cloudcolors_gp,
-  cequal_gp
+  cequal_gp,
+  purple_flower_gp
   };
 
 

@@ -7,90 +7,92 @@ int wrap(int step) {
 	return step;
 }
 
-void ripple(bool old) {
-	if (old) {
-		if (old_rip_currentBg == old_rip_nextBg) {
-			old_rip_nextBg = random(256);
-		}
-		else if (old_rip_nextBg > old_rip_currentBg) {
-			old_rip_currentBg++;
-		}
-		else {
-			old_rip_currentBg--;
-		}
-
-		for (uint8_t l = 0; l < NUM_LEDS; l++) {
-			old_leds[l] = CHSV(old_rip_currentBg, 255, 50);
-		}
-
-		if (old_rip_step == -1) {
-			old_rip_center = random(STRIP_LENGTH);
-			old_rip_color = random(256);
-			old_rip_step = 0;
-		}
-
-		if (old_rip_step == 0) {
-			ringCHSV(1, old_rip_center, old_rip_color, 255, 255);
-			old_rip_step++;
-		}
-		else {
-			if (old_rip_step < rip_maxSteps) {
-				//Serial.println(pow(fadeRate, step));
-				ringCHSV(1, wrap(old_rip_center + old_rip_step), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step) * 255);
-				ringCHSV(1, wrap(old_rip_center - old_rip_step), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step) * 255);
-				if (rip_step > 3) {
-					ringCHSV(1, wrap(old_rip_center + old_rip_step - 3), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step - 2) * 255);
-					ringCHSV(1, wrap(old_rip_center - old_rip_step + 3), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step - 2) * 255);
-				}
-				old_rip_step++;
-			}
-			else {
-				old_rip_step = -1;
-			}
-		}
-	}
-	else {
-		if (rip_currentBg == rip_nextBg) {
-			rip_nextBg = random(256);
-		}
-		else if (rip_nextBg > rip_currentBg) {
-			rip_currentBg++;
-		}
-		else {
-			rip_currentBg--;
-		}
-
-		for (uint8_t l = 0; l < NUM_LEDS; l++) {
-			cur_leds[l] = CHSV(rip_currentBg, 255, 50);
-		}
-
-		if (rip_step == -1) {
-			rip_center = random(STRIP_LENGTH);
-			rip_color = random(256);
-			rip_step = 0;
-		}
-
-		if (rip_step == 0) {
-			ringCHSV(0, rip_center, rip_color, 255, 255);
-			rip_step++;
-		}
-		else {
-			if (rip_step < rip_maxSteps) {
-				//Serial.println(pow(fadeRate, step));
-				ringCHSV(0, wrap(rip_center + rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
-				ringCHSV(0, wrap(rip_center - rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
-				if (rip_step > 3) {
-					ringCHSV(0, wrap(rip_center + rip_step - 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
-					ringCHSV(0, wrap(rip_center - rip_step + 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
-				}
-				rip_step++;
-			}
-			else {
-				rip_step = -1;
-			}
-		}
-	}
-} // ripple()
+//void ripple(bool old) {
+//	if (old) {
+//		if (old_rip_currentBg == old_rip_nextBg) {
+//			old_rip_nextBg = random(256);
+//		}
+//		else if (old_rip_nextBg > old_rip_currentBg) {
+//			old_rip_currentBg++;
+//		}
+//		else {
+//			old_rip_currentBg--;
+//		}
+//
+//		for (uint8_t l = 0; l < NUM_LEDS; l++) {
+//			old_leds[l] = CHSV(old_rip_currentBg, 255, 50);
+//		}
+//
+//		if (old_rip_step == -1) {
+//			old_rip_center = random(STRIP_LENGTH);
+//			old_rip_color = random(256);
+//			old_rip_step = 0;
+//		}
+//
+//		if (old_rip_step == 0) {
+//			ringCHSV(1, old_rip_center, old_rip_color, 255, 255);
+//			old_rip_step++;
+//		}
+//		else {
+//			if (old_rip_step < rip_maxSteps) {
+//				//Serial.println(pow(fadeRate, step));
+//				ringCHSV(1, wrap(old_rip_center + old_rip_step), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step) * 255);
+//				ringCHSV(1, wrap(old_rip_center - old_rip_step), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step) * 255);
+//				if (rip_step > 3) {
+//					ringCHSV(1, wrap(old_rip_center + old_rip_step - 3), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step - 2) * 255);
+//					ringCHSV(1, wrap(old_rip_center - old_rip_step + 3), old_rip_color, 255, pow(old_rip_fadeRate, old_rip_step - 2) * 255);
+//				}
+//				old_rip_step++;
+//			}
+//			else {
+//				old_rip_step = -1;
+//			}
+//		}
+//	}
+//	else {
+//		if (rip_currentBg == rip_nextBg) {
+//			rip_nextBg = random(256);
+//		}
+//		else if (rip_nextBg > rip_currentBg) {
+//			rip_currentBg++;
+//		}
+//		else {
+//			rip_currentBg--;
+//		}
+//
+//		for (uint8_t l = 0; l < NUM_LEDS; l++) {
+//			cur_leds[l] = CHSV(rip_currentBg, 255, 50);
+//		}
+//		if (rip_step < -1) {
+//			rip_step++;
+//		}
+//		if (rip_step == -1) {
+//			rip_center = random(STRIP_LENGTH);
+//			rip_color = random(256);
+//			rip_step = 0;
+//		}
+//
+//		if (rip_step == 0) {
+//			ringCHSV(0, rip_center, rip_color, 255, 255);
+//			rip_step++;
+//		}
+//		else {
+//			if (rip_step < rip_maxSteps) {
+//				//Serial.println(pow(fadeRate, step));
+//				ringCHSV(0, wrap(rip_center + rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
+//				ringCHSV(0, wrap(rip_center - rip_step), rip_color, 255, pow(rip_fadeRate, rip_step) * 255);
+//				if (rip_step > 3) {
+//					ringCHSV(0, wrap(rip_center + rip_step - 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
+//					ringCHSV(0, wrap(rip_center - rip_step + 3), rip_color, 255, pow(rip_fadeRate, rip_step - 2) * 255);
+//				}
+//				rip_step++;
+//			}
+//			else {
+//				rip_step = rip_delay;
+//			}
+//		}
+//	}
+//} // ripple()
 
 
 
@@ -127,6 +129,33 @@ void ripple2(bool old) {
 		fadeToBlackBy(cur_leds, NUM_LEDS, fadeval);                             // 8 bit, 1 = slow, 255 = fast
 
 		switch (rip_step) {
+		case -10:
+			rip_step++;
+			break;
+		case -9:
+			rip_step++;
+			break;
+		case -8:
+			rip_step++;
+			break;
+		case -7:
+			rip_step++;
+			break;
+		case -6:
+			rip_step++;
+			break;
+		case -5:
+			rip_step++;
+			break;
+		case -4:
+			rip_step++;
+			break;
+		case -3:
+			rip_step++;
+			break;
+		case -2:
+			rip_step++;
+			break;
 
 		case -1:                                                          // Initialize ripple variables.
 			rip_center = random(STRIP_LENGTH);
@@ -140,7 +169,7 @@ void ripple2(bool old) {
 			break;
 
 		case rip_maxSteps:                                                    // At the end of the ripples.
-			rip_step = -1;
+			rip_step = -10;
 			break;
 
 		default:                                                          // Middle of the ripples.
