@@ -59,7 +59,7 @@ TBlendType current_blending;           // Linear vs No-Blending
 extern const TProgmemRGBGradientPalettePtr g_gradient_palettes[];   // from gradient_palettes.h
 extern const uint8_t g_gradient_palette_count;                      // # of fixed palettes
 uint8_t g_current_palette_number  = 0;                              // Current palette number
-uint8_t current_pattern_index     = 0;                              // Index of current pattern
+uint8_t current_pattern_index     = 5;                              // Index of current pattern
 uint8_t default_mode              = 34;                             // Default mode to go to
 
 // LED Overall Variables
