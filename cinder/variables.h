@@ -64,7 +64,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 92;		// maximum number of modes
+uint8_t max_mode    = 94;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -105,6 +105,7 @@ int spiralArrayRev[4][144];
 int w = 3; 						  // width of spirals
 uint8_t jug_fade = 16;
 uint8_t jug_index = 0;
+int ringBeat[] = { 3, 2, 0, 1 };
 
 
 typedef struct balls {
@@ -322,3 +323,5 @@ uint8_t old_thatcutoff = 192;
 int old_spiral_start;
 int old_spiral_inc;
 int old_spiral_width;
+
+int old_ring_beat[4];

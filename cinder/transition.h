@@ -102,6 +102,9 @@ void update_old_variables() {
 		old_yd[i] = yd[i];
 	}
 	old_palette = current_palette;
+	for (int i = 0; i < 4; i++) {
+		old_ringBeat[i] = ringBeat[i];
+	}
 }
 //
 //class led_class {

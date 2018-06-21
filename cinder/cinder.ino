@@ -779,6 +779,25 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 		juggle_fire(old);
 		break;
 
+	// 93 - juggle individual rings
+	case 93:
+		if (mc) { this_delay = 7; target_palette = cequal_gp; numdots_ring = 3; ringBeat = { 2,1,0,3 }; this_diff = 32; }
+		juggle_pal_individual_ring(old, 0);
+		juggle_pal_individual_ring(old, 1);
+		juggle_pal_individual_ring(old, 2);
+		juggle_pal_individual_ring(old, 3);
+		break;
+
+	// 94 - juggle individual rings one dir
+	case 94:
+		if (mc) {this_delay = 7; target_palette = hallows_gp; numdots_ring = 4; ringBeat = { 10, 4, 2, 12 }; this_diff = 32; this_fade = 16;}
+		juggle_pal_individual_ring_onedir(old, 0);
+		juggle_pal_individual_ring_onedir(old, 1);
+		juggle_pal_individual_ring_onedir(old, 2);
+		juggle_pal_individual_ring_onedir(old, 3);
+		break
+
+
     // if more modes added, must update max_modes in variables
   }
 }
