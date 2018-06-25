@@ -129,32 +129,36 @@ void ripple2(bool old) {
 		fadeToBlackBy(cur_leds, NUM_LEDS, fadeval);                             // 8 bit, 1 = slow, 255 = fast
 
 		switch (rip_step) {
+		//case -10:
+		//	rip_step++;
+		//	break;
+		//case -9:
+		//	rip_step++;
+		//	break;
+		//case -8:
+		//	rip_step++;
+		//	break;
+		//case -7:
+		//	rip_step++;
+		//	break;
+		//case -6:
+		//	rip_step++;
+		//	break;
+		//case -5:
+		//	rip_step++;
+		//	break;
+		//case -4:
+		//	rip_step++;
+		//	break;
+		//case -3:
+		//	rip_step++;
+		//	break;
+		//case -2:
+		//	rip_step++;
+		//	break;
 		case -10:
-			rip_step++;
-			break;
-		case -9:
-			rip_step++;
-			break;
-		case -8:
-			rip_step++;
-			break;
-		case -7:
-			rip_step++;
-			break;
-		case -6:
-			rip_step++;
-			break;
-		case -5:
-			rip_step++;
-			break;
-		case -4:
-			rip_step++;
-			break;
-		case -3:
-			rip_step++;
-			break;
-		case -2:
-			rip_step++;
+			rip_pause++;
+			if (rip_pause == 0) { rip_step = -1; rip_pause = random8(30) - 30; }
 			break;
 
 		case -1:                                                          // Initialize ripple variables.

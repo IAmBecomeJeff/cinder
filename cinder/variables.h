@@ -131,6 +131,7 @@ int rip_color;
 int rip_center = 0;
 int rip_step = -1;
 int rip_delay = -10;
+int rip_pause = -10;
 #define rip_maxSteps 16
 float rip_fadeRate = 0.8;
 //Ripple background color

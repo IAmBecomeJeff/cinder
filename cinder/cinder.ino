@@ -129,14 +129,14 @@ void loop() {
   // Check switchB for demo
   EVERY_N_SECONDS(30) {
 	  if (!digitalRead(switchB)) {
-      if (rotary_function==1){ // Change palette on rotary 1
-		updatePaletteIndex(target_palette);
-		palette_index++;
-		if (palette_index > g_gradient_palette_count -1){palette_index= 0;}
-		target_palette = g_gradient_palettes[palette_index];  
-		pal_change = 0;
-		Serial.print("Palette number: ");
-		Serial.println(palette_index);
+      if (rotary_function==1){// Change palette on rotary 1
+		  updatePaletteIndex(target_palette);
+		  palette_index++;
+		  if (palette_index > g_gradient_palette_count -1){palette_index= 0;}
+		  target_palette = g_gradient_palettes[palette_index];  
+		  pal_change = 0;
+		  Serial.print("Palette number: ");
+		  Serial.println(palette_index);
       }else{	 // Change only mode otherwise
   		  old_mode = led_mode;
   		  led_mode++;
@@ -152,7 +152,7 @@ void loop() {
 	  }
   }
 
-  EVERY_N_SECONDS(15) { // Change palettes a bit more frequently if on second click
+  EVERY_N_SECONDS(15) { // Change palettes and mode a bit more frequently if on second click
 	  if (!digitalRead(switchB)) {
 		  if (rotary_function == 2) {
 			  if (pal_change) {
