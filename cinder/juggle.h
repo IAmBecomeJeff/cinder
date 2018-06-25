@@ -87,7 +87,7 @@ void juggle_pal_ring_onedir(bool old) {                                         
     //this_index = 0;
     fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);
     for(int i = 0; i < numdots_ring; i++){
-      if(!this_dir){
+      if(this_dir){
       ring_juggle(beatsin16_halfdown(this_beat+3*i + numdots_ring, 0, STRIP_LENGTH -1), current_palette, this_index, this_bright, current_blending);
       }else{
       ring_juggle(beatsin16_halfup(this_beat+3*i + numdots_ring, 0, STRIP_LENGTH -1), current_palette, this_index, this_bright, current_blending);   
@@ -128,14 +128,19 @@ void juggle_pal_ring_onedir(bool old) {                                         
 	  }
   } // juggle_pal()
 
-
+  void juggle_pal_individual_ring_all(bool old) {
+	  juggle_pal_individual_ring(old, 0);
+	  juggle_pal_individual_ring(old, 1);
+	  juggle_pal_individual_ring(old, 2);
+	  juggle_pal_individual_ring(old, 3);
+  }
 
   void juggle_pal_individual_ring_onedir(bool old, int ring) {                                            // Several colored dots, weaving in and out of sync with each other
 	  if (old) {
-		  old_this_index = 0;                                           // Reset the hue values.
+		  //old_this_index = 0;                                           // Reset the hue values.
 		  fadeToBlackBy(old_leds, NUM_LEDS, old_this_fade);
 		  for (int i = 0; i < old_numdots_ring; i++) {
-			  if (!old_this_dir) {
+			  if (old_this_dir) {
 				  old_leds[ringArray[beatsin16_halfdown(old_ringBeat[ring] + i + old_numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
 			  }
 			  else {
@@ -146,20 +151,80 @@ void juggle_pal_ring_onedir(bool old) {                                         
 		  }
 	  }
 	  else {
-		  this_index = 0;                                           // Reset the hue values.
+		  //this_index = 0;                                           // Reset the hue values.
 		  fadeToBlackBy(cur_leds, NUM_LEDS, this_fade);
 		  for (int i = 0; i < numdots_ring; i++) {
-			  if (!this_dir) {
-				  cur_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numbdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+			  if (this_dir) {
+				  cur_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
 			  }
 			  else {
-				  cur_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numbdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+				  cur_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
 			  }
 			  this_index += this_diff;
 		  }
 	  }
   } // juggle_pal_ring()
-//
+
+  void juggle_pal_individual_ring_onedir_all(bool old) {
+	  juggle_pal_individual_ring_onedir(old, 0);
+	  juggle_pal_individual_ring_onedir(old, 1);
+	  juggle_pal_individual_ring_onedir(old, 2);
+	  juggle_pal_individual_ring_onedir(old, 3);
+}
+
+void juggle_fire_individual(bool old){
+    //this_index = 0;
+    fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);
+    for(int i = 0; i < numdots_ring; i++){
+      for(int ring = 0; ring < 4; ring++){
+        if(this_dir){
+          jug_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+        }else{
+          jug_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+        }
+       }
+      this_index += this_diff;
+    }
+    fire_rings1(old);
+    fire_rings2(old);
+    fire_rings3(old);
+    fire_rings4(old);
+    for(int i = 0; i < NUM_LEDS; i++){
+      if(old){
+        old_leds[i] += jug_leds[i];
+      }else{
+        cur_leds[i] += jug_leds[i];
+      }
+    }
+  }
+
+  
+void juggle_fire_individual_same_dir(bool old){
+    //this_index = 0;
+    fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);
+    for(int i = 0; i < numdots_ring; i++){
+      for(int ring = 0; ring < 4; ring++){
+        if(this_dir){
+          jug_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+        }else{
+          jug_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+        }
+       }
+      this_index += this_diff;
+    }
+    fire_rings1_opp(old);
+    fire_rings2_opp(old);
+    fire_rings3_opp(old);
+    fire_rings4_opp(old);
+    for(int i = 0; i < NUM_LEDS; i++){
+      if(old){
+        old_leds[i] += jug_leds[i];
+      }else{
+        cur_leds[i] += jug_leds[i];
+      }
+    }
+  }
+	//
 ////add juggle
 //void add_juggle_down() {
 //	fadeToBlackBy(jug_leds, NUM_LEDS, jug_fade);

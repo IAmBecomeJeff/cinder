@@ -301,7 +301,7 @@ void fire_rings1(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (old_this_dir) {
+			if (!old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -322,7 +322,7 @@ void fire_rings1(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (this_dir) {
+			if (!this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(heat[j]);
 			}
 			else {
@@ -346,7 +346,7 @@ void fire_rings2(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (old_this_dir) {
+			if (!old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -366,7 +366,7 @@ void fire_rings2(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (this_dir) {
+			if (!this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(heat[j]);
 			}
 			else {
@@ -390,7 +390,7 @@ void fire_rings3(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (old_this_dir) {
+			if (!old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -410,7 +410,7 @@ void fire_rings3(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (this_dir) {
+			if (!this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(heat[j]);
 			}
 			else {
@@ -434,7 +434,7 @@ void fire_rings4(bool old){
 			old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (old_this_dir) {
+			if (!old_this_dir) {
 				old_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(old_heat[j]);
 			}
 			else {
@@ -454,7 +454,7 @@ void fire_rings4(bool old){
 			heat[y] = qadd8(heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (this_dir) {
+			if (!this_dir) {
 				cur_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(heat[j]);
 			}
 			else {
@@ -1104,5 +1104,197 @@ void fire_mirror_pal_rings(bool old){
 	fire_mirror_pal_rings3(old);
 	fire_mirror_pal_rings4(old);
 }
+
+
+
+
+
+
+// fire with each strip doing a seperate flame
+void fire_rings1_opp(bool old){
+  if (old) {
+    static byte old_heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      old_heat[i] = qsub8(old_heat[i], random8(0, ((old_cooling1 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      old_heat[k] = (old_heat[k - 1] + old_heat[k - 2] + old_heat[k - 2]) / 3;
+    }
+    if (random8() < old_sparking1) {
+      int y = random8(7);
+      old_heat[y] = qadd8(old_heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (old_this_dir) {
+        old_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(old_heat[j]);
+      }
+      else {
+        old_leds[ringArray[j][0]] = HeatColor(old_heat[j]);
+      }
+    }
+  }
+  else {
+    static byte heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      heat[i] = qsub8(heat[i], random8(0, ((cooling1 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3;
+    }
+    if (random8() < sparking1) {
+      int y = random8(7);
+      heat[y] = qadd8(heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (this_dir) {
+        cur_leds[ringArray[STRIP_LENGTH - 1 - j][0]] = HeatColor(heat[j]);
+      }
+      else {
+        cur_leds[ringArray[j][0]] = HeatColor(heat[j]);
+      }
+    }
+  }
+}
+
+void fire_rings2_opp(bool old){
+  if (old) {
+    static byte old_heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      old_heat[i] = qsub8(old_heat[i], random8(0, ((old_cooling2 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      old_heat[k] = (old_heat[k - 1] + old_heat[k - 2] + old_heat[k - 2]) / 3;
+    }
+    if (random8() < old_sparking2) {
+      int y = random8(7);
+      old_heat[y] = qadd8(old_heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (old_this_dir) {
+        old_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(old_heat[j]);
+      }
+      else {
+        old_leds[ringArray[j][1]] = HeatColor(old_heat[j]);
+      }
+    }
+  }else{
+    static byte heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      heat[i] = qsub8(heat[i], random8(0, ((cooling2 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3;
+    }
+    if (random8() < sparking2) {
+      int y = random8(7);
+      heat[y] = qadd8(heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (this_dir) {
+        cur_leds[ringArray[STRIP_LENGTH - 1 - j][1]] = HeatColor(heat[j]);
+      }
+      else {
+        cur_leds[ringArray[j][1]] = HeatColor(heat[j]);
+      }
+    }
+  }
+}
+
+void fire_rings3_opp(bool old){
+  if (old) {
+    static byte old_heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      old_heat[i] = qsub8(old_heat[i], random8(0, ((old_cooling3 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      old_heat[k] = (old_heat[k - 1] + old_heat[k - 2] + old_heat[k - 2]) / 3;
+    }
+    if (random8() < old_sparking3) {
+      int y = random8(7);
+      old_heat[y] = qadd8(old_heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (old_this_dir) {
+        old_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(old_heat[j]);
+      }
+      else {
+        old_leds[ringArray[j][2]] = HeatColor(old_heat[j]);
+      }
+    }
+  }else{
+    static byte heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      heat[i] = qsub8(heat[i], random8(0, ((cooling3 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3;
+    }
+    if (random8() < sparking3) {
+      int y = random8(7);
+      heat[y] = qadd8(heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (this_dir) {
+        cur_leds[ringArray[STRIP_LENGTH - 1 - j][2]] = HeatColor(heat[j]);
+      }
+      else {
+        cur_leds[ringArray[j][2]] = HeatColor(heat[j]);
+      }
+    }
+  }
+}
+
+void fire_rings4_opp(bool old){
+  if (old) {
+    static byte old_heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      old_heat[i] = qsub8(old_heat[i], random8(0, ((old_cooling4 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      old_heat[k] = (old_heat[k - 1] + old_heat[k - 2] + old_heat[k - 2]) / 3;
+    }
+    if (random8() < old_sparking4) {
+      int y = random8(7);
+      old_heat[y] = qadd8(old_heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (old_this_dir) {
+        old_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(old_heat[j]);
+      }
+      else {
+        old_leds[ringArray[j][3]] = HeatColor(old_heat[j]);
+      }
+    }
+  }else{
+    static byte heat[STRIP_LENGTH];
+    for (int i = 0; i < STRIP_LENGTH; i++) {
+      heat[i] = qsub8(heat[i], random8(0, ((cooling4 * 10) / STRIP_LENGTH) + 2));
+    }
+    for (int k = STRIP_LENGTH - 3; k > 0; k--) {
+      heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3;
+    }
+    if (random8() < sparking4) {
+      int y = random8(7);
+      heat[y] = qadd8(heat[y], random8(160, 255));
+    }
+    for (int j = 0; j < STRIP_LENGTH; j++) {
+      if (this_dir) {
+        cur_leds[ringArray[STRIP_LENGTH - 1 - j][3]] = HeatColor(heat[j]);
+      }
+      else {
+        cur_leds[ringArray[j][3]] = HeatColor(heat[j]);
+      }
+    }
+  }
+}
+
+void fire_rings_opp(bool old){
+  fire_rings1(old);
+  fire_rings2(old);
+  fire_rings3(old);
+  fire_rings4(old);
+}
+
+
 
 #endif
