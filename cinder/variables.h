@@ -107,14 +107,14 @@ uint8_t jug_fade = 16;
 uint8_t jug_index = 0;
 int ringBeat[] = { 3, 2, 0, 1 };
 
-
-typedef struct balls {
-	int distanceold;
-	int distance;
-	int velocityold;
-	int velocity;
-	int ballhue;
-} ;
+//
+//typedef struct balls {
+//	int distanceold;
+//	int distance;
+//	int velocityold;
+//	int velocity;
+//	int ballhue;
+//} ;
 
 
 //balls myballs[numballs];
@@ -259,6 +259,8 @@ uint8_t old_that_speed = 4;      // Second speed
 uint8_t old_wave_brightness = 255;    // Brightness of the waves/bars
 uint8_t old_xd[NUM_LEDS];             // X-array for 2d coordinates of leds
 uint8_t old_yd[NUM_LEDS];
+uint8_t target_delay = 10;
+bool pal_change = 0;
 
 int old_plasma_phase1, old_plasma_phase2, old_plasmaIndex, old_plasmaBright;
 

@@ -18,7 +18,7 @@
 #include "noise8.h"
 #include "one_sin.h"
 #include "palette_motion.h"
-#include "plasma.h"
+//#include "plasma.h"
 #include "pride.h"
 #include "rainbow_march.h"
 #include "ripple.h"

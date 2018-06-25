@@ -3,6 +3,9 @@
 
 
 void update_old_variables() {
+	for (int i = 0; i < NUM_LEDS; i++) {
+		old_leds[i] = cur_leds[i];
+	}
 	old_all_freq = all_freq;
 	old_bg_clr = bg_clr;
 	old_bg_bri = bg_bri;
