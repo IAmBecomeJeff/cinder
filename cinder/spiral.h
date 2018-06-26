@@ -152,13 +152,12 @@ void one_sin_spiral(bool old) {
 			old_this_phase += old_this_speed;                                                                     // You can change direction and speed individually.
 		}
 		else { old_this_phase -= old_this_speed; }
-
-		for (int k = 0; k < STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
-			int old_this_bright = qsubd(cubicwave8((k*old_all_freq) + old_this_phase), old_this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
-			old_leds[spiralArray[0][k]] = CHSV(old_bg_clr, 255, old_bg_bri);                                                        // First set a background colour, but fully saturated.
-			old_leds[spiralArray[0][k]] += ColorFromPalette(old_palette, old_this_index + k * old_this_inc, old_this_bright, current_blending);
-			old_this_index += old_this_rot;
-		}
+  		for (int k = 0; k < STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
+  			int old_this_bright = qsubd(cubicwave8((k*old_all_freq) + old_this_phase), old_this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
+  			old_leds[spiralArray[0][k]] = CHSV(old_bg_clr, 255, old_bg_bri);                                                        // First set a background colour, but fully saturated.
+  			old_leds[spiralArray[0][k]] += ColorFromPalette(old_palette, old_this_index + k * old_this_inc, old_this_bright, current_blending);
+  			old_this_index += old_this_rot;
+  		}
 	}else{
 		start_index += this_inc;
 		this_index = start_index;
@@ -166,13 +165,13 @@ void one_sin_spiral(bool old) {
 			this_phase += this_speed;                                                                     // You can change direction and speed individually.
 		}
 		else { this_phase -= this_speed; }
-
-		for (int k = 0; k<STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
-			int this_bright = qsubd(cubicwave8((k*all_freq) + this_phase), this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
-			cur_leds[spiralArray[0][k]] = CHSV(bg_clr, 255, bg_bri);                                                        // First set a background colour, but fully saturated.
-			cur_leds[spiralArray[0][k]] += ColorFromPalette(current_palette, this_index + k * this_inc, this_bright, current_blending);
-			this_index += this_rot;
-		}
+		  for (int k = 0; k<STRIP_LENGTH; k++) {                                                            // For each of the LED's in the strand, set a brightness based on a wave as follows:
+  			int this_bright = qsubd(cubicwave8((k*all_freq) + this_phase), this_cutoff);                    // qsub sets a minimum value called this_cutoff. If < this_cutoff, then bright = 0. Otherwise, bright = 128 (as defined in qsub)..
+  			cur_leds[spiralArray[0][k]] = CHSV(bg_clr, 255, bg_bri);                                                        // First set a background colour, but fully saturated.
+  			cur_leds[spiralArray[0][k]] += ColorFromPalette(current_palette, this_index + k * this_inc, this_bright, current_blending);
+  			this_index += this_rot;
+  		}
+    
 	}
 } // one_sin_spiral()
 

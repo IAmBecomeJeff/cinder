@@ -158,7 +158,7 @@ void ripple2(bool old) {
 		//	break;
 		case -10:
 			rip_pause++;
-			if (rip_pause == 0) { rip_step = -1; rip_pause = random8(30) - 30; }
+			if (rip_pause == 0) { rip_step = -1; rip_pause = random8(20) - 20; }
 			break;
 
 		case -1:                                                          // Initialize ripple variables.

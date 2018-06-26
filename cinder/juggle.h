@@ -139,12 +139,12 @@ void juggle_pal_ring_onedir(bool old) {                                         
 	  if (old) {
 		  //old_this_index = 0;                                           // Reset the hue values.
 		  fadeToBlackBy(old_leds, NUM_LEDS, old_this_fade);
-		  for (int i = 0; i < old_numdots_ring; i++) {
+		  for (int i = 0; i < old_numdots_ring_arr[ring]; i++) {
 			  if (old_this_dir) {
-				  old_leds[ringArray[beatsin16_halfdown(old_ringBeat[ring] + i + old_numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+				  old_leds[ringArray[beatsin16_halfdown(old_ringBeat[ring] + i + old_numdots_ring_arr[ring], 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
 			  }
 			  else {
-				  old_leds[ringArray[beatsin16_halfup(old_ringBeat[ring] + i + old_numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+				  old_leds[ringArray[beatsin16_halfup(old_ringBeat[ring] + i + old_numdots_ring_arr[ring], 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
 			  }
 			  // Munge the values and pick a colour from the palette
 			  old_this_index += old_this_diff;
@@ -153,12 +153,12 @@ void juggle_pal_ring_onedir(bool old) {                                         
 	  else {
 		  //this_index = 0;                                           // Reset the hue values.
 		  fadeToBlackBy(cur_leds, NUM_LEDS, this_fade);
-		  for (int i = 0; i < numdots_ring; i++) {
+		  for (int i = 0; i < numdots_ring_arr[ring]; i++) {
 			  if (this_dir) {
-				  cur_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+				  cur_leds[ringArray[beatsin16_halfdown(ringBeat[ring] + i + numdots_ring_arr[ring], 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
 			  }
 			  else {
-				  cur_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numdots_ring, 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+				  cur_leds[ringArray[beatsin16_halfup(ringBeat[ring] + i + numdots_ring_arr[ring], 0, STRIP_LENGTH - 1)][ring]] += ColorFromPalette(current_palette, this_index, this_bright, current_blending);
 			  }
 			  this_index += this_diff;
 		  }
