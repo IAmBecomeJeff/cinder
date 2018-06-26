@@ -132,5 +132,109 @@ void matrix_pal_ring(bool old) {                                           // On
 	}
 } // matrix_pal_ring()
 
+void matrix_random_walk(bool old) {                                           // One line matrix
+	if (old) {
+		if (old_this_rot) old_this_index++;                                   // Increase palette index to change colours on the fly
+
+		if (random8(90) > 80) {
+			if (old_this_dir == 0)
+				old_leds[ringArray[random8(4)][0]] = ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+			else
+				old_leds[ringArray[random8(4)][STRIP_LENGTH - 1]] = ColorFromPalette(old_palette, old_this_index, old_this_bright, current_blending);
+		}
+		else {
+			for (int i = 0; i < 4; i++) {
+				if (old_this_dir == 0)
+					old_leds[ringArray[0][i]].fadeToBlackBy(old_this_fade);
+				else
+					old_leds[ringArray[STRIP_LENGTH - 1][i]].fadeToBlackBy(old_this_fade);
+			}
+		}
+
+		if (old_this_dir == 0) {
+			for (int i = STRIP_LENGTH - 1; i > 0; i--) {
+				int walk = random8(3);
+				for (int r = 0; r < 4; r++); {
+					if (walk == 0) {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][(r + 1) % 4]]
+					}
+					else if (walk == 1) {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][((r - 1) + 4) % 4]]
+					}
+					else {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][r]]
+					}
+				}
+			}
+		}
+		else {
+			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
+				int walk = random8(3);
+				for (int r = 0; r < 4; r++); {
+					if (walk == 0) {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][(r + 1) % 4]]
+					}
+					else if (walk == 1) {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][((r - 1) + 4) % 4]]
+					}
+					else {
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][r]]
+					}
+				}/*cur_leds[i] = cur_leds[i + 1];*/
+			}
+		}
+	}
+	else {
+		if (this_rot) this_index++;                                   // Increase palette index to change colours on the fly
+
+		if (random8(90) > 80) {
+			if (this_dir == 0)
+				cur_leds[ringArray[random8(4)][0]] = ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+			else
+				cur_leds[ringArray[random8(4)][STRIP_LENGTH - 1]] = ColorFromPalette(current_palette, this_index, this_bright, current_blending);
+		}
+		else {
+			for (int i = 0; i < 4; i++){
+				if(this_dir == 0){ 
+					cur_leds[ringArray[0][i]].fadeToBlackBy(this_fade);
+				}
+				else {
+					cur_leds[ringArray[STRIP_LENGTH - 1][i]].fadeToBlackBy(this_fade);
+				}
+
+		if (this_dir == 0) {
+			for (int i = STRIP_LENGTH - 1; i > 0; i--) {
+				int walk = random8(3);
+				for (int r = 0; r < 4; r++); {
+					if (walk == 0) {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i-1][(r+1)%4]]
+					}
+					else if (walk == 1) {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][((r - 1)+4) % 4]]
+					}
+					else {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][r]]
+					}
+				}
+			}
+		}
+		else {
+			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
+				int walk = random8(3);
+				for (int r = 0; r < 4; r++); {
+					if (walk == 0) {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][(r + 1) % 4]]
+					}
+					else if (walk == 1) {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][((r - 1) + 4) % 4]]
+					}
+					else {
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][r]]
+					}
+				}/*cur_leds[i] = cur_leds[i + 1];*/
+			}
+		}
+} // matrix_random_walk()
+
 
 #endif

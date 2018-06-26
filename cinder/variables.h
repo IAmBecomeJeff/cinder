@@ -52,6 +52,8 @@ struct CRGB leds[NUM_LEDS];
 struct CRGB old_leds[NUM_LEDS];
 struct CRGB cur_leds[NUM_LEDS];
 struct CRGB jug_leds[NUM_LEDS];
+struct CRGB fire_leds[NUM_LEDS];
+struct CRGB blank_leds[NUM_LEDS];
 CRGBPalette16 current_palette;         // Current palette we're using
 CRGBPalette16 target_palette;          // Next palette to transition to
 CRGBPalette16 old_palette;
@@ -64,7 +66,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 47;		// maximum number of modes
+uint8_t max_mode    = 45;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -107,6 +109,10 @@ uint8_t jug_fade = 16;
 uint8_t jug_index = 0;
 int ringBeat[] = { 3, 2, 0, 1 };
 int numdots_ring_arr[] = {4, 6, 5, 8};
+bool fire_it_up = 0;
+bool fire_it_down = 0;
+uint8_t fire_blend = 0;
+
 
 //
 //typedef struct balls {
@@ -169,6 +175,8 @@ uint8_t sparking1;
 uint8_t sparking2;
 uint8_t sparking3;
 uint8_t sparking4;
+uint8_t cooling_simple[] = { 75, 84, 92, 80 };
+uint8_t sparking_simple[] = { 50, 49, 61, 69 };
 
 //Disco Variables
 uint8_t zooming_beats_per_minute = 122; // zooming for disco
@@ -288,6 +296,8 @@ uint8_t old_numdots, old_numdots_ring;
 
 uint8_t old_cooling, old_cooling1, old_cooling2, old_cooling3, old_cooling4;
 uint8_t old_sparking, old_sparking1, old_sparking2, old_sparking3, old_sparking4;
+uint8_t old_cooling_simple[] = { 75, 84, 92, 80 };
+uint8_t old_sparking_simple[] = { 50, 49, 61, 69 };
 
 uint8_t old_zooming_beats_per_minute = 122;
 uint8_t old_color_index = 0;
