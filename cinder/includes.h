@@ -10,6 +10,7 @@
 // Display routines
 #include "circnoise.h"
 #include "confetti.h"
+#include "cylon.h"
 #include "fire.h"
 #include "gradient_palettes.h"
 #include "juggle.h"
@@ -17,7 +18,7 @@
 //#include "noise16_pal.h"
 #include "noise8.h"
 #include "one_sin.h"
-#include "palette_motion.h"
+//#include "palette_motion.h"
 //#include "plasma.h"
 #include "pride.h"
 #include "rainbow_march.h"

@@ -552,12 +552,19 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 		juggle_fire_individual_same_dir(old);
 		break;
 
-	// 45 - matric random walk
+	// 45 - matrix random walk
 	case 45:
 		if (mc) { this_delay = 10; target_palette = es_emerald_dragon_01_gp; this_fade = 16; this_rot = 1; this_index = 32; }
 		matrix_random_walk(old);
 		break;
             
+	// 46 - cylon
+	case 46: 
+		if (mc) { this_delay = 10; target_palette = blade_runner_2049_gp; cylon_step = 1; cylon_center = 0; cylon_brightness = 255; cylon_index = random8(); }
+		cylon(old);
+		break;
+
+
     // if more modes added, must update max_modes in variables
   }
 }
@@ -736,7 +743,6 @@ void checkDial() {
       switch (rotary_function) {
 
         case 0: // add !transitioning to let the new mode get set up
-			  //if (!transitioning) {
   				old_mode = led_mode;
   				if (digitalRead(pinB) != aVal) {   // Means pin A changed first, we're rotating CW
   					led_mode++;      // Move to next pattern
@@ -753,7 +759,8 @@ void checkDial() {
   				update_old_variables();
 				transitioning = 1 ;
   				strobe_mode(led_mode, 1,0);
-			  //}
+				target_delay = this_delay;
+				this_delay = old_this_delay;
           break;
 
         case 1:
@@ -796,7 +803,7 @@ void checkDial() {
           } else {
             this_bright--;
           }
-          constrain(this_bright,0,max_bright);
+          constrain(this_bright,0,128);
           LEDS.setBrightness(this_bright);
           Serial.print("Brightness: ");
           Serial.println(this_bright);

@@ -108,6 +108,10 @@ void update_old_variables() {
 	for (int i = 0; i < 4; i++) {
 		old_ringBeat[i] = ringBeat[i];
 	}
+	old_cylon_step = cylon_step;
+	old_cylon_center = cylon_center;
+	old_cylon_index = cylon_index;
+	old_cylon_brightness = cylon_brightness;
 }
 //
 //class led_class {

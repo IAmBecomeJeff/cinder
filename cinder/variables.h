@@ -66,7 +66,7 @@ uint8_t default_mode              = 34;                             // Default m
 
 // LED Overall Variables
 uint8_t max_bright  = 128;		// Overall brightness, it can be changed on the fly.  TODO: Maybe lower this to 100?
-uint8_t max_mode    = 45;		// maximum number of modes
+uint8_t max_mode    = 46;		// maximum number of modes
 uint8_t demo_run    = 0;		// 0 = regular mode, 1 = demo mode, 2 = shuffle mode
 int led_mode;				// Starting mode is typically 0
 uint8_t old_mode;
@@ -253,7 +253,11 @@ int8_t thatspeed = 4;                                         // You can change 
 int thatphase = 0;                                            // Phase change value gets calculated.
 uint8_t thatcutoff = 192;                                     // You can change the cutoff value to display that wave. Lower value = longer wave.
 
-
+// cylon variables
+int cylon_step = 1;
+int cylon_center = 0;
+uint8_t cylon_index = 128;
+uint8_t cylon_brightness = 255;
 
 ///////// Variables for transitioning:
 // LED Routine/Shared Variables
@@ -340,3 +344,9 @@ int old_spiral_width;
 
 int old_ringBeat[] = {3,2,0,1};
 int old_numdots_ring_arr[] = {4,5,6,7};
+
+// cylon variables
+int old_cylon_step = 1;
+int old_cylon_center = 0;
+uint8_t old_cylon_index = 128;
+uint8_t old_cylon_brightness = 255;
