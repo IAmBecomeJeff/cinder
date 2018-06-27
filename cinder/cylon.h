@@ -10,7 +10,7 @@
 void cylon(bool old) {
 	if (old) {
 		ringPaletteAdd(1, old_cylon_center, current_palette, old_cylon_index, old_cylon_brightness, current_blending);
-		for (int i = 0; i < 7; i++;) {
+		for (int i = 0; i < 7; i++) {
 			ringPaletteAdd(1, old_cylon_center + 1 + i, current_palette, old_cylon_index, old_cylon_brightness - i * 43, current_blending);
 			ringPaletteAdd(1, old_cylon_center - 1 - i, current_palette, old_cylon_index, old_cylon_brightness - i * 43, current_blending);
 		}
@@ -29,7 +29,7 @@ void cylon(bool old) {
 	}
 	else {
 		ringPaletteAdd(0, cylon_center, current_palette, cylon_index, cylon_brightness, current_blending);
-		for (int i = 0; i < 7; i++;) {
+		for (int i = 0; i < 7; i++) {
 			ringPaletteAdd(0, cylon_center + 1 + i, current_palette, cylon_index, cylon_brightness - i * 43, current_blending);
 			ringPaletteAdd(0, cylon_center - 1 - i, current_palette, cylon_index, cylon_brightness - i * 43, current_blending);
 		}

@@ -227,9 +227,9 @@ void loop() {
   if(glitter) addglitter(10);
 
   // Add fire
-  EVERY_N_SECONDS(45) { 
+  EVERY_N_SECONDS(150) { 
 	  if (random8() > 100) {
-		  fire_it_up = 1
+		  fire_it_up = 1;
 		  Serial.print("Commencing flames!!!");
 	  }
   }
@@ -551,19 +551,6 @@ void strobe_mode(uint8_t newMode, bool mc, bool old){
 		if (mc) {this_delay = 7; target_palette = hallows_gp;  numdots_ring = 4; ringBeat[0] = 12; ringBeat[1] = 5; ringBeat[2] = 12; ringBeat[3] = 6; this_diff = 32; this_fade = 16; cooling1 = 80; sparking1 = 20; cooling2 = 90; sparking2 = 15; cooling3 = 85; sparking3 = 20; cooling4 = 80; sparking4 = 25;}
 		juggle_fire_individual_same_dir(old);
 		break;
-
-	// 45 - matrix random walk
-	case 45:
-		if (mc) { this_delay = 10; target_palette = es_emerald_dragon_01_gp; this_fade = 16; this_rot = 1; this_index = 32; }
-		matrix_random_walk(old);
-		break;
-            
-	// 46 - cylon
-	case 46: 
-		if (mc) { this_delay = 10; target_palette = blade_runner_2049_gp; cylon_step = 1; cylon_center = 0; cylon_brightness = 255; cylon_index = random8(); }
-		cylon(old);
-		break;
-
 
     // if more modes added, must update max_modes in variables
   }

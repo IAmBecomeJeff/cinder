@@ -1308,7 +1308,7 @@ void fire_rings_simple(bool old){
 			for (int k = STRIP_LENGTH - 3; k > 0; k--) {
 				old_heat[k] = (old_heat[k - 1] + old_heat[k - 2] + old_heat[k - 2]) / 3;
 			}
-			if (random8() < old_sparking_sparking[ring]) {
+			if (random8() < old_sparking_simple[ring]) {
 				int y = random8(7);
 				old_heat[y] = qadd8(old_heat[y], random8(160, 255));
 			}
@@ -1361,12 +1361,12 @@ void addFire() {
 			fire_heat[y] = qadd8(fire_heat[y], random8(160, 255));
 		}
 		for (int j = 0; j < STRIP_LENGTH; j++) {
-			if (!this_dir) {
+//			if (!this_dir) {
 				fire_leds[ringArray[STRIP_LENGTH - 1 - j][ring]] = HeatColor(fire_heat[j]);
-			}
-			else {
-				fire_leds[ringArray[j][ring]] = HeatColor(fire_heat[j]);
-			}
+//			}
+//			else {
+//				fire_leds[ringArray[j][ring]] = HeatColor(fire_heat[j]);
+//			}
 		}
 	}
 }

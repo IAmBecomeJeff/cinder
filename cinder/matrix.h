@@ -154,15 +154,15 @@ void matrix_random_walk(bool old) {                                           //
 		if (old_this_dir == 0) {
 			for (int i = STRIP_LENGTH - 1; i > 0; i--) {
 				int walk = random8(3);
-				for (int r = 0; r < 4; r++); {
+				for (int r = 0; r < 4; r++) {
 					if (walk == 0) {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][(r + 1) % 4]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][(r + 1) % 4]];
 					}
 					else if (walk == 1) {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][((r - 1) + 4) % 4]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][((r - 1) + 4) % 4]];
 					}
 					else {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][r]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i - 1][r]];
 					}
 				}
 			}
@@ -170,15 +170,15 @@ void matrix_random_walk(bool old) {                                           //
 		else {
 			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
 				int walk = random8(3);
-				for (int r = 0; r < 4; r++); {
+				for (int r = 0; r < 4; r++) {
 					if (walk == 0) {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][(r + 1) % 4]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][(r + 1) % 4]];
 					}
 					else if (walk == 1) {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][((r - 1) + 4) % 4]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][((r - 1) + 4) % 4]];
 					}
 					else {
-						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][r]]
+						old_leds[ringArray[i][r]] = old_leds[ringArray[i + 1][r]];
 					}
 				}/*cur_leds[i] = cur_leds[i + 1];*/
 			}
@@ -201,19 +201,19 @@ void matrix_random_walk(bool old) {                                           //
 				else {
 					cur_leds[ringArray[STRIP_LENGTH - 1][i]].fadeToBlackBy(this_fade);
 				}
-
+			}
 		if (this_dir == 0) {
 			for (int i = STRIP_LENGTH - 1; i > 0; i--) {
 				int walk = random8(3);
-				for (int r = 0; r < 4; r++); {
+				for (int r = 0; r < 4; r++) {
 					if (walk == 0) {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i-1][(r+1)%4]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i-1][(r+1)%4]];
 					}
 					else if (walk == 1) {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][((r - 1)+4) % 4]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][((r - 1)+4) % 4]];
 					}
 					else {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][r]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i - 1][r]];
 					}
 				}
 			}
@@ -221,20 +221,22 @@ void matrix_random_walk(bool old) {                                           //
 		else {
 			for (int i = 0; i < STRIP_LENGTH - 1; i++) {
 				int walk = random8(3);
-				for (int r = 0; r < 4; r++); {
+				for (int r = 0; r < 4; r++) {
 					if (walk == 0) {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][(r + 1) % 4]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][(r + 1) % 4]];
 					}
 					else if (walk == 1) {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][((r - 1) + 4) % 4]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][((r - 1) + 4) % 4]];
 					}
 					else {
-						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][r]]
+						cur_leds[ringArray[i][r]] = cur_leds[ringArray[i + 1][r]];
 					}
 				}/*cur_leds[i] = cur_leds[i + 1];*/
 			}
 		}
-} // matrix_random_walk()
+  }
+}
+}// matrix_random_walk()
 
 
 #endif

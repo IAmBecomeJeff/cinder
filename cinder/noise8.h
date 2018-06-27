@@ -1,11 +1,6 @@
 #ifndef NOISE8_H
 #define NOISE8_H
 
-/* This is adapted from a routine created by Mark Kriegsman */
-
-/*  Usage - noise8();
- *  
- */
 
 void noise8_pal(bool old) {
 	if (old) {

@@ -2396,7 +2396,7 @@ DEFINE_GRADIENT_PALETTE(blade_runner_2049_gp) {
 		170, 20, 27, 115,
 		200, 75, 21, 73,
 		255, 44, 9, 42
-}
+};
 
 
 // Single array of defined cpt-city color palettes.
@@ -2507,7 +2507,6 @@ const TProgmemRGBGradientPalettePtr g_gradient_palettes[] = {
   Cyan_Magenta_Blue_gp,
   Complementary_01a_gp,
   cyberpunk_neon_gp,
-  blade_runner_2049_gp
   };
 
 
